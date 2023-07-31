@@ -22,4 +22,5 @@ cleanup as (
 
 )
 
+
 select * from cleanup
