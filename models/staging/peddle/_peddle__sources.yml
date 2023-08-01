@@ -1,0 +1,10 @@
+version: 2
+
+
+sources:
+  - name: stitch_peddle
+    schema: raw
+    tables:
+      - name: offerrequest
+      - name: archivedofferrequest
+      - name: offerprocessingtimes
