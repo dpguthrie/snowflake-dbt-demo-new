@@ -24,10 +24,7 @@ filtered_data as (
         from {{ ref('stg_peddle__offer_processing_times') }}
     )
     {% if is_incremental() -%}
-        and _sdc_received_at >= (
-            select event_lookback_months
-            from {{ ref('stg_peddle__offer_processing_times') }}
-        )
+        and _sdc_received_at > (select max(_sdc_received_at) from {{ this }})
     {% endif %}
 )
 
