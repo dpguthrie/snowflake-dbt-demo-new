@@ -11,7 +11,7 @@ semantic_models:
       agg_time_dimension: order_date
     
     entities:
-      - name: order
+      - name: customer_order
         type: primary
         expr: order_key
       - name: customer
@@ -47,7 +47,7 @@ semantic_models:
         agg: count_distinct
         expr: customer_key
 
-  - name: customer
+  - name: customers
     description: |
       Customer dim table at the individual customer level.  This table contains one row
       per customer and includes the customer key
@@ -80,7 +80,7 @@ semantic_models:
             else 'High'
           end
 
-  - name: nation
+  - name: nations
     description: |
       Cleaned nation table with every nation in the world
     model: ref('stg_tpch_nations')
@@ -89,6 +89,9 @@ semantic_models:
       - name: nation
         type: primary
         expr: nation_key
+      - name: region
+        type: foreign
+        expr: region_key
 
     dimensions:
       - name: nation_name
@@ -96,7 +99,7 @@ semantic_models:
         type: categorical
         expr: name
 
-  - name: region
+  - name: regions
     description: |
       Cleaned region table with every region in the world
     model: ref('stg_tpch_regions')
@@ -112,7 +115,7 @@ semantic_models:
         type: categorical
         expr: name
 
-  - name: supplier
+  - name: suppliers
     description: |
       Supplier dim table at the individual supplier level.  This table contains one row
       per supplier and includes the supplier key
@@ -122,14 +125,11 @@ semantic_models:
       - name: supplier
         type: primary
         expr: supplier_key
-      - name: region
-        type: foreign
-        expr: region_key
       - name: nation
         type: foreign
         expr: nation_key
   
-  - name: order_item
+  - name: order_items
     description: |
       Line items for an order.  An order_key can be represented multiple times
       in this table
@@ -147,7 +147,7 @@ semantic_models:
       - name: customer
         type: foreign
         expr: customer_key
-      - name: order
+      - name: customer_order
         type: foreign
         expr: order_key
 
