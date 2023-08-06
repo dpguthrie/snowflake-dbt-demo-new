@@ -25,7 +25,9 @@ final as (
         customer.name,
         customer.address,
         nation.nation_key,
+        nation.name as nation,
         region.region_key,
+        region.name as region,
         customer.phone_number,
         customer.account_balance,
         customer.market_segment
