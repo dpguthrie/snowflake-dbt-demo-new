@@ -1,3 +1,6 @@
+version: 2
+
+
 metrics:
   - name: total_revenue
     description: The total revenue for the business
