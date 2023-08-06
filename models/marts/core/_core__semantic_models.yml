@@ -2,7 +2,7 @@ version: 2
 
 
 semantic_models:
-  - name: orders
+  - name: order
     description: |
       Order fact table at the order level.  This table contains one row
       per order and includes the order key
@@ -89,6 +89,9 @@ semantic_models:
       - name: nation
         type: primary
         expr: nation_key
+      - name: region
+        type: foreign
+        expr: region_key
 
     dimensions:
       - name: nation_name
@@ -122,9 +125,6 @@ semantic_models:
       - name: supplier
         type: primary
         expr: supplier_key
-      - name: region
-        type: foreign
-        expr: region_key
       - name: nation
         type: foreign
         expr: nation_key
