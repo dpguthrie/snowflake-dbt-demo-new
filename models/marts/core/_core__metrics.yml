@@ -36,7 +36,7 @@ metrics:
     type: derived
     label: Total Profit
     type_params:
-      measure: revenue - cost
+      expr: revenue - expense
       metrics:
         - name: total_revenue
           alias: revenue
