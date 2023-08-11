@@ -16,8 +16,6 @@ cleanup as (
         c_acctbal as account_balance,
         c_mktsegment as market_segment,
         c_comment as comment,
-        'hello world' as col,
-        'hello world again' as col_2
 
     from source
 

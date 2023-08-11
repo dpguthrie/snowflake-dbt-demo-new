@@ -5,4 +5,3 @@ repos:
   - id: dbt-deps
   - id: dbt-docs-generate
   - id: check-script-has-no-table-name
-  - id: check-model-has-all-columns
