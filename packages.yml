@@ -7,4 +7,3 @@ packages:
     version: ["<1.0.0"]
   - package: brooklyn-data/dbt_artifacts
     version: ["<3.0.0"]
-  
