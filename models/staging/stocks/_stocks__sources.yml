@@ -1,0 +1,811 @@
+version: 2
+
+sources:
+  - name: stocks
+    description: ""
+    database: doug_demo_v2
+    tables:
+      - name: fund_ownership
+        description: ""
+        columns:
+          - name: symbol
+            description: ""
+          - name: report_date
+            description: ""
+          - name: organization
+            description: ""
+          - name: pct_held
+            description: ""
+          - name: position
+            description: ""
+          - name: value
+            description: ""
+          - name: pct_change
+            description: ""
+
+      - name: grade_history
+        description: ""
+        columns:
+          - name: symbol
+            description: ""
+          - name: epoch_grade_date
+            description: ""
+          - name: firm
+            description: ""
+          - name: to_grade
+            description: ""
+          - name: from_grade
+            description: ""
+          - name: action
+            description: ""
+
+      - name: history
+        description: ""
+        columns:
+          - name: symbol
+            description: ""
+            tests:
+              - not_null
+          - name: date
+            description: ""
+            tests:
+              - not_null
+          - name: close
+            description: ""
+          - name: volume
+            description: ""
+          - name: open
+            description: ""
+          - name: high
+            description: ""
+          - name: low
+            description: ""
+          - name: adjclose
+            description: ""
+          - name: dividends
+            description: ""
+          - name: splits
+            description: ""
+
+      - name: insider_transactions
+        description: ""
+        columns:
+          - name: symbol
+            description: ""
+          - name: shares
+            description: ""
+          - name: filer_url
+            description: ""
+          - name: transaction_text
+            description: ""
+          - name: filer_name
+            description: ""
+          - name: filer_relation
+            description: ""
+          - name: money_text
+            description: ""
+          - name: start_date
+            description: ""
+          - name: ownership
+            description: ""
+          - name: value
+            description: ""
+
+      - name: recommendation_trends
+        description: ""
+        columns:
+          - name: symbol
+            description: ""
+          - name: period
+            description: ""
+          - name: strong_buy
+            description: ""
+          - name: buy
+            description: ""
+          - name: hold
+            description: ""
+          - name: sell
+            description: ""
+          - name: strong_sell
+            description: ""
+
+      - name: sec_filings
+        description: ""
+        columns:
+          - name: symbol
+            description: ""
+          - name: date
+            description: ""
+          - name: epoch_date
+            description: ""
+          - name: type
+            description: ""
+          - name: title
+            description: ""
+          - name: edgar_url
+            description: ""
+
+      - name: stock_financials
+        description: ""
+        columns:
+          - name: symbol
+            description: ""
+          - name: as_of_date
+            description: ""
+          - name: period_type
+            description: ""
+          - name: currency_code
+            description: ""
+          - name: accounts_payable
+            description: ""
+          - name: accounts_receivable
+            description: ""
+          - name: accrued_interest_receivable
+            description: ""
+          - name: accumulated_depreciation
+            description: ""
+          - name: additional_paid_in_capital
+            description: ""
+          - name: allowance_for_doubtful_accounts_receivable
+            description: ""
+          - name: amortization
+            description: ""
+          - name: amortization_cash_flow
+            description: ""
+          - name: amortization_of_intangibles
+            description: ""
+          - name: amortization_of_intangibles_income_statement
+            description: ""
+          - name: amortization_of_securities
+            description: ""
+          - name: asset_impairment_charge
+            description: ""
+          - name: assets_held_for_sale_current
+            description: ""
+          - name: available_for_sale_securities
+            description: ""
+          - name: average_dilution_earnings
+            description: ""
+          - name: basic_average_shares
+            description: ""
+          - name: basic_eps
+            description: ""
+          - name: beginning_cash_position
+            description: ""
+          - name: buildings_and_improvements
+            description: ""
+          - name: capital_expenditure
+            description: ""
+          - name: capital_expenditure_reported
+            description: ""
+          - name: capital_lease_obligations
+            description: ""
+          - name: capital_stock
+            description: ""
+          - name: cash_and_cash_equivalents
+            description: ""
+          - name: cash_cash_equivalents_and_short_term_investments
+            description: ""
+          - name: cash_dividends_paid
+            description: ""
+          - name: cash_equivalents
+            description: ""
+          - name: cash_financial
+            description: ""
+          - name: cash_flow_from_continuing_financing_activities
+            description: ""
+          - name: cash_flow_from_continuing_investing_activities
+            description: ""
+          - name: cash_flow_from_continuing_operating_activities
+            description: ""
+          - name: cash_flow_from_discontinued_operation
+            description: ""
+          - name: cash_from_discontinued_financing_activities
+            description: ""
+          - name: cash_from_discontinued_investing_activities
+            description: ""
+          - name: cash_from_discontinued_operating_activities
+            description: ""
+          - name: change_in_account_payable
+            description: ""
+          - name: change_in_accrued_expense
+            description: ""
+          - name: change_in_cash_supplemental_as_reported
+            description: ""
+          - name: change_in_income_tax_payable
+            description: ""
+          - name: change_in_interest_payable
+            description: ""
+          - name: change_in_inventory
+            description: ""
+          - name: change_in_other_current_assets
+            description: ""
+          - name: change_in_other_current_liabilities
+            description: ""
+          - name: change_in_other_working_capital
+            description: ""
+          - name: change_in_payable
+            description: ""
+          - name: change_in_payables_and_accrued_expense
+            description: ""
+          - name: change_in_prepaid_assets
+            description: ""
+          - name: change_in_receivables
+            description: ""
+          - name: change_in_tax_payable
+            description: ""
+          - name: change_in_working_capital
+            description: ""
+          - name: changes_in_account_receivables
+            description: ""
+          - name: changes_in_cash
+            description: ""
+          - name: commercial_paper
+            description: ""
+          - name: common_stock
+            description: ""
+          - name: common_stock_dividend_paid
+            description: ""
+          - name: common_stock_equity
+            description: ""
+          - name: common_stock_issuance
+            description: ""
+          - name: common_stock_payments
+            description: ""
+          - name: construction_in_progress
+            description: ""
+          - name: cost_of_revenue
+            description: ""
+          - name: current_accrued_expenses
+            description: ""
+          - name: current_assets
+            description: ""
+          - name: current_capital_lease_obligation
+            description: ""
+          - name: current_debt
+            description: ""
+          - name: current_debt_and_capital_lease_obligation
+            description: ""
+          - name: current_deferred_assets
+            description: ""
+          - name: current_deferred_liabilities
+            description: ""
+          - name: current_deferred_revenue
+            description: ""
+          - name: current_deferred_taxes_assets
+            description: ""
+          - name: current_deferred_taxes_liabilities
+            description: ""
+          - name: current_liabilities
+            description: ""
+          - name: current_notes_payable
+            description: ""
+          - name: current_provisions
+            description: ""
+          - name: deferred_income_tax
+            description: ""
+          - name: deferred_tax
+            description: ""
+          - name: defined_pension_benefit
+            description: ""
+          - name: depletion
+            description: ""
+          - name: depletion_income_statement
+            description: ""
+          - name: depreciation
+            description: ""
+          - name: depreciation_amortization_depletion
+            description: ""
+          - name: depreciation_amortization_depletion_income_statement
+            description: ""
+          - name: depreciation_and_amortization
+            description: ""
+          - name: depreciation_and_amortization_in_income_statement
+            description: ""
+          - name: depreciation_income_statement
+            description: ""
+          - name: derivative_product_liabilities
+            description: ""
+          - name: diluted_average_shares
+            description: ""
+          - name: diluted_eps
+            description: ""
+          - name: diluted_ni_availto_com_stockholders
+            description: ""
+          - name: dividend_paid_cfo
+            description: ""
+          - name: dividend_received_cfo
+            description: ""
+          - name: dividends_payable
+            description: ""
+          - name: dividends_received_cfi
+            description: ""
+          - name: duefrom_related_parties_current
+            description: ""
+          - name: duefrom_related_parties_non_current
+            description: ""
+          - name: dueto_related_parties_current
+            description: ""
+          - name: dueto_related_parties_non_current
+            description: ""
+          - name: ebit
+            description: ""
+          - name: earnings_from_equity_interest
+            description: ""
+          - name: earnings_from_equity_interest_net_of_tax
+            description: ""
+          - name: earnings_losses_from_equity_investments
+            description: ""
+          - name: effect_of_exchange_rate_changes
+            description: ""
+          - name: employee_benefits
+            description: ""
+          - name: end_cash_position
+            description: ""
+          - name: excess_tax_benefit_from_stock_based_compensation
+            description: ""
+          - name: excise_taxes
+            description: ""
+          - name: financial_assets
+            description: ""
+          - name: financing_cash_flow
+            description: ""
+          - name: finished_goods
+            description: ""
+          - name: foreign_currency_translation_adjustments
+            description: ""
+          - name: free_cash_flow
+            description: ""
+          - name: gain_loss_on_investment_securities
+            description: ""
+          - name: gain_loss_on_sale_of_business
+            description: ""
+          - name: gain_loss_on_sale_of_ppe
+            description: ""
+          - name: gain_on_sale_of_business
+            description: ""
+          - name: gain_on_sale_of_ppe
+            description: ""
+          - name: gain_on_sale_of_security
+            description: ""
+          - name: gains_losses_not_affecting_retained_earnings
+            description: ""
+          - name: general_and_administrative_expense
+            description: ""
+          - name: goodwill
+            description: ""
+          - name: goodwill_and_other_intangible_assets
+            description: ""
+          - name: gross_accounts_receivable
+            description: ""
+          - name: gross_ppe
+            description: ""
+          - name: gross_profit
+            description: ""
+          - name: hedging_assets_current
+            description: ""
+          - name: held_to_maturity_securities
+            description: ""
+          - name: impairment_of_capital_assets
+            description: ""
+          - name: income_tax_paid_supplemental_data
+            description: ""
+          - name: income_tax_payable
+            description: ""
+          - name: insurance_and_claims
+            description: ""
+          - name: interest_expense
+            description: ""
+          - name: interest_expense_non_operating
+            description: ""
+          - name: interest_income
+            description: ""
+          - name: interest_income_non_operating
+            description: ""
+          - name: interest_paid_cff
+            description: ""
+          - name: interest_paid_cfo
+            description: ""
+          - name: interest_paid_supplemental_data
+            description: ""
+          - name: interest_payable
+            description: ""
+          - name: interest_received_cfi
+            description: ""
+          - name: interest_received_cfo
+            description: ""
+          - name: inventories_adjustments_allowances
+            description: ""
+          - name: inventory
+            description: ""
+          - name: invested_capital
+            description: ""
+          - name: investing_cash_flow
+            description: ""
+          - name: investment_properties
+            description: ""
+          - name: investmentin_financial_assets
+            description: ""
+          - name: investments_and_advances
+            description: ""
+          - name: investments_in_other_ventures_under_equity_method
+            description: ""
+          - name: investmentsin_associatesat_cost
+            description: ""
+          - name: investmentsin_joint_venturesat_cost
+            description: ""
+          - name: investmentsin_subsidiariesat_cost
+            description: ""
+          - name: issuance_of_capital_stock
+            description: ""
+          - name: issuance_of_debt
+            description: ""
+          - name: land_and_improvements
+            description: ""
+          - name: leases
+            description: ""
+          - name: liabilities_heldfor_sale_non_current
+            description: ""
+          - name: line_of_credit
+            description: ""
+          - name: loans_receivable
+            description: ""
+          - name: long_term_capital_lease_obligation
+            description: ""
+          - name: long_term_debt
+            description: ""
+          - name: long_term_debt_and_capital_lease_obligation
+            description: ""
+          - name: long_term_debt_issuance
+            description: ""
+          - name: long_term_debt_payments
+            description: ""
+          - name: long_term_equity_investment
+            description: ""
+          - name: long_term_provisions
+            description: ""
+          - name: machinery_furniture_equipment
+            description: ""
+          - name: minimum_pension_liabilities
+            description: ""
+          - name: minority_interest
+            description: ""
+          - name: minority_interests
+            description: ""
+          - name: net_business_purchase_and_sale
+            description: ""
+          - name: net_common_stock_issuance
+            description: ""
+          - name: net_debt
+            description: ""
+          - name: net_foreign_currency_exchange_gain_loss
+            description: ""
+          - name: net_income
+            description: ""
+          - name: net_income_common_stockholders
+            description: ""
+          - name: net_income_continuous_operations
+            description: ""
+          - name: net_income_discontinuous_operations
+            description: ""
+          - name: net_income_extraordinary
+            description: ""
+          - name: net_income_from_continuing_and_discontinued_operation
+            description: ""
+          - name: net_income_from_continuing_operation_net_minority_interest
+            description: ""
+          - name: net_income_from_continuing_operations
+            description: ""
+          - name: net_income_from_tax_loss_carryforward
+            description: ""
+          - name: net_income_including_noncontrolling_interests
+            description: ""
+          - name: net_intangibles_purchase_and_sale
+            description: ""
+          - name: net_interest_income
+            description: ""
+          - name: net_investment_properties_purchase_and_sale
+            description: ""
+          - name: net_investment_purchase_and_sale
+            description: ""
+          - name: net_issuance_payments_of_debt
+            description: ""
+          - name: net_long_term_debt_issuance
+            description: ""
+          - name: net_non_operating_interest_income_expense
+            description: ""
+          - name: net_other_financing_charges
+            description: ""
+          - name: net_other_investing_changes
+            description: ""
+          - name: net_ppe
+            description: ""
+          - name: net_ppe_purchase_and_sale
+            description: ""
+          - name: net_preferred_stock_issuance
+            description: ""
+          - name: net_short_term_debt_issuance
+            description: ""
+          - name: net_tangible_assets
+            description: ""
+          - name: non_current_accounts_receivable
+            description: ""
+          - name: non_current_accrued_expenses
+            description: ""
+          - name: non_current_deferred_assets
+            description: ""
+          - name: non_current_deferred_liabilities
+            description: ""
+          - name: non_current_deferred_revenue
+            description: ""
+          - name: non_current_deferred_taxes_assets
+            description: ""
+          - name: non_current_deferred_taxes_liabilities
+            description: ""
+          - name: non_current_note_receivables
+            description: ""
+          - name: non_current_pension_and_other_postretirement_benefit_plans
+            description: ""
+          - name: non_current_prepaid_assets
+            description: ""
+          - name: normalized_ebitda
+            description: ""
+          - name: normalized_income
+            description: ""
+          - name: notes_receivable
+            description: ""
+          - name: operating_cash_flow
+            description: ""
+          - name: operating_expense
+            description: ""
+          - name: operating_gains_losses
+            description: ""
+          - name: operating_income
+            description: ""
+          - name: operating_revenue
+            description: ""
+          - name: ordinary_shares_number
+            description: ""
+          - name: other_cash_adjustment_inside_changein_cash
+            description: ""
+          - name: other_cash_adjustment_outside_changein_cash
+            description: ""
+          - name: other_current_assets
+            description: ""
+          - name: other_current_borrowings
+            description: ""
+          - name: other_current_liabilities
+            description: ""
+          - name: other_equity_adjustments
+            description: ""
+          - name: other_equity_interest
+            description: ""
+          - name: other_gand_a
+            description: ""
+          - name: other_income_expense
+            description: ""
+          - name: other_intangible_assets
+            description: ""
+          - name: other_inventories
+            description: ""
+          - name: other_investments
+            description: ""
+          - name: other_non_cash_items
+            description: ""
+          - name: other_non_current_assets
+            description: ""
+          - name: other_non_current_liabilities
+            description: ""
+          - name: other_non_operating_income_expenses
+            description: ""
+          - name: other_operating_expenses
+            description: ""
+          - name: other_payable
+            description: ""
+          - name: other_properties
+            description: ""
+          - name: other_receivables
+            description: ""
+          - name: other_short_term_investments
+            description: ""
+          - name: other_special_charges
+            description: ""
+          - name: other_taxes
+            description: ""
+          - name: otherunder_preferred_stock_dividend
+            description: ""
+          - name: payables
+            description: ""
+          - name: payables_and_accrued_expenses
+            description: ""
+          - name: pension_and_employee_benefit_expense
+            description: ""
+          - name: pensionand_other_post_retirement_benefit_plans_current
+            description: ""
+          - name: preferred_securities_outside_stock_equity
+            description: ""
+          - name: preferred_shares_number
+            description: ""
+          - name: preferred_stock
+            description: ""
+          - name: preferred_stock_dividend_paid
+            description: ""
+          - name: preferred_stock_dividends
+            description: ""
+          - name: preferred_stock_equity
+            description: ""
+          - name: preferred_stock_issuance
+            description: ""
+          - name: preferred_stock_payments
+            description: ""
+          - name: prepaid_assets
+            description: ""
+          - name: pretax_income
+            description: ""
+          - name: proceeds_from_stock_option_exercised
+            description: ""
+          - name: properties
+            description: ""
+          - name: provision_for_doubtful_accounts
+            description: ""
+          - name: provisionand_write_offof_assets
+            description: ""
+          - name: purchase_of_business
+            description: ""
+          - name: purchase_of_intangibles
+            description: ""
+          - name: purchase_of_investment
+            description: ""
+          - name: purchase_of_investment_properties
+            description: ""
+          - name: purchase_of_ppe
+            description: ""
+          - name: raw_materials
+            description: ""
+          - name: receivables
+            description: ""
+          - name: receivables_adjustments_allowances
+            description: ""
+          - name: reconciled_cost_of_revenue
+            description: ""
+          - name: reconciled_depreciation
+            description: ""
+          - name: rent_and_landing_fees
+            description: ""
+          - name: rent_expense_supplemental
+            description: ""
+          - name: repayment_of_debt
+            description: ""
+          - name: repurchase_of_capital_stock
+            description: ""
+          - name: research_and_development
+            description: ""
+          - name: restricted_cash
+            description: ""
+          - name: restricted_common_stock
+            description: ""
+          - name: restructuring_and_mergern_acquisition
+            description: ""
+          - name: retained_earnings
+            description: ""
+          - name: salaries_and_wages
+            description: ""
+          - name: sale_of_business
+            description: ""
+          - name: sale_of_intangibles
+            description: ""
+          - name: sale_of_investment
+            description: ""
+          - name: sale_of_investment_properties
+            description: ""
+          - name: sale_of_ppe
+            description: ""
+          - name: securities_amortization
+            description: ""
+          - name: selling_and_marketing_expense
+            description: ""
+          - name: selling_general_and_administration
+            description: ""
+          - name: share_issued
+            description: ""
+          - name: short_term_debt_issuance
+            description: ""
+          - name: short_term_debt_payments
+            description: ""
+          - name: special_income_charges
+            description: ""
+          - name: stock_based_compensation
+            description: ""
+          - name: stockholders_equity
+            description: ""
+          - name: tangible_book_value
+            description: ""
+          - name: tax_effect_of_unusual_items
+            description: ""
+          - name: tax_provision
+            description: ""
+          - name: tax_rate_for_calcs
+            description: ""
+          - name: taxes_receivable
+            description: ""
+          - name: taxes_refund_paid
+            description: ""
+          - name: total_assets
+            description: ""
+          - name: total_capitalization
+            description: ""
+          - name: total_debt
+            description: ""
+          - name: total_equity_gross_minority_interest
+            description: ""
+          - name: total_expenses
+            description: ""
+          - name: total_liabilities_net_minority_interest
+            description: ""
+          - name: total_non_current_assets
+            description: ""
+          - name: total_non_current_liabilities_net_minority_interest
+            description: ""
+          - name: total_operating_income_as_reported
+            description: ""
+          - name: total_other_finance_cost
+            description: ""
+          - name: total_revenue
+            description: ""
+          - name: total_tax_payable
+            description: ""
+          - name: total_unusual_items
+            description: ""
+          - name: total_unusual_items_excluding_goodwill
+            description: ""
+          - name: tradeand_other_payables_non_current
+            description: ""
+          - name: trading_securities
+            description: ""
+          - name: treasury_shares_number
+            description: ""
+          - name: treasury_stock
+            description: ""
+          - name: unrealized_gain_loss
+            description: ""
+          - name: unrealized_gain_loss_on_investment_securities
+            description: ""
+          - name: work_in_process
+            description: ""
+          - name: working_capital
+            description: ""
+          - name: write_off
+            description: ""
+
+      - name: summary_profile
+        description: ""
+        columns:
+          - name: address1
+            description: ""
+          - name: city
+            description: ""
+          - name: state
+            description: ""
+          - name: zip
+            description: ""
+          - name: country
+            description: ""
+          - name: phone
+            description: ""
+          - name: website
+            description: ""
+          - name: industry
+            description: ""
+          - name: sector
+            description: ""
+          - name: long_business_summary
+            description: ""
+          - name: full_time_employees
+            description: ""
+          - name: symbol
+            description: ""
+            tests:
+              - not_null
+              - unique
+          - name: address2
+            description: ""
