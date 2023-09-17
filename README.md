@@ -12,6 +12,14 @@ Welcome to the dbt Labs demo dbt project! We use the [TPCH dataset](https://docs
 - **Lifecycle Notifications:** See examples of dbt Cloud Job Lifecycle Notifications [here](https://gist.github.com/boxysean/3166b3ac55801685b6d275e9a9ddd5ee).
 - **Pivot tables:** One example of creating a pivot table using Snowflake syntax, another example using Jinja. See `models/aggregates/agg_yearly_*.sql`.
 
+## dbt Cloud Attached CLI
+
+The files in `.devcontainer` allow a user to spin up a container with the dbt Cloud CLI installed.  The `.devcontainer.json` is currently minimally configured as a python container - feel free to modify or [add features](https://containers.dev/features) to fit your use case.  You can do this either [locally](https://code.visualstudio.com/docs/devcontainers/tutorial) or using Github's [Codespaces](https://docs.github.com/en/codespaces/setting-up-your-project-for-codespaces/adding-a-dev-container-configuration/introduction-to-dev-containers)
+
+### Requirements
+
+You'll need to set an environment variable, `DBT_CLOUD_API_KEY`.  You can set this locally or when using within codespaces, you'll need to add a secret in Github - [instructions here](https://docs.github.com/en/codespaces/managing-your-codespaces/managing-secrets-for-your-codespaces). 
+
 ## Codegen Examples
 
 The codegen package can be run via the IDE, by clicking the "Compile" button, or in the command line.
@@ -77,5 +85,3 @@ Generates the YAML for multiple models
     )
 }}
 ```
-
-change
