@@ -6,3 +6,4 @@ echo "export PATH=\$PATH:$BIN_DIR" >> ~/.bashrc
 echo "export DBT_CLOUD_API_KEY=$DBT_CLOUD_API_KEY" >> ~/.bashrc
 rm dbt_0.29.5_linux_amd64.tar.gz
 . ~/.bashrc
+pip install -r .devcontainer/requirements.txt
