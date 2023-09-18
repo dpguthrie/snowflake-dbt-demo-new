@@ -32,5 +32,5 @@ jobs:
           SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
         run: |
           mkdir ~/.dbt/
-          ./.devcontainer/create_profile.py > ~/.dbt/profiles.yml
+          ./.scripts/create_profile.py > ~/.dbt/profiles.yml
           pre-commit run --files ${{ steps.file_changes.outputs.files}}

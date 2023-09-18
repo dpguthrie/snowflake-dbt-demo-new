@@ -9,9 +9,6 @@
 	},
 	"containerEnv": {
 		"DBT_CLOUD_API_KEY": "${localEnv:DBT_CLOUD_API_KEY}",
-		"SF_ACCOUNT": "${localEnv:SF_ACCOUNT}",
-		"SF_USER": "${localEnv:SF_USER}",
-		"SF_PASSWORD": "${localEnv:SF_PASSWORD}"
 	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
