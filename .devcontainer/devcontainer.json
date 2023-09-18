@@ -5,10 +5,13 @@
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	"image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye",
 	"features": {
-		"ghcr.io/devcontainers-contrib/features/curl-apt-get:1": {},
+		"ghcr.io/devcontainers-contrib/features/curl-apt-get:1": {}
 	},
-	"remoteEnv": {
-		"DBT_CLOUD_API_KEY": "${localEnv:DBT_CLOUD_API_KEY}"
+	"containerEnv": {
+		"DBT_CLOUD_API_KEY": "${localEnv:DBT_CLOUD_API_KEY}",
+		"SF_ACCOUNT": "${localEnv:SF_ACCOUNT}",
+		"SF_USER": "${localEnv:SF_USER}",
+		"SF_PASSWORD": "${localEnv:SF_PASSWORD}"
 	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
@@ -31,7 +34,7 @@
 				"eamodio.gitlens"
 			]
 		}
-	},
+	}
 
 	// Configure tool-specific properties.
 	// "customizations": {},

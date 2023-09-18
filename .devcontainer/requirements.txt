@@ -1,2 +1,3 @@
 ipython
 dbtc
+dbt-metricflow
