@@ -1,0 +1,9 @@
+version: 2
+
+
+sources:
+ - name: dev_bronze2
+   schema: aimco
+   database: doug_demo_v2
+   tables:
+     - name: fact_factor_time_series
