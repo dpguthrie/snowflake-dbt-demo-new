@@ -1,0 +1,9 @@
+version: "1"
+
+context:
+  active-project: "270542"
+  active-host: "cloud.getdbt.com"
+projects:
+  - project-id: "270542"
+    account-host: "cloud.getdbt.com"
+    api-key: "${DBT_CLOUD_API_KEY}"
