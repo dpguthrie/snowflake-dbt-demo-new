@@ -1,5 +1,6 @@
 with page_views as (
     select * from {{ ref('upstream', 'int_segment__pages') }}
+    
 )
 
 select
