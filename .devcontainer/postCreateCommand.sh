@@ -1,9 +1,5 @@
 BIN_DIR="/usr/local/bin"
-<<<<<<< HEAD
 CLI_VERSION="0.34.9"
-=======
-CLI_VERSION="0.34.7"
->>>>>>> 47739c292d9a92a51dc30d4ee1aaa48782679c13
 curl -LO "https://github.com/dbt-labs/dbt-cli/releases/download/v${CLI_VERSION}/dbt_${CLI_VERSION}_linux_amd64.tar.gz"
 sudo tar -xzf "dbt_${CLI_VERSION}_linux_amd64.tar.gz" -C "$BIN_DIR" dbt
 export PATH=$PATH:$$BIN_DIR
