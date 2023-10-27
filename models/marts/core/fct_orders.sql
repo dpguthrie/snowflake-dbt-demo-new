@@ -1,7 +1,8 @@
 {{
     config(
         materialized = 'table',
-        tags=['finance']
+        tags=['finance'],
+        post_hook="{{ create_mart_views(['FINANCE']) }}"
     )
 }}
 
