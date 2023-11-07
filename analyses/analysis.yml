@@ -1,6 +1,6 @@
 version: 2
 
-models:
+analyses:
 - name: customer_snapshot_query
   description: >
     This is an example of an analysis model.
