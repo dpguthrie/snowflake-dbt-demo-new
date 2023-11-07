@@ -29,10 +29,10 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 vars:
   start_date: '1999-01-01'
-  disable_dbt_artifacts_autoupload: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
-  disable_run_results: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
-  disable_tests_results: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
-  disable_dbt_invocation_autoupload: "{% if target.name == 'prod' %}false{% else %}true{% endif %}"
+  disable_dbt_artifacts_autoupload: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
+  disable_run_results: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
+  disable_tests_results: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
+  disable_dbt_invocation_autoupload: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
