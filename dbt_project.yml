@@ -33,6 +33,7 @@ vars:
   disable_run_results: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
   disable_tests_results: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
   disable_dbt_invocation_autoupload: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
+  edr_cli_run: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}true{% else %}false{% endif %}"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
