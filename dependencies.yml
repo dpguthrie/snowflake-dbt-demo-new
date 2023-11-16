@@ -12,4 +12,5 @@ packages:
     version: ["<3.0.0"]
   - package: elementary-data/elementary
     version: 0.12.1
-  
+  - package: get-select/dbt_snowflake_query_tags
+    version: [">=2.0.0", "<3.0.0"]
