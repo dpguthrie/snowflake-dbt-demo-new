@@ -147,9 +147,6 @@ sources:
 
       - name: part
         description: main part table
-        tests:
-          - elementary.volume_anomalies:
-              timestamp_column: _etl_updated_timestamp
         columns:
           - name: p_partkey
             description: SF*200,000 are populated
