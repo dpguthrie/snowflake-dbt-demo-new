@@ -40,8 +40,6 @@ vars:
 models:
   use_anonymous_sproc: True
 
-  +materialized: table
-
   tpch:
     staging:
       +materialized: view
