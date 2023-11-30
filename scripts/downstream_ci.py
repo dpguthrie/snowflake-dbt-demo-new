@@ -89,6 +89,7 @@ if run_status != 10:
 run_id = run["data"]["id"]
 variables = {"jobId": JOB_ID, "run_id": run_id, "schema": SCHEMA_OVERRIDE}
 results = client.metadata.query(JOB_QUERY, variables=variables)
+logger.info(results)
 models = results.get("data", {}).get("job", {}).get("models", [])
 public_models = [model for model in models if models["access"] == "public"]
 
