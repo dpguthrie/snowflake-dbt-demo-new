@@ -77,6 +77,8 @@ run = client.cloud.trigger_job(
     },
 )
 
+logger.info(run)
+
 # check status
 run_status = run.get("data", {}).get("status", None)
 if run_status != 10:
