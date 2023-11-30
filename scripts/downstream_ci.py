@@ -77,8 +77,6 @@ run = client.cloud.trigger_job(
     },
 )
 
-logger.info(run)
-
 # check status
 run_status = run.get("data", {}).get("status", None)
 if run_status != 10:
@@ -89,8 +87,9 @@ if run_status != 10:
 run_id = run["data"]["id"]
 variables = {"jobId": JOB_ID, "run_id": run_id, "schema": SCHEMA_OVERRIDE}
 results = client.metadata.query(JOB_QUERY, variables=variables)
+logger.info(results)
 models = results.get("data", {}).get("job", {}).get("models", [])
-public_models = [model for model in models if models["access"] == "public"]
+public_models = [model for model in models if model["access"] == "public"]
 
 if not public_models:
     logger.info(
