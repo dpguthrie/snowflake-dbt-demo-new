@@ -59,7 +59,7 @@ query Lineage($environmentId: BigInt!, $filter: AppliedResourcesFilter!) {
 # Retrieve environment variables
 ACCOUNT_ID = os.getenv("DBT_CLOUD_ACCOUNT_ID", None)
 JOB_ID = os.getenv("JOB_ID", None)
-PULL_REQUEST_ID = os.getenv("PULL_REQUEST_ID", None)
+PULL_REQUEST_ID = int(os.getenv("PULL_REQUEST_ID", None))
 GIT_SHA = os.getenv("GIT_SHA", None)
 SCHEMA_OVERRIDE = f"dbt_cloud_pr_{JOB_ID}_{PULL_REQUEST_ID}"
 
