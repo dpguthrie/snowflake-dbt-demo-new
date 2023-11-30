@@ -39,7 +39,6 @@ final as (
         orders.priority_code,
         orders.ship_priority,
         orders.clerk_name,
-        'hello world' as col,
         1 as order_count,
         order_item_summary.gross_item_sales_amount,
         order_item_summary.item_discount_amount,
