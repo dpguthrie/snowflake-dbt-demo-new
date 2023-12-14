@@ -9,6 +9,7 @@ models:
         tests:
           - unique
           - not_null
+          - warn_if_odd
       - name: name
         description: customer id
       - name: address
