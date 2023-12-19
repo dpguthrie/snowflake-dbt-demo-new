@@ -17,6 +17,8 @@ jobs:
       DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
       DBT_CLOUD_ACCOUNT_ID: 43786
       JOB_ID: 384691
+      METABASE_USER: ${{ secrets.METABASE_USER }}
+      METABASE_PASSWORD: ${{ secrets.METABASE_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v2
@@ -24,10 +26,37 @@ jobs:
         with:
           python-version: "3.9.x"
 
+      - name: Install dependencies
+        run: pip install dbtc==0.8.0 dbt-metabase
+
       - name: Run Merge Job
         run: |
-          pip install dbtc==0.5.3
           run=$(dbtc trigger-job \
               --job-id=$JOB_ID \
               --payload='{"cause": "Merging code to main"}')
           echo "RUN_ID=$(echo $run | jq '.data.id')" >> $GITHUB_ENV
+
+      - name: Get Manifest
+        run: |
+          dbtc -o manifest.json get-run-artifact \
+              --run-id=$RUN_ID \
+              --path=manifest.json
+
+      - name: Extract Metabase Exposures
+        run: |
+          dbt-metabase exposures \
+              --dbt_manifest_path manifest.json \
+              --dbt_database DOUG_DEMO_V2 \
+              --metabase_host metabase-production-2dd8.up.railway.app \
+              --metabase_user $METABASE_USER \
+              --metabase_password $METABASE_PASSWORD \
+              --metabase_database DOUG_DEMO_V2 \
+              --output_path ./models/marts/ \
+              --output_name metabase_exposures
+
+      - name: Run Merge Job Again
+        run: |
+          run=$(dbtc trigger-job \
+              --job-id=$JOB_ID \
+              --payload='{"cause": "Merging code to main"}' \
+              --no-should-poll)
