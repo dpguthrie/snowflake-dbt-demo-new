@@ -18,7 +18,7 @@ exposures:
     type: dashboard 
     
     # this is just a link to the thing itself for click through from documentation
-    url: https://10az.online.tableau.com/#/site/dbtlabspartner/views/SalesWorkbook/Dashboard1
+    url: https://10az.online.tableau.com/#/site/dbtlabspartner/views/DemoDashboard/Dashboard1?:iid=2
     
     # convenience feature - relative scale of {high, medium, low}
     maturity: high
