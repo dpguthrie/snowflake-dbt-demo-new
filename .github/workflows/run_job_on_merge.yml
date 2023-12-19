@@ -50,11 +50,19 @@ jobs:
               --metabase_host metabase-production-2dd8.up.railway.app \
               --metabase_user $METABASE_USER \
               --metabase_password $METABASE_PASSWORD \
-              --metabase_database DOUG_DEMO_V2 \
+              --metabase_database SNOWFLAKE \
               --output_path ./models/marts/ \
               --output_name metabase_exposures
 
-      - name: Run Merge Job Again
+      - name: Add file
+        uses: EndBug/add-and-commit@v9
+        with:
+          add: 'metabase_exposures.yml'
+          committer_name: Github Actions
+          committer_email: actions@github.com
+          message: 'Add metabase exposures'
+
+      - name: Run Merge Job Again (to update Explorer)
         run: |
           run=$(dbtc trigger-job \
               --job-id=$JOB_ID \
