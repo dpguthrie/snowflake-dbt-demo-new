@@ -42,6 +42,9 @@ jobs:
               --run-id=$RUN_ID \
               --path=manifest.json
 
+      - name: Echo
+        run: echo manifest.json
+
       - name: Extract Metabase Exposures
         run: |
           dbt-metabase exposures \
