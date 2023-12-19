@@ -43,7 +43,7 @@ jobs:
               --path=manifest.json
 
       - name: Echo
-        run: echo manifest.json
+        run: cat manifest.json
 
       - name: Extract Metabase Exposures
         run: |
