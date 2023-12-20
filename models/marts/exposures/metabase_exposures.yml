@@ -1,0 +1,163 @@
+version: 2
+exposures:
+  - name: total_transactions
+    label: Total transactions
+    description: '### Visualization: Scalar
+
+
+      No description provided in Metabase
+
+
+      #### Metadata
+
+
+      Metabase Id: __3__
+
+
+      Created On: __2023-12-19T21:56:09.791096Z__'
+    type: analysis
+    url: https://metabase-production-2dd8.up.railway.app/card/3
+    maturity: medium
+    owner:
+      name: Doug Guthrie
+      email: doug.guthrie@dbtlabs.com
+    depends_on:
+      - ref('fct_orders')
+  - name: transactions_in_the_last_30_days
+    label: Transactions in the last 30 days
+    description: '### Visualization: Scalar
+
+
+      No description provided in Metabase
+
+
+      #### Metadata
+
+
+      Metabase Id: __4__
+
+
+      Created On: __2023-12-19T21:56:09.864497Z__'
+    type: analysis
+    url: https://metabase-production-2dd8.up.railway.app/card/4
+    maturity: medium
+    owner:
+      name: Doug Guthrie
+      email: doug.guthrie@dbtlabs.com
+    depends_on:
+      - ref('fct_orders')
+  - name: order_amount_by_time
+    label: Order Amount by Time
+    description: '### Visualization: Line
+
+
+      No description provided in Metabase
+
+
+      #### Metadata
+
+
+      Metabase Id: __7__
+
+
+      Created On: __2023-12-19T22:20:37.044193Z__'
+    type: analysis
+    url: https://metabase-production-2dd8.up.railway.app/card/7
+    maturity: medium
+    owner:
+      name: Doug Guthrie
+      email: doug.guthrie@dbtlabs.com
+    depends_on:
+      - ref('dim_customers')
+      - ref('fct_orders')
+  - name: orders_by_country
+    label: Orders by Country
+    description: '### Visualization: Map
+
+
+      No description provided in Metabase
+
+
+      #### Metadata
+
+
+      Metabase Id: __6__
+
+
+      Created On: __2023-12-19T22:18:23.868916Z__'
+    type: analysis
+    url: https://metabase-production-2dd8.up.railway.app/card/6
+    maturity: medium
+    owner:
+      name: Doug Guthrie
+      email: doug.guthrie@dbtlabs.com
+    depends_on:
+      - ref('dim_customers')
+      - ref('fct_orders')
+  - name: total_page_views___dbtc
+    label: 'Total Page Views:  dbtc'
+    description: '### Visualization: Line
+
+
+      No description provided in Metabase
+
+
+      #### Metadata
+
+
+      Metabase Id: __5__
+
+
+      Created On: __2023-12-19T22:11:52.227747Z__'
+    type: analysis
+    url: https://metabase-production-2dd8.up.railway.app/card/5
+    maturity: medium
+    owner:
+      name: Doug Guthrie
+      email: doug.guthrie@dbtlabs.com
+    depends_on:
+      - ref('agg_segment_page_views')
+  - name: accounts__count__grouped_by_canceled_at__month
+    label: 'Accounts, Count, Grouped by Canceled At: Month'
+    description: '### Visualization: Line
+
+
+      No description provided in Metabase
+
+
+      #### Metadata
+
+
+      Metabase Id: __2__
+
+
+      Created On: __2023-12-19T21:48:29.000572Z__'
+    type: analysis
+    url: https://metabase-production-2dd8.up.railway.app/card/2
+    maturity: medium
+    owner:
+      name: Doug Guthrie
+      email: doug.guthrie@dbtlabs.com
+    depends_on: []
+  - name: accounts__count__grouped_by_created_at__month
+    label: 'Accounts, Count, Grouped by Created At: Month'
+    description: '### Visualization: Line
+
+
+      No description provided in Metabase
+
+
+      #### Metadata
+
+
+      Metabase Id: __1__
+
+
+      Created On: __2023-12-19T21:48:09.929163Z__'
+    type: analysis
+    url: https://metabase-production-2dd8.up.railway.app/card/1
+    maturity: medium
+    owner:
+      name: Doug Guthrie
+      email: doug.guthrie@dbtlabs.com
+    depends_on: []
