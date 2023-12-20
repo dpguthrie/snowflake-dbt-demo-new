@@ -42,9 +42,6 @@ jobs:
               --run-id=$RUN_ID \
               --path=manifest.json
 
-      - name: Echo
-        run: cat manifest.json
-
       - name: Extract Metabase Exposures
         run: |
           dbt-metabase exposures \
@@ -54,13 +51,14 @@ jobs:
               --metabase_user $METABASE_USER \
               --metabase_password $METABASE_PASSWORD \
               --metabase_database SNOWFLAKE \
-              --output_path ./models/marts/ \
+              --output_path ./models/marts/exposures/ \
               --output_name metabase_exposures
+              --metabase_sync_skip
 
       - name: Add file
         uses: EndBug/add-and-commit@v9
         with:
-          add: 'metabase_exposures.yml'
+          add: '*.yml'
           committer_name: Github Actions
           committer_email: actions@github.com
           message: 'Add metabase exposures'
