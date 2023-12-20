@@ -51,7 +51,8 @@ exposures:
     description: '### Visualization: Line
 
 
-      No description provided in Metabase
+      This card displays the total order amount, represented by gross sales, over
+      time.
 
 
       #### Metadata
@@ -68,14 +69,15 @@ exposures:
       name: Doug Guthrie
       email: doug.guthrie@dbtlabs.com
     depends_on:
-      - ref('dim_customers')
       - ref('fct_orders')
+      - ref('dim_customers')
   - name: orders_by_country
     label: Orders by Country
     description: '### Visualization: Map
 
 
-      No description provided in Metabase
+      This is a visualization that shows a map of the world and the total orders made
+      at the individual country level.  The darker blue indicates more orders made.
 
 
       #### Metadata
@@ -92,8 +94,8 @@ exposures:
       name: Doug Guthrie
       email: doug.guthrie@dbtlabs.com
     depends_on:
-      - ref('dim_customers')
       - ref('fct_orders')
+      - ref('dim_customers')
   - name: total_page_views___dbtc
     label: 'Total Page Views:  dbtc'
     description: '### Visualization: Line
