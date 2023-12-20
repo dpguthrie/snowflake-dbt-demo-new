@@ -52,7 +52,7 @@ jobs:
               --metabase_password $METABASE_PASSWORD \
               --metabase_database SNOWFLAKE \
               --output_path ./models/marts/exposures/ \
-              --output_name metabase_exposures
+              --output_name metabase_exposures \
               --metabase_sync_skip
 
       - name: Add file
