@@ -1,0 +1,25 @@
+name: Setup Snowflake
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/setup_snowflake.py"
+
+jobs:
+  builds:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+        with:
+          python-version: "3.9.x"
+      - name: Install dependencies
+        run: python -m pip install git+https://github.com/teej/titan.git
+      - name: Setup Snowflake
+        run: python scripts/setup_snowflake.py
+        env:
+          SNOWFLAKE_ACCOUNT: ${{ secrets.SNOWFLAKE_ACCOUNT }}
+          SNOWFLAKE_USER: ${{ secrets.SNOWFLAKE_USER }}
+          SNOWFLAKE_PASSWORD: ${{ secrets.SNOWFLAKE_PASSWORD }}
