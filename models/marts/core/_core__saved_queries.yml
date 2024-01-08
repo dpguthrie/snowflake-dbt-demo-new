@@ -1,0 +1,18 @@
+saved_queries:
+  - name: sales_metrics
+    description: CY Sales metrics used for our U.S.-based sales reps
+    query_params:
+      metrics:
+        - total_revenue
+        - total_expense
+        - total_profit
+      group_by:
+        - TimeDimension('metric_time', 'day')
+        - Dimension('customer_order__clerk_on_order')
+        - Dimension('customer__region')
+        - Dimension('customer__nation')
+        - Dimension('customer__customer_market_segment')
+        - Dimension('customer__customer_balance_segment')
+      where:
+        - "{{ Dimension('customer__nation') }} == 'UNITED STATES'"
+        - "{{ TimeDimension('metric_time', 'day') }} >= date_trunc(year, current_date)"

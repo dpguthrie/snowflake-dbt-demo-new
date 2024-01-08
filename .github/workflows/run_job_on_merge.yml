@@ -9,7 +9,7 @@ on:
   push:
     branches:
       - main
-  
+
 jobs:
   run_on_merge:
     runs-on: ubuntu-latest
@@ -17,6 +17,8 @@ jobs:
       DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
       DBT_CLOUD_ACCOUNT_ID: 43786
       JOB_ID: 384691
+      METABASE_USER: ${{ secrets.METABASE_USER }}
+      METABASE_PASSWORD: ${{ secrets.METABASE_PASSWORD }}
 
     steps:
       - uses: actions/checkout@v2
@@ -24,27 +26,46 @@ jobs:
         with:
           python-version: "3.9.x"
 
+      - name: Install dependencies
+        run: pip install dbtc==0.8.0 dbt-metabase
+
       - name: Run Merge Job
         run: |
-          pip install dbtc==0.5.3
           run=$(dbtc trigger-job \
               --job-id=$JOB_ID \
               --payload='{"cause": "Merging code to main"}')
           echo "RUN_ID=$(echo $run | jq '.data.id')" >> $GITHUB_ENV
-      
-      - name: Get manifest
-        id: manifest
-        run: |
-          manifest=$(dbtc get-run-artifact \
-            --account-id=$DBT_CLOUD_ACCOUNT_ID \
-            --run-id=$RUN_ID \
-            --path=manifest.json)
-          echo $manifest > prod/manifest.json
 
-      - name: Add Manifest to Repo
+      - name: Get Manifest
+        run: |
+          dbtc -o manifest.json get-run-artifact \
+              --run-id=$RUN_ID \
+              --path=manifest.json
+
+      - name: Extract Metabase Exposures
+        run: |
+          dbt-metabase exposures \
+              --dbt_manifest_path manifest.json \
+              --dbt_database DOUG_DEMO_V2 \
+              --metabase_host metabase-production-2dd8.up.railway.app \
+              --metabase_user $METABASE_USER \
+              --metabase_password $METABASE_PASSWORD \
+              --metabase_database SNOWFLAKE \
+              --output_path ./models/marts/exposures/ \
+              --output_name metabase_exposures \
+              --metabase_sync_skip
+
+      - name: Add file
         uses: EndBug/add-and-commit@v9
         with:
-          add: '*.json'
+          add: '*.yml'
           committer_name: Github Actions
           committer_email: actions@github.com
-          message: 'Adding manifest from merge run'
+          message: 'Add metabase exposures'
+
+      - name: Run Merge Job Again (to update Explorer)
+        run: |
+          run=$(dbtc trigger-job \
+              --job-id=$JOB_ID \
+              --payload='{"cause": "Merging code to main"}' \
+              --no-should-poll)

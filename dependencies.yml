@@ -1,2 +1,15 @@
 projects:
   - name: upstream
+
+packages:
+  - package: dbt-labs/codegen
+    version: ["<1.0.0"]
+  - package: dbt-labs/dbt_utils
+    version: [">=1.0.0", "<2.0.0"]
+  - package: dbt-labs/dbt_external_tables
+    version: ["<1.0.0"]
+  - package: brooklyn-data/dbt_artifacts
+    version: ["<3.0.0"]
+  - package: elementary-data/elementary
+    version: 0.12.1
+  
