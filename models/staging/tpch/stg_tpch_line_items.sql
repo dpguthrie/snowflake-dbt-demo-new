@@ -26,7 +26,6 @@ renamed as (
         l_commitdate as commit_date,
         l_receiptdate as receipt_date,
         l_shipinstruct as ship_instructions,
-        l_shipmode as ship_mode,
         l_comment as comment
 
     from source
