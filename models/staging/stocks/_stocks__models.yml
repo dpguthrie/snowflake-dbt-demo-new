@@ -1,0 +1,265 @@
+version: 2
+
+models:
+  - name: stg_stocks__fund_ownership
+    description: ""
+    access: public
+    columns:
+      - name: symbol
+        data_type: varchar
+        description: ""
+
+      - name: report_date
+        data_type: date
+        description: ""
+
+      - name: organization
+        data_type: varchar
+        description: ""
+
+      - name: percent_held
+        data_type: float
+        description: ""
+
+      - name: total_shares
+        data_type: float
+        description: ""
+
+      - name: total_value
+        data_type: float
+        description: ""
+
+      - name: percent_change
+        data_type: float
+        description: ""
+
+  - name: stg_stocks__grade_history
+    description: ""
+    access: public
+    columns:
+      - name: symbol
+        data_type: varchar
+        description: ""
+
+      - name: epoch_grade_date
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: firm
+        data_type: varchar
+        description: ""
+
+      - name: to_grade
+        data_type: varchar
+        description: ""
+
+      - name: from_grade
+        data_type: varchar
+        description: ""
+
+      - name: proposed_action
+        data_type: varchar
+        description: ""
+
+  - name: stg_stocks__history
+    description: ""
+    access: public
+    columns:
+      - name: symbol
+        data_type: varchar
+        description: ""
+
+      - name: date
+        data_type: date
+        description: ""
+
+      - name: close
+        data_type: float
+        description: ""
+
+      - name: volume
+        data_type: float
+        description: ""
+
+      - name: open
+        data_type: float
+        description: ""
+
+      - name: high
+        data_type: float
+        description: ""
+
+      - name: low
+        data_type: float
+        description: ""
+
+      - name: adjusted_closed
+        data_type: float
+        description: ""
+
+      - name: dividends
+        data_type: float
+        description: ""
+
+      - name: splits
+        data_type: float
+        description: ""
+
+  - name: stg_stocks__insider_transactions
+    description: ""
+    access: public
+    columns:
+      - name: symbol
+        data_type: varchar
+        description: ""
+
+      - name: shares
+        data_type: float
+        description: ""
+
+      - name: filer_url
+        data_type: varchar
+        description: ""
+
+      - name: transaction_text
+        data_type: varchar
+        description: ""
+
+      - name: filer_name
+        data_type: varchar
+        description: ""
+
+      - name: filer_relation
+        data_type: varchar
+        description: ""
+
+      - name: money_text
+        data_type: varchar
+        description: ""
+
+      - name: start_date
+        data_type: date
+        description: ""
+
+      - name: ownership
+        data_type: varchar
+        description: ""
+
+      - name: total_value
+        data_type: float
+        description: ""
+
+  - name: stg_stocks__recommendation_trends
+    description: ""
+    access: public
+    columns:
+      - name: symbol
+        data_type: varchar
+        description: ""
+
+      - name: period
+        data_type: varchar
+        description: ""
+
+      - name: strong_buy
+        data_type: number
+        description: ""
+
+      - name: buy
+        data_type: number
+        description: ""
+
+      - name: hold
+        data_type: number
+        description: ""
+
+      - name: sell
+        data_type: number
+        description: ""
+
+      - name: strong_sell
+        data_type: number
+        description: ""
+
+  - name: stg_stocks__sec_filings
+    description: ""
+    columns:
+      - name: symbol
+        data_type: varchar
+        description: ""
+
+      - name: report_date
+        data_type: date
+        description: ""
+
+      - name: epoch_date
+        data_type: timestamp_ntz
+        description: ""
+
+      - name: type
+        data_type: varchar
+        description: ""
+
+      - name: title
+        data_type: varchar
+        description: ""
+
+      - name: edgar_url
+        data_type: varchar
+        description: ""
+
+  - name: stg_stocks__summary_profile
+    description: ""
+    access: public
+    columns:
+      - name: address_1
+        data_type: varchar
+        description: ""
+
+      - name: city
+        data_type: varchar
+        description: ""
+
+      - name: state
+        data_type: varchar
+        description: ""
+
+      - name: zip_code
+        data_type: varchar
+        description: ""
+
+      - name: country
+        data_type: varchar
+        description: ""
+
+      - name: phone
+        data_type: varchar
+        description: ""
+
+      - name: website
+        data_type: varchar
+        description: ""
+
+      - name: industry
+        data_type: varchar
+        description: ""
+
+      - name: sector
+        data_type: varchar
+        description: ""
+
+      - name: long_business_summary
+        data_type: varchar
+        description: ""
+
+      - name: full_time_employees
+        data_type: number
+        description: ""
+
+      - name: symbol
+        data_type: varchar
+        description: ""
+
+      - name: address_2
+        data_type: varchar
+        description: ""
