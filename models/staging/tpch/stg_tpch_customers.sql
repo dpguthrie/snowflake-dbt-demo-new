@@ -17,6 +17,7 @@ cleanup as (
         c_mktsegment as market_segment,
         c_comment as comment
 
+
     from source
 
 )
