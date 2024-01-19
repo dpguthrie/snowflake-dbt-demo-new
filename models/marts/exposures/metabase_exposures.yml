@@ -69,8 +69,8 @@ exposures:
       name: Doug Guthrie
       email: doug.guthrie@dbtlabs.com
     depends_on:
-      - ref('fct_orders')
       - ref('dim_customers')
+      - ref('fct_orders')
   - name: orders_by_country
     label: Orders by Country
     description: '### Visualization: Map
@@ -94,8 +94,8 @@ exposures:
       name: Doug Guthrie
       email: doug.guthrie@dbtlabs.com
     depends_on:
-      - ref('fct_orders')
       - ref('dim_customers')
+      - ref('fct_orders')
   - name: total_page_views___dbtc
     label: 'Total Page Views:  dbtc'
     description: '### Visualization: Line
