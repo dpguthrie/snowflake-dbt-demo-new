@@ -13,3 +13,7 @@ models:
     columns:
       - name: order_year
         description: year of the order
+
+  - name: agg_segment_page_views
+    description: Aggregated page views for sites owned by dbt
+    access: public
