@@ -1,0 +1,12 @@
+packages:
+- package: dbt-labs/codegen
+  version: 0.12.1
+- package: dbt-labs/dbt_utils
+  version: 1.1.1
+- package: dbt-labs/dbt_external_tables
+  version: 0.8.7
+- package: brooklyn-data/dbt_artifacts
+  version: 2.6.2
+- package: elementary-data/elementary
+  version: 0.12.1
+sha1_hash: 4602085df3a0e934c8834bc00192f0207fdaa3b7
