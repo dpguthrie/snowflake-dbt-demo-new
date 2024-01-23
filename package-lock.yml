@@ -9,6 +9,4 @@ packages:
   version: 2.6.2
 - package: elementary-data/elementary
   version: 0.12.1
-- git: https://github.com/dpguthrie/facebook_module
-  revision: 61da80e87ccaa4668511b506aea29617eb869df2
-sha1_hash: f48a93fd1074aec95cf64b80d666c52254ee7139
+sha1_hash: 4602085df3a0e934c8834bc00192f0207fdaa3b7
