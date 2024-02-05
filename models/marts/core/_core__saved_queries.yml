@@ -14,5 +14,5 @@ saved_queries:
         - Dimension('customer__customer_market_segment')
         - Dimension('customer__customer_balance_segment')
       where:
-        - "{{ Dimension('customer__nation') }} == 'UNITED STATES'"
+        - "{{ Dimension('customer__nation') }} = 'UNITED STATES'"
         - "{{ TimeDimension('metric_time', 'day') }} >= date_trunc(year, current_date)"
