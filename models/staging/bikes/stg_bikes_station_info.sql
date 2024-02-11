@@ -1,5 +1,15 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='station_id'
+    )
+}}
+
 with source as (
     select * from {{ source('bikes', 'station_info_flatten') }}
+    {% if is_incremental() %}
+    where station_id not in (select station_id from {{ this }})
+    {% endif %}
 ),
 
 recast as (
@@ -19,7 +29,11 @@ recast as (
         lon as longitude,
 
         -- https://docs.snowflake.com/en/sql-reference/functions/st_makepoint
-        st_makepoint(lon, lat) as point
+        st_makepoint(lon, lat) as point,
+
+        -- https://docs.snowflake.com/en/sql-reference/functions/h3_point_to_cell
+        h3_point_to_cell(point, 12) as h3_index_12,
+        h3_point_to_cell(point, 10) as h3_index_10
     from source
 )
 
