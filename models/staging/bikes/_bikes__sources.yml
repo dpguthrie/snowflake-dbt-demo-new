@@ -1,0 +1,21 @@
+version: 2
+
+
+sources:
+  - name: bikes
+    database: chicago_divvy_bike_station_status
+    schema: public
+    tables:
+      - name: station_info_flatten
+        columns:
+          - name: station_id
+            tests:
+              - not_null
+              - unique
+          - name: lat
+        tests:
+          - dbt_utils.expression_is_true:
+              expression: "lat between -90 and 90"
+          - dbt_utils.expression_is_true:
+              expression: "lon between -180 and 180"
+      - name: station_status_flatten_full
