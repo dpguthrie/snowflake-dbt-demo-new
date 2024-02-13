@@ -9,4 +9,6 @@ packages:
   version: 2.6.2
 - package: elementary-data/elementary
   version: 0.12.1
-sha1_hash: 4602085df3a0e934c8834bc00192f0207fdaa3b7
+- package: entechlog/dbt_snow_mask
+  version: 0.2.4
+sha1_hash: 297b60f83c9161c116f2335d60f69f831892b5e1
