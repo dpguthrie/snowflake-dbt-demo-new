@@ -11,9 +11,7 @@ models:
           - unique
           - not_null
         meta:
-          metrics:
-            total_unique_customers:
-              type: count
+          contains_pii: true
       - name: region
         description: region name
         tests:
