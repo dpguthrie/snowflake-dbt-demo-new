@@ -23,10 +23,6 @@ models:
         description: market segment of the customer
       - name: comment
         description: '{{ doc("comment") }}'
-    meta:
-      joins:
-        - join: stg_tpch_nations
-          sql_on: ${stg_tpch_customers.nation_key} = ${stg_tpch_nations.nation_key}
 
   - name: stg_tpch_line_items
     description: staging layer for line items data
@@ -83,10 +79,6 @@ models:
         description: foreign key to stg_tpch_regions
       - name: comment
         description: additional commentary
-    meta:
-      joins:
-        - join: stg_tpch_regions
-          sql_on: ${stg_tpch_nations.region_key} = ${stg_tpch_regions.region_key}
  
   - name: stg_tpch_orders
     description: staging layer for orders data
@@ -131,10 +123,6 @@ models:
         description: '{{ doc("cost") }}'
       - name: comment
         description: '{{ doc("comment") }}'
-    meta:
-      joins:
-        - join: stg_tpch_suppliers
-          sql_on: ${stg_tpch_part_suppliers.supplier_key} = ${stg_tpch_suppliers.supplier_key}
             
   - name: stg_tpch_parts
     description: staging layer for parts data
@@ -194,7 +182,3 @@ models:
         description: '{{ doc("account_balance") }}'
       - name: comment
         description: '{{ doc("comment") }}'
-    meta:
-      joins:
-        - join: stg_tpch_nations
-          sql_on: ${stg_tpch_suppliers.nation_key} = ${stg_tpch_nations.nation_key}

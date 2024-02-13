@@ -27,12 +27,17 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
     - "dbt_packages"
 
+on-run-start:
+  - "{{ dbt_snow_mask.create_masking_policy('sources')}}"
+  - "{{ dbt_snow_mask.apply_masking_policy('sources')}}"
+
 vars:
   start_date: '1999-01-01'
   disable_dbt_artifacts_autoupload: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
   disable_run_results: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
   disable_tests_results: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
   disable_dbt_invocation_autoupload: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
+  use_force_applying_masking_policy: "True"
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models

@@ -57,8 +57,12 @@ sources:
               - unique
           - name: c_name
             description: customer id
+            meta:
+              masking_policy: encrypt_pii
           - name: c_address
             description: address of the customer
+            meta:
+              masking_policy: encrypt_pii
           - name: c_nationkey
             description: foreign key to stg_tpch_nations
             tests:
@@ -67,6 +71,8 @@ sources:
                   field: n_nationkey
           - name: c_phone
             description: phone number of the customer
+            meta:
+              masking_policy: encrypt_pii
           - name: c_acctbal
             description: raw account balance 
           - name: c_mktsegment
