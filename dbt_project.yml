@@ -48,6 +48,8 @@ models:
   tpch:
     staging:
       +materialized: view
+      tpch:
+        +tags: "pii"
 
     marts:
       core:
