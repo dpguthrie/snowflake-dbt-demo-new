@@ -45,8 +45,7 @@ jobs:
       - name: Extract Metabase Exposures
         run: |
           dbt-metabase exposures \
-              --dbt_manifest_path manifest.json \
-              --dbt_database DOUG_DEMO_V2 \
+              --manifest-path manifest.json \
               --metabase_host metabase-production-2dd8.up.railway.app \
               --metabase_user $METABASE_USER \
               --metabase_password $METABASE_PASSWORD \
