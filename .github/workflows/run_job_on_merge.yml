@@ -46,7 +46,7 @@ jobs:
         run: |
           dbt-metabase exposures \
               --manifest-path manifest.json \
-              --metabase-url metabase-production-2dd8.up.railway.app \
+              --metabase-url https://metabase-production-2dd8.up.railway.app \
               --metabase-username $METABASE_USER \
               --metabase-password $METABASE_PASSWORD \
               --output-path ./models/marts/exposures/
