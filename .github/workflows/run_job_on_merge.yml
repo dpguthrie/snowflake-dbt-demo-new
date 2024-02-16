@@ -49,7 +49,7 @@ jobs:
               --metabase-url metabase-production-2dd8.up.railway.app \
               --metabase-username $METABASE_USER \
               --metabase-password $METABASE_PASSWORD \
-              --output-path ./models/marts/exposures/metabase/
+              --output-path ./models/marts/exposures/
 
       - name: Add file
         uses: EndBug/add-and-commit@v9
