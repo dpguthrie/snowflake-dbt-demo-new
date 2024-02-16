@@ -46,13 +46,10 @@ jobs:
         run: |
           dbt-metabase exposures \
               --manifest-path manifest.json \
-              --metabase_host metabase-production-2dd8.up.railway.app \
-              --metabase_user $METABASE_USER \
-              --metabase_password $METABASE_PASSWORD \
-              --metabase_database SNOWFLAKE \
-              --output_path ./models/marts/exposures/ \
-              --output_name metabase_exposures \
-              --metabase_sync_skip
+              --metabase-url metabase-production-2dd8.up.railway.app \
+              --metabase-username $METABASE_USER \
+              --metabase-password $METABASE_PASSWORD \
+              --output-path ./models/marts/exposures/metabase/
 
       - name: Add file
         uses: EndBug/add-and-commit@v9
