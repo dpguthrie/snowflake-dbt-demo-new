@@ -1,41 +1,53 @@
-{% macro share_view() %}
+{% macro share_view(share_name) %}
+{#-
+This macro assumes that the share already exists.
+To create the share, run the following (as the account admin)
 
-{#
+use role transformer
+create share {{ share_name }};
+grant usage on database analytics to share {{ share_name }};
+grant reference_usage on database raw to share {{ share_name }};
+alter share {{ share_name }} add accounts = <account_id>;
 
-Usage:
+Example Usage:
 
-This would be used as a post-hook in the config block at the top of a model
+{{
+    config(
+        secure = true,
+        schema = "shared_package_installs",
+        post_hook = "{{ share_view(share_name='package_installs') }}",
+        persist_docs = {"relation": true}
+    )
+}}
 
-Example:
+select * from {{ ref('fct_dbt_package_installs') }}
 
-{{ config(post_hook='{{ share_view() }}') }}
+-#}
 
-#}
+    {% if env_var("DBT_ENVIRONMENT") == "prod" and execute %}
 
-    -- Only run in production
-    {% if target.name == 'prod' %}
+        {%- set is_secure_view=
+            model['config']['materialized'] == 'view'
+            and model['config']['secure'] == True
+        -%}
+
+        {% if not is_secure_view %}
+            {% do exceptions.raise_compiler_error(model['name'] ~ " must be a secure view") %}
+        {% endif %}
+
+        {%- set is_in_export_schema = this.schema.startswith('shared_') -%}
+
+        {% if not is_in_export_schema %}
+          {% do exceptions.raise_compiler_error(model['name'] ~ " must be in a schema prefixed with `shared_`. Currently in " ~ this.schema ) %}
+        {% endif %}
 
         {% set sql %}
-        -- Create a table with all data to be shared
-        create or replace table share_db.private.{{ this.name }} as
-            select * from {{ this }};
-        
-        grant select on share_db.private.{{ this.name }} to role transformer;
-
-        -- Create a secure view which selects based on current account
-        create or replace secure view share_db.public.{{ this.name }} as
-            select a.*
-            from share_db.private.{{ this.name }} as a
-            inner join share_db.private.company_shares as b on (
-                a.customer_id = b.customer_id
-                and b.snowflake_account = current_account()
-            );
-        
-        grant select on share_db.public.{{ this.name }} to share customer_share;
+            grant usage on schema {{ this.database }}.{{ this.schema }} to share {{ share_name }};
+            grant select on view {{ this }} to share {{ share_name }}
         {% endset %}
 
         {% set table = run_query(sql) %}
 
-    {% endif %}
+  {% endif %}
 
 {% endmacro %}

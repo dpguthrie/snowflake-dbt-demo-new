@@ -13,7 +13,7 @@
 {% macro unload_to_s3() %}
     -- Another example here:  https://gist.github.com/jeremyyeo/f07dbe9a7687ffc4976e1488a8e35547
 
-    {% if env_var('DBT_ENVIRONMENT', 'dev') == 'prod' %}
+    {% if env_var('DBT_ENVIRONMENT', 'dev') == 'prod' and execute %}
 
         {% set sql %}
 
@@ -29,11 +29,7 @@
 
         {% endset %}
 
-        {% if execute %}
-
-            {% do run_query(sql) %}
-
-        {% endif %}
+        {% do run_query(sql) %}
 
     {% endif %}
 {% endmacro %}
