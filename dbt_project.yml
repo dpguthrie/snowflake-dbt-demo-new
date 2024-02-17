@@ -50,10 +50,13 @@ models:
       +materialized: view
       tpch:
         +tags: "pii"
+      stocks:
+        +group: investment_research
 
     marts:
       core:
         +materialized: table
+        +group: sales
     ml:
       +enabled: false
 

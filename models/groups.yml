@@ -1,0 +1,12 @@
+groups:
+  - name: investment_research
+    owner:
+      name: Jordan Belfort
+      email: inv-research@example.com
+      slack: team-investment-research
+
+  - name: sales
+    owner:
+      name: Michael Scott
+      email: sales@dbtlabs.com
+      slack: team-sales
