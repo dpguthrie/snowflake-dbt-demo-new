@@ -22,3 +22,5 @@ cleanup as (
 )
 
 select * from cleanup
+union all
+select * from cleanup
