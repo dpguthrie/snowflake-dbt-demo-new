@@ -11,10 +11,10 @@ semantic_models:
       agg_time_dimension: order_date
     
     entities:
-      - name: customer_order_id
+      - name: customer_order
         type: primary
         expr: order_key
-      - name: customer_id
+      - name: customer
         type: foreign
         expr: customer_key
 
@@ -54,7 +54,7 @@ semantic_models:
     model: ref('dim_customers')
 
     entities:
-      - name: customer_id
+      - name: customer
         type: primary
         expr: customer_key
 
@@ -95,16 +95,16 @@ semantic_models:
       agg_time_dimension: order_date
 
     entities:
-      - name: order_item_id
+      - name: order_item
         type: primary
         expr: order_item_key
-      - name: supplier_id
+      - name: supplier
         type: foreign
         expr: supplier_key
-      - name: customer_id
+      - name: customer
         type: foreign
         expr: customer_key
-      - name: customer_order_id
+      - name: customer_order
         type: foreign
         expr: order_key
 
