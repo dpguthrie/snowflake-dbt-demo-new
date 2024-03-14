@@ -8,8 +8,6 @@ packages:
     version: [">=1.0.0", "<2.0.0"]
   - package: dbt-labs/dbt_external_tables
     version: ["<1.0.0"]
-  - package: brooklyn-data/dbt_artifacts
-    version: ["<3.0.0"]
   - package: elementary-data/elementary
     version: 0.12.1
   - package: entechlog/dbt_snow_mask

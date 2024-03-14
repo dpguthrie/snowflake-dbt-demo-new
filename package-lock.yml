@@ -5,10 +5,8 @@ packages:
   version: 1.1.1
 - package: dbt-labs/dbt_external_tables
   version: 0.8.7
-- package: brooklyn-data/dbt_artifacts
-  version: 2.6.2
 - package: elementary-data/elementary
   version: 0.12.1
 - package: entechlog/dbt_snow_mask
   version: 0.2.4
-sha1_hash: 297b60f83c9161c116f2335d60f69f831892b5e1
+sha1_hash: dd6ed5a23c87889164a8fc6fe7b3d9490a8cbc7b
