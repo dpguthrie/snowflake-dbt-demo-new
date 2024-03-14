@@ -16,7 +16,3 @@ saved_queries:
       where:
         - "{{ Dimension('customer__nation') }} = 'UNITED STATES'"
         - "{{ TimeDimension('metric_time', 'day') }} >= date_trunc(year, current_date)"
-    exports:
-      - name: sales_metrics
-        config:
-          export_as: table
