@@ -66,9 +66,7 @@ exposures:
     owner:
       name: Doug Guthrie
       email: doug.guthrie@dbtlabs.com
-    depends_on:
-      - ref('dim_customers')
-      - ref('fct_orders')
+    depends_on: []
   - name: orders_by_country
     label: Orders by Country
     description: '### Visualization: Map
@@ -91,9 +89,7 @@ exposures:
     owner:
       name: Doug Guthrie
       email: doug.guthrie@dbtlabs.com
-    depends_on:
-      - ref('dim_customers')
-      - ref('fct_orders')
+    depends_on: []
   - name: total_page_views___dbtc
     label: 'Total Page Views:  dbtc'
     description: '### Visualization: Line
@@ -115,8 +111,7 @@ exposures:
     owner:
       name: Doug Guthrie
       email: doug.guthrie@dbtlabs.com
-    depends_on:
-      - ref('agg_segment_page_views')
+    depends_on: []
   - name: total_transactions
     label: Total transactions
     description: '### Visualization: Scalar
@@ -138,8 +133,7 @@ exposures:
     owner:
       name: Doug Guthrie
       email: doug.guthrie@dbtlabs.com
-    depends_on:
-      - ref('fct_orders')
+    depends_on: []
   - name: transactions_in_the_last_30_days
     label: Transactions in the last 30 days
     description: '### Visualization: Scalar
@@ -161,5 +155,4 @@ exposures:
     owner:
       name: Doug Guthrie
       email: doug.guthrie@dbtlabs.com
-    depends_on:
-      - ref('fct_orders')
+    depends_on: []
