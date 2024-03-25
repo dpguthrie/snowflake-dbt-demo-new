@@ -45,7 +45,8 @@ final as (
         order_item.discounted_item_sales_amount,
         order_item.item_discount_amount,
         order_item.item_tax_amount,
-        order_item.net_item_sales_amount
+        order_item.net_item_sales_amount,
+        'col' as hello_world
 
     from
         order_item
