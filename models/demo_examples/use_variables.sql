@@ -7,3 +7,4 @@
 select * from {{ ref('fct_order_items') }} where order_date >= '{{ var("start_date") }}'
 
 
+
