@@ -23,14 +23,17 @@ jobs:
           output: ' '
 
       - name: Install pre-commit
-        run: python -m pip install "dbt-snowflake<1.7.0" pre-commit
+        run: python -m pip install dbt pre-commit
 
       - name: Run pre-commit model checks
         env:
-          SF_ACCOUNT: ${{ secrets.SF_ACCOUNT }}
-          SF_USER: ${{ secrets.SF_USER }}
-          SF_PASSWORD: ${{ secrets.SF_PASSWORD }}
+          DBT_CLOUD_API_KEY: ${{ secrets.DBT_CLOUD_API_KEY }}
+          DBT_CLOUD_ACCOUNT_ID: ${{ secrets.DBT_CLOUD_ACCOUNT_ID }}
+          DBT_CLOUD_PROJECT_ID: ${{ secrets.DBT_CLOUD_PROJECT_ID }}
+          DBT_CLOUD_PROJECT_NAME: "Main"
+          DBT_CLOUD_HOST: "cloud.getdbt.com"
+          DBT_CLOUD_ACCOUNT_NAME: "Doug Sandbox"
         run: |
           mkdir ~/.dbt/
-          ./scripts/create_profile.py > ~/.dbt/profiles.yml
+          ./scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
           pre-commit run --files ${{ steps.file_changes.outputs.files}}
