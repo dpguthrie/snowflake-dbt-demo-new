@@ -17,6 +17,7 @@ order_item as (
 
 ),
 order_item_summary as (
+    
 
     select 
         order_key,
