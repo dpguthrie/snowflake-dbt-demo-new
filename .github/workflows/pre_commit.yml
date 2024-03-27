@@ -1,4 +1,4 @@
-name: pre-commit-dbt
+name: dbt-checkpoint
 on:
   workflow_dispatch:
   pull_request:
