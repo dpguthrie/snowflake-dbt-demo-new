@@ -69,5 +69,4 @@ seeds:
 
 snapshots:
   tpch:
-    +target_schema: snapshots_{{ env_var('DBT_TARGET_ENV', 'dev') }}
     +target_database: doug_demo_v2
