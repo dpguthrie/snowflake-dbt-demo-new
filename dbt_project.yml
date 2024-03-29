@@ -65,4 +65,9 @@ seeds:
     snowflake_contract_rates:
       +column_types:
         effective_date: DATE
-        rate: NUMBER   
+        rate: NUMBER
+
+snapshots:
+  tpch:
+    +target_schema: snapshots
+    +target_database: doug_demo_v2
