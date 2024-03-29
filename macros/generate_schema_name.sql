@@ -8,7 +8,7 @@
 
 {% else %}
 
-{{ default_schema }}
+{{ default_schema | trim }}
 
 {% endif %}
 
