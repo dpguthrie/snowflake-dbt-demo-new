@@ -59,4 +59,13 @@ saved_queries:
       where:
         - "{{ Dimension('customer__nation') }} = 'UNITED STATES'"
 
-        
+  - name: sales_metrics_aggregated
+    description: CY Sales metrics used for our U.S.-based sales reps (aggregated)
+    query_params:
+      metrics:
+        - total_revenue
+        - total_expense
+        - total_profit
+      where:
+        - "{{ Dimension('customer__nation') }} = 'UNITED STATES'"
+        - "{{ TimeDimension('metric_time', 'day') }} >= date_trunc(year, current_date)"
