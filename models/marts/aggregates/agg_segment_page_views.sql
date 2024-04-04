@@ -10,3 +10,4 @@ select
 from page_views
 where page_title not like 'DaaC'
 group by 1, 2, 3
+
