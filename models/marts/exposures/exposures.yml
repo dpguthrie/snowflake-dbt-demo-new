@@ -1,5 +1,28 @@
 version: 2
 exposures:
+  - name: a_look_at_fct_orders
+    label: A look at Fct Orders
+    description: '### Dashboard Cards: 3
+
+
+      Some metrics we found about transactions.
+
+
+      #### Metadata
+
+
+      Metabase ID: __1__
+
+
+      Created On: __2023-12-19T21:56:09.729769Z__'
+    type: dashboard
+    url: https://metabase-production-2dd8.up.railway.app/dashboard/1
+    maturity: medium
+    owner:
+      name: Doug Guthrie
+      email: doug.guthrie@dbtlabs.com
+    depends_on:
+      - ref('fct_orders')
   - name: accounts__count__grouped_by_canceled_at__month
     label: 'Accounts, Count, Grouped by Canceled At: Month'
     description: '### Visualization: Line
@@ -87,6 +110,30 @@ exposures:
       Created On: __2023-12-19T22:18:23.868916Z__'
     type: analysis
     url: https://metabase-production-2dd8.up.railway.app/card/6
+    maturity: medium
+    owner:
+      name: Doug Guthrie
+      email: doug.guthrie@dbtlabs.com
+    depends_on:
+      - ref('fct_orders')
+      - ref('dim_customers')
+  - name: orders_dashboard
+    label: Orders Dashboard
+    description: '### Dashboard Cards: 2
+
+
+      A dashboard where you can see all things related to Orders
+
+
+      #### Metadata
+
+
+      Metabase ID: __2__
+
+
+      Created On: __2023-12-19T22:20:46.742835Z__'
+    type: dashboard
+    url: https://metabase-production-2dd8.up.railway.app/dashboard/2
     maturity: medium
     owner:
       name: Doug Guthrie
