@@ -9,6 +9,7 @@ on:
   push:
     branches:
       - main
+      - develop
 
 jobs:
   run_on_merge:
@@ -16,7 +17,8 @@ jobs:
     env:
       DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
       DBT_CLOUD_ACCOUNT_ID: 43786
-      JOB_ID: 384691
+      PROD_JOB_ID: 384691
+      PRE_PROD_JOB_ID: 567173
       METABASE_USER: ${{ secrets.METABASE_USER }}
       METABASE_PASSWORD: ${{ secrets.METABASE_PASSWORD }}
 
@@ -28,6 +30,15 @@ jobs:
 
       - name: Install dependencies
         run: pip install dbtc==0.8.0 dbt-metabase
+
+      - name: Set Job ID
+        id: set_job_id
+        run: |
+          if [[ $GITHUB_REF == 'refs/heads/develop' ]]; then
+            echo "JOB_ID=${{ env.PRE_PROD_JOB_ID }}" >> $GITHUB_ENV
+          else
+            echo "JOB_ID=${{ env.PROD_JOB_ID }}" >> $GITHUB_ENV
+          fi
 
       - name: Run Merge Job
         run: |
