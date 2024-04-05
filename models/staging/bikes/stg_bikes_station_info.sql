@@ -33,7 +33,7 @@ recast as (
 
         -- https://docs.snowflake.com/en/sql-reference/functions/h3_point_to_cell
         h3_point_to_cell(point, 12) as h3_index_12,
-        h3_point_to_cell(point, 10) as h3_index_10
+        h3_point_to_cell(point, 10) as h3_index_10,
     from source
 )
 
