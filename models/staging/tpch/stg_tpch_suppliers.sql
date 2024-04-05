@@ -16,6 +16,7 @@ renamed as (
         s_acctbal as account_balance,
         s_comment as comment,
 
+
     from source
 
 )
