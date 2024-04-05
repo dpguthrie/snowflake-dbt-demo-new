@@ -15,7 +15,7 @@ renamed as (
         pct_held as percent_held,
         position as total_shares,
         value as total_value,
-        pct_change as percent_change
+        pct_change as percent_change,
 
     from source
 
