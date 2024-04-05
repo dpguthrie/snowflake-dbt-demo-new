@@ -15,6 +15,7 @@ renamed as (
         s_phone as phone_number,
         s_acctbal as account_balance,
         s_comment as comment,
+        
 
     from source
 
