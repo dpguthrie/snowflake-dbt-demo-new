@@ -18,7 +18,7 @@ renamed as (
         low,
         adjclose as adjusted_closed,
         dividends,
-        splits
+        splits,
 
     from source
 
