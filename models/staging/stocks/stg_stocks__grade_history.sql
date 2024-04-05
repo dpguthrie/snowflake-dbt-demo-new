@@ -14,7 +14,7 @@ renamed as (
         firm,
         to_grade,
         from_grade,
-        action as proposed_action
+        action as proposed_action,
 
     from source
 
