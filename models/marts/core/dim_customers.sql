@@ -33,7 +33,7 @@ final as (
         customer.market_segment
     from
         customer
-        inner join nation
+        cross join nation
             on customer.nation_key = nation.nation_key
         inner join region
             on nation.region_key = region.region_key
