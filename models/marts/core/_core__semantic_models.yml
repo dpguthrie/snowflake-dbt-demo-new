@@ -118,3 +118,49 @@ semantic_models:
       - name: total_expense
         agg: sum
         expr: supplier_cost
+
+  - name: suppliers
+    description: Relevant information about a customer's suppliers
+    model: ref('dim_suppliers')
+
+    entities:
+      - name: supplier
+        type: primary
+        expr: supplier_key
+    
+    dimensions:
+      - name: nation
+        description: The nation the customer belongs to
+        type: categorical
+      - name: region
+        description: The region the customer belongs to
+        type: categorical
+      - name: supplier_name
+        description: The name of the supplier
+        type: categorical
+  
+  - name: parts
+    description: Relevant information for supplier parts
+    model: ref('dim_parts')
+
+    entities:
+      - name: part
+        type: primary
+        expr: part_key
+
+    dimensions:
+      - name: manufacturer
+        description: The manufacturer for the part
+        type: categorical
+      - name: name
+        description: The name of the part
+        type: categorical
+      - name: brand
+        description: The brand of the part
+        type: categorical
+      - name: type
+        description: The type of the part
+        type: categorical
+      - name: size
+        description: The size of the part
+        type: categorical

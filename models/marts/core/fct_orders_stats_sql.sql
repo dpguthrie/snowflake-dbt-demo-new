@@ -24,7 +24,6 @@ described as (
         'mean': 'avg(...)',
         'count': 'count(...)',
         'max': 'max(...)',
-        'sum': 'sum(...)',
     } %}
     
     {% for stat_name, stat_calc in stats.items() %}
