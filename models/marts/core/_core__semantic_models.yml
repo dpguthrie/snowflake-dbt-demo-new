@@ -59,6 +59,10 @@ semantic_models:
         expr: customer_key
 
     dimensions:
+      - name: customer_id
+        description: The ID of the customer
+        type: categorical
+        expr: customer_key
       - name: customer_name
         description: The name of the customer
         type: categorical
