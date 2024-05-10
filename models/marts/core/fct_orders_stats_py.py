@@ -4,7 +4,6 @@ def model(dbt, session):
     dbt.config(
         materialized='table',
         snowflake_warehouse='SNOWPARK_WH',
-        enabled=False,
     )
 
     # Get upstream data
