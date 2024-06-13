@@ -15,4 +15,4 @@ packages:
   - package: entechlog/dbt_snow_mask
     version: 0.2.4
   - git: "https://github.com/dbt-labs/dbt-audit-helper.git"
-    revision: main
+    revision: joellabes-audit-helper-revamp
