@@ -5,6 +5,7 @@
     )
 }}
 
+
 with order_item as (
     
     select * from {{ ref('order_items') }}
@@ -41,7 +42,7 @@ final as (
         
         1 as order_item_count,
         order_item.quantity,
-        order_item.gross_item_sales_amount,
+        order_item.gross_item_sales_amount*2 as gross_item_sales_amount,
         order_item.discounted_item_sales_amount,
         order_item.item_discount_amount,
         order_item.item_tax_amount,
