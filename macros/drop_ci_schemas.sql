@@ -22,15 +22,15 @@ Example 3 - drop CI schemas from a different database
 
     {% set drop_schema_sql %}
 
-    {% set find_schemas_sql %}
+        {% set find_schemas_sql %}
         SELECT SCHEMA_NAME
         FROM {{ database | upper }}.INFORMATION_SCHEMA.SCHEMATA
         WHERE SCHEMA_NAME LIKE 'DBT_CLOUD_PR_%';
     {% endset %}
 
-    {% set schemas_to_drop = run_query(find_schemas_sql) %}
+        {% set schemas_to_drop = run_query(find_schemas_sql) %}
 
-    {% for row in schemas_to_drop %}
+        {% for row in schemas_to_drop %}
         DROP SCHEMA {{ database | upper }}.{{ row[0] | upper }};
         {% do all_schemas_to_drop.append('{}.{}'.format(database.upper(), row[0].upper())) %}
     {% endfor %}

@@ -8,7 +8,7 @@
 with source as (
     select * from {{ source('bikes', 'station_info_flatten') }}
     {% if is_incremental() %}
-    where station_id not in (select station_id from {{ this }})
+        where station_id not in (select station_id from {{ this }})
     {% endif %}
 ),
 

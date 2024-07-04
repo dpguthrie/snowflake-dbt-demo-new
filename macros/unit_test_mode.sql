@@ -1,14 +1,14 @@
 {% macro unit_test_mode() %}
   
-  {% if var is not defined %}
-    {{ return(False) }}
+    {% if var is not defined %}
+        {{ return(False) }}
 
-  {% elif var('test') == 'true' %}
-     {{ return(True) }}
+    {% elif var('test') == 'true' %}
+        {{ return(True) }}
 
-  {% else %}
-    {{ return(False) }}
+    {% else %}
+        {{ return(False) }}
 
-  {% endif %}
+    {% endif %}
 
 {% endmacro %}

@@ -38,7 +38,7 @@ select * from {{ ref('fct_dbt_package_installs') }}
         {%- set is_in_export_schema = this.schema.startswith('shared_') -%}
 
         {% if not is_in_export_schema %}
-          {% do exceptions.raise_compiler_error(model['name'] ~ " must be in a schema prefixed with `shared_`. Currently in " ~ this.schema ) %}
+            {% do exceptions.raise_compiler_error(model['name'] ~ " must be in a schema prefixed with `shared_`. Currently in " ~ this.schema ) %}
         {% endif %}
 
         {% set sql %}
@@ -48,6 +48,6 @@ select * from {{ ref('fct_dbt_package_installs') }}
 
         {% set table = run_query(sql) %}
 
-  {% endif %}
+    {% endif %}
 
 {% endmacro %}

@@ -2,25 +2,24 @@
 
 with merged as (
     select
-        date_part('year', order_date) as order_year,
         ship_mode,
-        gross_item_sales_amount
+        gross_item_sales_amount,
+        date_part('year', order_date) as order_year
     from {{ ref('fct_order_items') }}
 )
 
-select
-    * 
+select *
 from
     merged
     -- have to manually map strings in the pivot operation
-    pivot(sum(gross_item_sales_amount) for ship_mode in (
-        'AIR',
-        'REG AIR',
-        'FOB',
-        'RAIL',
-        'MAIL',
-        'SHIP',
-        'TRUCK'
-    )) as p 
+pivot (sum(gross_item_sales_amount) for ship_mode in (
+    'AIR',
+    'REG AIR',
+    'FOB',
+    'RAIL',
+    'MAIL',
+    'SHIP',
+    'TRUCK'
+)) as p
 
 order by order_year

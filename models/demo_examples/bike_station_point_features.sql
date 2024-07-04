@@ -5,8 +5,7 @@
     )
 }}
 
-select
+select st_collect(point) as point_features
 
-    -- https://docs.snowflake.com/en/sql-reference/functions/st_collect
-    st_collect(point) as point_features
+-- https://docs.snowflake.com/en/sql-reference/functions/st_collect
 from {{ ref('stg_bikes_station_info') }}

@@ -9,7 +9,7 @@
 
     {% set drop_table_sql %}
 
-    {% for db in dbs %}
+        {% for db in dbs %}
 
         -- Database: {{ db }}
 
