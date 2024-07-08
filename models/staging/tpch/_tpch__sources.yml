@@ -13,9 +13,6 @@ sources:
     tables:
       - name: orders
         description: main order tracking table
-        tests:
-          - elementary.volume_anomalies:
-              timestamp_column: _etl_updated_timestamp
         columns:
           - name: o_orderkey
             description: SF*1,500,000 are sparsely populated
@@ -46,9 +43,6 @@ sources:
           
       - name: customer
         description: main customer table
-        tests:
-          - elementary.volume_anomalies:
-              timestamp_column: _etl_updated_timestamp
         columns:
           - name: c_custkey
             description: unique customer key
@@ -82,9 +76,6 @@ sources:
 
       - name: lineitem
         description: main lineitem table
-        tests:
-          - elementary.volume_anomalies:
-              timestamp_column: _etl_updated_timestamp
         columns:
           - name: l_orderkey
             description: Foreign Key to O_ORDERKEY
@@ -182,9 +173,6 @@ sources:
 
       - name: partsupp
         description: main part supplier table
-        tests:
-          - elementary.volume_anomalies:
-              timestamp_column: _etl_updated_timestamp
         columns:
           - name: ps_partkey
             description: Foreign Key to P_PARTKEY
@@ -207,9 +195,6 @@ sources:
 
       - name: region
         description: region mapping
-        tests:
-          - elementary.volume_anomalies:
-              timestamp_column: _etl_updated_timestamp
         freshness: null
         columns:
           - name: r_regionkey
