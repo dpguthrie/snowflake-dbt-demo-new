@@ -49,7 +49,7 @@ final as (
 
     from
         order_item
-    inner join part_supplier
+    left join part_supplier
         on order_item.part_key = part_supplier.part_key
             and order_item.supplier_key = part_supplier.supplier_key
 )
