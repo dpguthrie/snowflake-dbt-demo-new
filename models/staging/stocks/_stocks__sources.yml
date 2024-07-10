@@ -165,3 +165,7 @@ sources:
               - unique
           - name: address2
             description: "Any secondary street address or suite number associated with the company or entity."
+
+      - name: income_statement
+      - name: balance_sheet
+      - name: cash_flow
