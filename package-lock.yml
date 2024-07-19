@@ -9,6 +9,4 @@ packages:
     version: 2.6.3
   - package: entechlog/dbt_snow_mask
     version: 0.2.4
-  - package: dbt-labs/audit_helper
-    version: 0.12.0
-sha1_hash: 46a85e4cb416582a5bd47b7db3e9d60b678ed0fa
+sha1_hash: b0f11e0cfd5feda92398ae269f04cfec55fbf8db
