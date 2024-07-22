@@ -5,7 +5,7 @@ models:
     description: demo to show incremental model
     columns:
       - name: customer_key
-        tests:
+        data_tests:
           - unique
           - not_null
 
@@ -13,7 +13,7 @@ models:
     description: demo to show variables
     columns:
       - name: order_item_key
-        tests:
+        data_tests:
           - unique
           - not_null 
         
