@@ -27,10 +27,6 @@ clean-targets:         # directories to be removed by `dbt clean`
     - "dbt_modules"
     - "dbt_packages"
 
-on-run-start:
-  - "{{ dbt_snow_mask.create_masking_policy('sources')}}"
-  - "{{ dbt_snow_mask.apply_masking_policy('sources')}}"
-
 vars:
   start_date: '1999-01-01'
   disable_dbt_artifacts_autoupload: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
