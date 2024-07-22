@@ -10,11 +10,11 @@ sources:
         columns:
           - name: symbol
             description: Ticker symbol of the fund.
-            tests:
+            data_tests:
               - not_null
           - name: report_date
             description: The date when the ownership data was reported.
-            tests:
+            data_tests:
               - not_null
           - name: organization
             description: Name or identifier of the organization owning the fund.
@@ -48,11 +48,11 @@ sources:
         columns:
           - name: symbol
             description: Ticker symbol for which the historical data is captured.
-            tests:
+            data_tests:
               - not_null
           - name: date
             description: Date of the recorded historical data.
-            tests:
+            data_tests:
               - not_null
           - name: close
             description: Closing price of the symbol on the given date.
@@ -76,7 +76,7 @@ sources:
         columns:
           - name: symbol
             description: Ticker symbol of the company for which the insider transaction has occurred.
-            tests:
+            data_tests:
               - not_null
           - name: shares
             description: Number of shares involved in the insider transaction.
@@ -160,7 +160,7 @@ sources:
             description: "The number of full-time employees currently employed by the company or entity."
           - name: symbol
             description: "The unique ticker symbol used to represent the company or entity in the stock market."
-            tests:
+            data_tests:
               - not_null
               - unique
           - name: address2
