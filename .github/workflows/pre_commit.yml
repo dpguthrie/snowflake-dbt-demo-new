@@ -19,14 +19,16 @@ jobs:
 
       - name: setup uv
         uses: yezz123/setup-uv@v4
-  
+        with:
+          uv-venv: ".venv"
+
+      - name: Install pre-commit
+        run: uv pip install dbt pre-commit
+
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.4
         with:
           output: ' '
-
-      - name: Install pre-commit
-        run: uv pip install dbt pre-commit
 
       - name: Run pre-commit model checks
         env:
