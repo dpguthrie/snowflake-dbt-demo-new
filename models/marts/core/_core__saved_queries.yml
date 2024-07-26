@@ -1,6 +1,7 @@
 saved_queries:
   - name: sales_metrics
     description: CY Sales metrics used for our U.S.-based sales reps
+    label: Sales Metrics
     query_params:
       metrics:
         - total_revenue
@@ -18,6 +19,7 @@ saved_queries:
         - "{{ TimeDimension('metric_time', 'day') }} >= date_trunc(year, current_date)"
 
   - name: all_monthly_active_users
+    label: All MAU
     description: |
       Monthly active users seen in our application.  Active users are described as anyone who has both logged in
       and successfully completed an event as defined by our PM team.
@@ -31,6 +33,7 @@ saved_queries:
         - Dimension('customer__customer_market_segment')
   
   - name: all_weekly_active_users
+    label: All WAU
     description: |
       Weekly active users seen in our application.  Active users are described as anyone who has both logged in
       and successfully completed an event as defined by our PM team.
@@ -40,6 +43,7 @@ saved_queries:
         - weekly_customers
 
   - name: us_monthly_active_users
+    label: US MAU
     description: |
       Monthly active users seen in our application based out of the US.  Active users are described as anyone who has both logged in
       and successfully completed an event as defined by our PM team.
@@ -49,6 +53,7 @@ saved_queries:
         - "{{ Dimension('customer__nation') }} = 'UNITED STATES'"
 
   - name: us_weekly_active_users
+    label: US WAU
     description: |
       Weekly active users seen in our application based out of the US.  Active users are described as anyone who has both logged in
       and successfully completed an event as defined by our PM team.
@@ -60,6 +65,7 @@ saved_queries:
         - "{{ Dimension('customer__nation') }} = 'UNITED STATES'"
 
   - name: sales_metrics_aggregated
+    label: Sales Metrics Agg
     description: CY Sales metrics used for our U.S.-based sales reps (aggregated)
     query_params:
       metrics:
