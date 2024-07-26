@@ -43,9 +43,11 @@ semantic_models:
       - name: total_revenue
         agg: sum
         expr: gross_item_sales_amount
+        create_metric: True
       - name: total_customers
         agg: count_distinct
         expr: customer_key
+        create_metric: True
 
   - name: customers
     description: |
@@ -122,6 +124,7 @@ semantic_models:
       - name: total_expense
         agg: sum
         expr: supplier_cost
+        create_metric: True
 
   - name: suppliers
     description: Relevant information about a customer's suppliers
