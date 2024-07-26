@@ -62,7 +62,3 @@ seeds:
       +column_types:
         effective_date: DATE
         rate: NUMBER
-
-snapshots:
-  tpch:
-    +target_database: doug_demo_v2
