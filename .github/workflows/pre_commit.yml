@@ -20,11 +20,8 @@ jobs:
       - name: setup uv
         uses: yezz123/setup-uv@v4
 
-      - name: Allow uv to use the system Python by default
-        run: echo "UV_SYSTEM_PYTHON=1" >> $GITHUB_ENV
-
       - name: Install pre-commit
-        run: uv pip install dbt pre-commit
+        run: uv pip install --system dbt pre-commit
 
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.4
