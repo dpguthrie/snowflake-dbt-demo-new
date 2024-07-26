@@ -19,8 +19,9 @@ jobs:
 
       - name: setup uv
         uses: yezz123/setup-uv@v4
-        with:
-          uv-venv: ".venv"
+
+      - name: Allow uv to use the system Python by default
+        run: echo "UV_SYSTEM_PYTHON=1" >> $GITHUB_ENV
 
       - name: Install pre-commit
         run: uv pip install dbt pre-commit
@@ -41,5 +42,4 @@ jobs:
         run: |
           mkdir ~/.dbt/
           ./scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
-          .venv/bin/activate
           pre-commit run --files ${{ steps.file_changes.outputs.files}}
