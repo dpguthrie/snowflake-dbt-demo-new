@@ -41,4 +41,5 @@ jobs:
         run: |
           mkdir ~/.dbt/
           ./scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
+          .venv/bin/activate
           pre-commit run --files ${{ steps.file_changes.outputs.files}}
