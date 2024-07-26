@@ -2,13 +2,6 @@ version: 2
 
 
 metrics:
-  - name: total_revenue
-    description: The total revenue for the business
-    type: simple
-    label: Total Revenue
-    type_params:
-      measure: total_revenue
-
   - name: cumulative_revenue_total
     description: The cumulative revenue for the business
     type: cumulative
@@ -24,13 +17,6 @@ metrics:
       measure: total_revenue
       window: 12 months
   
-  - name: total_expense
-    description: The total expense for the business
-    type: simple
-    label: Total Expenses
-    type_params:
-      measure: total_expense
-
   - name: total_profit
     description: The total profit for the business
     type: derived
@@ -42,14 +28,7 @@ metrics:
           alias: revenue
         - name: total_expense
           alias: expense
-      
-  - name: total_customers
-    description: The total customers for the business
-    type: simple
-    label: Total Customers
-    type_params:
-      measure: total_customers
-
+    
   - name: weekly_customers
     description: Number of active weekly customers
     type: cumulative
