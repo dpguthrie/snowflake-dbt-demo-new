@@ -1,0 +1,12 @@
+models:
+  - name: test
+    description: This model calculates the total sales amount for each priority code from orders that have a status of 'O' (open) or 'F' (fulfilled).
+    columns:
+      - name: priority_code
+        description: The code representing the priority level of the order.
+        tests:
+          - not_null
+      - name: total_sales
+        description: The total sales amount for orders of a particular priority code.
+        tests:
+          - not_null
