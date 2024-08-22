@@ -1,0 +1,36 @@
+name: Trigger DBT Cloud Job
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  trigger-dbt-job:
+    runs-on: ubuntu-latest
+    
+    env:
+      JOB_ID: 567183
+      DBT_CLOUD_ACCOUNT_ID: ${{ secrets.DBT_CLOUD_ACCOUNT_ID }}
+      DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+
+    - name: Install uv
+      run: |
+        pip install uv
+
+    - name: Install dbtc
+      run: |
+        uv pip install dbtc
+
+    - name: Trigger DBT Cloud Job
+      run: |
+        dbtc trigger-job --job-id $JOB_ID --payload '{"cause": "Triggered by GitHub Action"}'
