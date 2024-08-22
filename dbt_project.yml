@@ -29,17 +29,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 vars:
   start_date: '1999-01-01'
-  disable_dbt_artifacts_autoupload: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
-  disable_run_results: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
-  disable_tests_results: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
-  disable_dbt_invocation_autoupload: "{% if env_var('DBT_TARGET_ENV') == 'prod' %}false{% else %}true{% endif %}"
-  use_force_applying_masking_policy: "True"
+  dbt_cloud_account_id: 43786
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
 models:
-  use_anonymous_sproc: True
+  use_anonymous_sproc: true
 
   tpch:
     staging:
@@ -62,3 +58,14 @@ seeds:
       +column_types:
         effective_date: DATE
         rate: NUMBER
+
+dispatch:
+  - macro_namespace: dbt
+    search_order:
+      - tpch
+      - dbt_snowflake_monitoring
+      - dbt
+
+query-comment:
+  comment: '{{ dbt_snowflake_monitoring.get_query_comment(node) }}'
+  append: true # Snowflake removes prefixed comments.
