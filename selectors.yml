@@ -1,0 +1,9 @@
+selectors:
+  - name: root_project_only
+    description: >
+        Only resources from the root project.
+        Excludes resources defined in installed packages.
+    default: true
+    definition:
+      method: package
+      value: tpch
