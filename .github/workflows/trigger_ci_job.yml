@@ -23,6 +23,8 @@ jobs:
     - name: Install dbtc
       run: |
         uv pip install dbtc
+      env:
+        UV_SYSTEM_PYTHON: 1
 
     - name: Trigger DBT Cloud Job
       run: |
