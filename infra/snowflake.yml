@@ -1,0 +1,276 @@
+databases:
+  - name: dpg_raw
+  - name: dpg_dev
+  - name: dpg_ci
+  - name: dpg_prod
+
+warehouses:
+  - &default_warehouse
+    warehouse_size: small
+    auto_suspend: 60
+    min_cluster_count: 1
+    max_cluster_count: 1
+    name: developer_dpg_wh
+    comment: Warehouse used for developer workloads
+  - <<: *default_warehouse
+    name: loading_dpg_wh
+    comment: Warehouse used for loading workloads
+  - <<: *default_warehouse
+    name: reporting_dpg_wh
+    comment: Warehouse used for reporting workloads
+  - <<: *default_warehouse
+    name: transforming_dpg_wh
+    comment: Warehouse used for transforming workloads
+  - <<: *default_warehouse
+    name: snowpark_dpg_wh
+    comment: Warehouse used for snowpark workloads
+    warehouse_type: "snowpark-optimized"
+
+roles:
+  - name: raw_data_reader_role
+    comment: Able to read raw data
+  - name: raw_data_loader_role
+    comment: Able to load row data
+  - name: analyst_role
+    comment: Able to read from dbg_prod database
+  - name: developer_role
+    comment: Able to write to dpg_dev database and read from dpg_raw and dpg_prod databases.
+  - name: transformer_role
+    comment: Able to read from and write to dpg_prod database.
+  - name: snowflake_internal_reader_role
+    comment: Able to read from SNOWFLAKE database
+    owner: ACCOUNTADMIN
+
+users:
+  - name: loading_user
+    default_warehouse: loading_dpg_wh
+    default_role: raw_data_loader_role
+  - name: reporting_user
+    default_warehouse: reporting_dpg_wh
+    default_role: analyst_role
+  - name: transformer_user
+    default_warehouse: transforming_dpg_wh
+    default_role: transformer_role
+  - name: snowflake_internal_user
+    default_warehouse: reporting_dpg_wh
+    default_role: snowflake_internal_reader_role
+  - name: dpg_user
+    default_warehouse: developer_dpg_wh
+    default_role: developer_role
+
+role_grants:
+  - role: raw_data_reader_role
+    to_role: sysadmin
+  - role: raw_data_reader_role
+    to_role: raw_data_loader_role
+  - role: raw_data_reader_role
+    to_role: developer_role
+  - role: raw_data_reader_role
+    to_role: transformer_role
+  - role: analyst_role
+    to_role: sysadmin
+  - role: analyst_role
+    to_role: developer_role
+  - role: developer_role
+    to_role: sysadmin
+  - role: analyst_role
+    to_role: transformer_role
+  - role: transformer_role
+    to_role: developer_role
+  - role: transformer_role
+    to_role: sysadmin
+  - role: raw_data_loader_role
+    to_role: sysadmin
+  - role: raw_data_loader_role
+    to_user: loading_user
+  - role: analyst_role
+    to_user: reporting_user
+  - role: transformer_role
+    to_user: transformer_user
+  - role: snowflake_internal_reader_role
+    to_user: snowflake_internal_user
+
+grants:
+  # Sysadmin
+  - priv: imported privileges
+    on_database: SNOWFLAKE
+    to_role: sysadmin
+
+  # Raw data reader role grants
+  - priv: usage
+    on_database: dpg_raw
+    to_role: raw_data_reader_role
+
+  # Raw data loader role grants
+  - priv: ownership
+    on_database: dpg_raw
+    to_role: raw_data_loader_role
+  - priv: usage
+    on_warehouse: loading_dpg_wh
+    to_role: raw_data_loader_role
+  
+  # Analyst grants
+  - priv: usage
+    on_database: dpg_prod
+    to_role: analyst_role
+  - priv: usage
+    on_warehouse: reporting_dpg_wh
+    to_role: analyst_role
+  - priv: usage
+    on_warehouse: developer_dpg_wh
+    to_role: analyst_role
+
+  # Developer grants
+  - priv: ownership
+    on_database: dpg_dev
+    to_role: developer_role
+  - priv: usage
+    on_database: dpg_ci
+    to_role: developer_role
+  - priv: usage
+    on_warehouse: developer_dpg_wh
+    to_role: developer_role
+
+  # Transformer grants
+  - priv: usage
+    on_warehouse: transforming_dpg_wh
+    to_role: transformer_role
+  - priv: ownership
+    on_database: dpg_prod
+    to_role: transformer_role
+  - priv: ownership
+    on_database: dpg_ci
+    to_role: transformer_role
+
+  # Snowflake Internal grants
+  - priv: usage
+    on_warehouse: reporting_dpg_wh
+    to_role: snowflake_internal_reader_role
+  - priv: imported privileges
+    on_database: SNOWFLAKE
+    to_role: snowflake_internal_reader_role
+
+grant_on_alls:
+  # Raw data reader role grants
+  - priv: usage
+    on_all_schemas_in_database: dpg_raw
+    to: raw_data_reader_role
+  - priv: select
+    on_all_tables_in_database: dpg_raw
+    to: raw_data_reader_role
+
+  # Raw data loader role grants
+  - priv: ownership
+    on_all_schemas_in_database: dpg_raw
+    to: raw_data_loader_role
+  - priv: ownership
+    on_all_tables_in_database: dpg_raw
+    to: raw_data_loader_role
+  - priv: ownership
+    on_all_views_in_database: dpg_raw
+    to: raw_data_loader_role
+
+  # Analyst grants
+  - priv: usage
+    on_all_schemas_in_database: dpg_prod
+    to: analyst_role
+  - priv: select
+    on_all_tables_in_database: dpg_prod
+    to: analyst_role
+  - priv: select
+    on_all_views_in_database: dpg_prod
+    to: analyst_role
+
+  # Developer grants
+  - priv: ownership
+    on_all_schemas_in_database: dpg_dev
+    to: developer_role
+  - priv: ownership
+    on_all_tables_in_database: dpg_dev
+    to: developer_role
+  - priv: ownership
+    on_all_views_in_database: dpg_dev
+    to: developer_role
+  - priv: usage
+    on_all_schemas_in_database: dpg_ci
+    to: developer_role
+  - priv: select
+    on_all_tables_in_database: dpg_ci
+    to: developer_role
+  - priv: select
+    on_all_views_in_database: dpg_ci
+    to: developer_role
+
+  # Transformer grants
+  - priv: all
+    on_all_tables_in_database: dpg_prod
+    to: transformer_role
+  - priv: all
+    on_all_tables_in_database: dpg_ci
+    to: transformer_role
+  - priv: all
+    on_all_views_in_database: dpg_prod
+    to: transformer_role
+  - priv: all
+    on_all_views_in_database: dpg_ci
+    to: transformer_role
+
+future_grants:
+  # Raw data reader role grants
+  - priv: usage
+    on_future_schemas_in_database: dpg_raw
+    to: raw_data_reader_role
+  - priv: select
+    on_future_tables_in_database: dpg_raw
+    to: raw_data_reader_role
+
+  # Analyst grants
+  - priv: usage
+    on_future_schemas_in_database: dpg_prod
+    to: analyst_role
+  - priv: select
+    on_future_tables_in_database: dpg_prod
+    to: analyst_role
+  - priv: select
+    on_future_views_in_database: dpg_prod
+    to: analyst_role
+
+  # Developer grants
+  - priv: all
+    on_future_schemas_in_database: dpg_dev
+    to: developer_role
+  - priv: all
+    on_future_tables_in_database: dpg_dev
+    to: developer_role
+  - priv: all
+    on_future_views_in_database: dpg_dev
+    to: developer_role
+  - priv: usage
+    on_future_schemas_in_database: dpg_ci
+    to: developer_role
+  - priv: select
+    on_future_tables_in_database: dpg_ci
+    to: developer_role
+  - priv: select
+    on_future_views_in_database: dpg_ci
+    to: developer_role
+
+  # Transformer grants
+  - priv: all
+    on_future_schema_in_database: dpg_prod
+    to: transformer_role
+  - priv: all
+    on_future_schema_in_database: dpg_ci
+    to: transformer_role
+  - priv: all
+    on_future_views_in_database: dpg_prod
+    to: transformer_role
+  - priv: all
+    on_future_views_in_database: dpg_ci
+    to: transformer_role
+  - priv: all
+    on_future_tables_in_database: dpg_prod
+    to: transformer_role
+  - priv: all
+    on_future_tables_in_database: dpg_ci
+    to: transformer_role
