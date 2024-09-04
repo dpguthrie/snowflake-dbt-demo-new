@@ -54,6 +54,7 @@ final as (
             and order_item.supplier_key = part_supplier.supplier_key
 )
 
+
 select *
 from
     final
