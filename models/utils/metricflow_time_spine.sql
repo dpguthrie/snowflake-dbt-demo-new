@@ -22,5 +22,4 @@ final as (
 )
 
 select * from final
-where date_day > dateadd(year, -4, current_timestamp()) 
-and date_hour < dateadd(day, 30, current_timestamp())
+where date_day > dateadd(year, -5, current_timestamp()) 
