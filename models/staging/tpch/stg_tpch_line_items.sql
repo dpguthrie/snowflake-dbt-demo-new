@@ -17,6 +17,7 @@ renamed as (
         l_suppkey as supplier_key,
         l_linenumber as line_number,
         l_quantity as quantity,
+        
         l_extendedprice as extended_price,
         l_discount as discount_percentage,
         l_tax as tax_rate,
