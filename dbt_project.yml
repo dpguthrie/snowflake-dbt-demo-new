@@ -58,5 +58,5 @@ seeds:
       +column_types:
         effective_date: DATE
         rate: NUMBER
-    snowflake:
+    salesforce:
       +schema: salesforce
