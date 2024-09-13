@@ -58,14 +58,5 @@ seeds:
       +column_types:
         effective_date: DATE
         rate: NUMBER
-
-dispatch:
-  - macro_namespace: dbt
-    search_order:
-      - tpch
-      - dbt_snowflake_monitoring
-      - dbt
-
-query-comment:
-  comment: '{{ dbt_snowflake_monitoring.get_query_comment(node) }}'
-  append: true # Snowflake removes prefixed comments.
+    snowflake:
+      +schema: salesforce
