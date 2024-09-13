@@ -1,0 +1,11 @@
+id,_fivetran_synced,_fivetran_deleted,_fivetran_active,case_access_for_account_owner,contact_access_for_account_owner,developer_name,forecast_user_id,may_forecast_manager_share,name,opportunity_access_for_account_owner,parent_role_id,portal_type,rollup_description
+1,2024-09-13 10:00:00,False,True,"All","All","DeveloperName1","FORECAST_USER_1",True,"Sales Manager","Edit","","None","Manages the sales team"
+2,2024-09-13 10:15:00,False,True,"Read","Read","DeveloperName2","FORECAST_USER_2",False,"Marketing Director","Read","1","None","Oversees marketing strategies"
+3,2024-09-13 10:30:00,False,True,"Edit","Edit","DeveloperName3","FORECAST_USER_3",True,"Finance Lead","Edit","","None","Leads the finance department"
+4,2024-09-13 10:45:00,False,True,"All","All","DeveloperName4","FORECAST_USER_4",False,"HR Manager","All","3","None","Manages human resources"
+5,2024-09-13 11:00:00,False,True,"Read","Read","DeveloperName5","FORECAST_USER_5",True,"IT Administrator","Read","","None","Oversees IT infrastructure"
+6,2024-09-13 11:15:00,False,True,"Edit","Edit","DeveloperName6","FORECAST_USER_6",False,"Customer Support Lead","Edit","2","None","Heads customer support team"
+7,2024-09-13 11:30:00,False,True,"All","All","DeveloperName7","FORECAST_USER_7",True,"Product Manager","All","","None","Manages product development"
+8,2024-09-13 11:45:00,False,True,"Read","Read","DeveloperName8","FORECAST_USER_8",False,"Operations Manager","Read","4","None","Oversees daily operations"
+9,2024-09-13 12:00:00,False,True,"Edit","Edit","DeveloperName9","FORECAST_USER_9",True,"Legal Advisor","Edit","","None","Provides legal counsel"
+10,2024-09-13 12:15:00,False,True,"All","All","DeveloperName10","FORECAST_USER_10",False,"CEO","All","","None","Chief Executive Officer"
