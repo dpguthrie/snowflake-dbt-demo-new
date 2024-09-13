@@ -58,6 +58,3 @@ seeds:
       +column_types:
         effective_date: DATE
         rate: NUMBER
-    salesforce:
-      +database: raw
-      +schema: salesforce
