@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized = 'table',
-        tags = ['finance']
-    )
-}}
-
 with order_item as (
 
     select * from {{ ref('order_items') }}
@@ -45,7 +38,7 @@ final as (
         order_item.item_discount_amount,
         order_item.item_tax_amount,
         order_item.net_item_sales_amount,
-        order_item.gross_item_sales_amount as gross_item_sales_amount
+        order_item.gross_item_sales_amount*2 as gross_item_sales_amount
 
     from
         order_item
