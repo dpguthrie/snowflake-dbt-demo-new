@@ -1,4 +1,5 @@
 projects:
+  - name: dpg_databricks
   - name: upstream
 
 packages:
