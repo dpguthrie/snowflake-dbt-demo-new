@@ -1,10 +1,3 @@
-{{
-    config(
-        materialized = 'table',
-        tags = ['finance']
-    )
-}}
-
 with order_item as (
 
     select * from {{ ref('order_items') }}
