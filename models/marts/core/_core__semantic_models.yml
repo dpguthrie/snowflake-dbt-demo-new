@@ -95,6 +95,9 @@ semantic_models:
         description: The region the customer belongs to
         type: categorical
         expr: region
+      - name: user_id
+        description: The user mapped to the customer
+        type: categorical
   
   - name: order_items
     description: |
