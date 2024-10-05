@@ -39,6 +39,11 @@ semantic_models:
         type: categorical
         expr: clerk_name
       
+      - name: user
+        description: The user mapped to the customer
+        type: categorical
+        expr: user_id
+      
     measures:
       - name: total_revenue
         agg: sum
