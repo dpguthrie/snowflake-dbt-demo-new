@@ -34,7 +34,6 @@ final as (
         order_item.receipt_date,
         order_item.ship_mode,
         part_supplier.cost as supplier_cost,
-        {# ps.retail_price, #}
         order_item.base_price,
         order_item.discount_percentage,
         order_item.discounted_price,
@@ -47,7 +46,6 @@ final as (
         order_item.item_tax_amount,
         order_item.net_item_sales_amount,
         order_item.gross_item_sales_amount as gross_item_sales_amount
-
     from
         order_item
     inner join part_supplier
