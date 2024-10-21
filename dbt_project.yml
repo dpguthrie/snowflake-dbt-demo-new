@@ -30,6 +30,7 @@ clean-targets:         # directories to be removed by `dbt clean`
 vars:
   start_date: '1999-01-01'
   dbt_cloud_account_id: 43786
+  future_date: '2099-12-31'
 
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
@@ -58,3 +59,10 @@ seeds:
       +column_types:
         effective_date: DATE
         rate: NUMBER
+
+
+snapshots:
+  tpch:
+    snapshot_meta_column_names:
+      dbt_valid_from: effective_start_ts
+      dbt_valid_to: effective_end_ts

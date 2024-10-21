@@ -1,0 +1,6 @@
+sources:
+  - name: gates
+    database: doug_demo_v2
+    tables:
+      - name: iceberg_v_body_of_work_funding__c
+      - name: iceberg_v_strategy__c

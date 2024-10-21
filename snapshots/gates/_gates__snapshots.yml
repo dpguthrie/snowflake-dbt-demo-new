@@ -1,0 +1,38 @@
+snapshots:
+  - name: gates_body_of_work_funding_snapshot
+    relation: source('gates', 'iceberg_v_body_of_work_funding__c')
+    config:
+      schema: snapshots
+      unique_key: id
+      strategy: timestamp
+      updated_at: systemmodstamp
+      snapshot_meta_column_names:
+        dbt_valid_from: effective_start_ts
+        dbt_valid_to: effective_end_ts
+  - name: gates_strategy_snapshot
+    relation: source('gates', 'iceberg_v_strategy__c')
+    config:
+      schema: snapshots
+      unique_key: id
+      strategy: timestamp
+      updated_at: systemmodstamp
+  - name: gates_body_of_work_funding_snapshot_check
+    relation: source('gates', 'iceberg_v_body_of_work_funding__c')
+    config:
+      schema: snapshots
+      unique_key: id
+      strategy: check
+      check_cols:
+        - name
+        - Isdeleted
+  - name: gates_strategy_snapshot_check
+    relation: source('gates', 'iceberg_v_strategy__c')
+    config:
+      schema: snapshots
+      unique_key: id
+      strategy: check
+      check_cols:
+        - division_name__c
+        - strategy_name__c
+        - grant_purpose__c
+        
