@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ source('gates', 'iceberg_v_body_of_work_funding__c') }}
+    select * from {{ ref('gates_body_of_work_funding_snapshot') }}
 ),
 
 renamed as (
@@ -18,14 +18,18 @@ renamed as (
         x4_year_total__c as four_year_total,
         id as body_of_work_funding_source_row_id,
         ownerid as owner_id,
-        isdeleted as is_deleted,
+        isdeleted as logical_delete_ind,
         name as body_of_work_funding_id,
         currencyisocode as currency_iso_code,
         createddate as created_date,
         createdbyid as created_by_id,
         lastmodifieddate as last_modified_date,
         lastmodifiedbyid as last_modified_by_id,
-        systemmodstamp as system_mod_stamp
+        systemmodstamp as system_mod_stamp,
+        effective_start_ts,
+        effective_end_ts,
+        dbt_scd_id,
+        dbt_updated_at
 
     from source
 

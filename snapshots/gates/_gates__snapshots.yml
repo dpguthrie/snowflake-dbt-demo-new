@@ -16,6 +16,9 @@ snapshots:
       unique_key: id
       strategy: timestamp
       updated_at: systemmodstamp
+      snapshot_meta_column_names:
+        dbt_valid_from: effective_start_ts
+        dbt_valid_to: effective_end_ts
   - name: gates_body_of_work_funding_snapshot_check
     relation: source('gates', 'iceberg_v_body_of_work_funding__c')
     config:
@@ -25,6 +28,9 @@ snapshots:
       check_cols:
         - name
         - Isdeleted
+      snapshot_meta_column_names:
+        dbt_valid_from: effective_start_ts
+        dbt_valid_to: effective_end_ts
   - name: gates_strategy_snapshot_check
     relation: source('gates', 'iceberg_v_strategy__c')
     config:

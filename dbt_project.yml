@@ -59,10 +59,3 @@ seeds:
       +column_types:
         effective_date: DATE
         rate: NUMBER
-
-
-snapshots:
-  tpch:
-    snapshot_meta_column_names:
-      dbt_valid_from: effective_start_ts
-      dbt_valid_to: effective_end_ts

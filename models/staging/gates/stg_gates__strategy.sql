@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ source('gates', 'iceberg_v_strategy__c') }}
+    select * from {{ ref('gates_strategy_snapshot') }}
 ),
 
 renamed as (
@@ -19,7 +19,7 @@ renamed as (
         source_last_modified_date__c as source_last_modified_date,
         source_updated_by_username__c as source_updated_by_username,
         source_updated_date__c as source_updated_date,
-        strategy_name__c as strategy_name,
+        nvl(strategy_name__c, '''') as funding_strategy_name,
         strategy_source_id__c as strategy_source_id,
         sub_initiative_name__c as sub_initiative_name,
         sub_initiative_source_id__c as sub_initiative_source_id,
@@ -27,13 +27,13 @@ renamed as (
         createdbyid as created_by_id,
         createddate as created_date,
         currencyisocode as currency_iso_code,
-        division_name__c as division_name,
+        division_name__c as funding_division_name,
         division_source_id__c as division_source_id,
         effective_end_date__c as effective_end_date,
         effective_start_date__c as effective_start_date,
         full_path_name__c as full_path_name,
         full_path_name_search__c as full_path_name_search,
-        grant_purpose__c as grant_purpose,
+        nvl(grant_purpose__c, '''') as grant_purpose_desc,
         id as funding_strategy_id,
         initiative_name__c as initiative_name,
         initiative_source_id__c as initiative_source_id,
@@ -43,6 +43,10 @@ renamed as (
         key_element_source_id__c as key_element_source_id,
         lastmodifiedbyid as last_modified_by_id,
         lastmodifieddate as last_modified_date,
+        effective_start_ts,
+        effective_end_ts,
+        dbt_scd_id,
+        dbt_updated_at
 
     from source
 
