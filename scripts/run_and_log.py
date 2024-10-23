@@ -155,7 +155,7 @@ def comment_on_pr(payload) -> requests.Response:
 
 if __name__ == "__main__":
     # Set up client
-    client = dbtCloudClient(host=DBT_CLOUD_HOST, token=DBT_CLOUD_SERVICE_TOKEN)
+    client = dbtCloudClient(host=DBT_CLOUD_HOST)
 
     # Extract PR Number
     pull_request_id = extract_pr_number(GITHUB_REF)
