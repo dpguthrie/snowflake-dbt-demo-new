@@ -192,9 +192,11 @@ if __name__ == "__main__":
         logging.error(f"Error occurred retrieving job status. See response:\n{run}")
         sys.exit(1)
 
+    # Extract url
+    url = run_data["href"]
+
     # If success, just exit
     if run_status == JobRunStatus.SUCCESS:
-        url = run_data["href"]
         logging.info(f"CI Job completed successfully.  View here: {url}")
         sys.exit(0)
 
@@ -208,7 +210,7 @@ if __name__ == "__main__":
         }
         nodes = client.metadata.query(QUERY, variables, paginated_request_to_list=True)
         error_nodes = get_nodes_with_errors(nodes, run_id)
-        comment = create_comment(error_nodes)
+        comment = create_comment(error_nodes, url)
         payload = {"body": comment}
         response = comment_on_pr(payload)
         if response.ok:
