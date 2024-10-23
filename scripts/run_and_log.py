@@ -4,7 +4,6 @@ import logging
 import os
 import re
 import sys
-import time
 
 # third party
 import requests
@@ -36,65 +35,7 @@ class JobRunStatus(enum.IntEnum):
     CANCELLED = 30
 
 
-NODE_TYPES = ["Model", "Seed", "Snapshot", "Test"]
 ERROR_STATUSES = ["error", "fail"]  # Maybe include warn?
-QUERY = """
-query Applied($environmentId: BigInt!, $filter: AppliedResourcesFilter!, $first: Int, $after: String) {
-  environment(id: $environmentId) {
-    applied {
-      resources(filter: $filter, first: $first, after: $after) {
-        edges {
-          node {
-            ... on ModelAppliedStateNode {
-              modelExecutionInfo: executionInfo {
-                lastRunStatus
-                lastRunError
-                lastRunId
-              }
-              uniqueId
-              resourceType
-            }
-            ... on TestAppliedStateNode {
-              testExecutionInfo: executionInfo {
-                lastRunStatus
-                lastRunError
-                lastRunId
-              }
-              uniqueId
-              resourceType
-            }
-            ... on SeedAppliedStateNode {
-              seedExecutionInfo: executionInfo {
-                lastRunStatus
-                lastRunError
-                lastRunId
-              }
-              uniqueId
-              resourceType
-            }
-            ... on SnapshotAppliedStateNode {
-              snapshotExecutionInfo: executionInfo {
-                lastRunStatus
-                lastRunError
-                lastRunId
-              }
-              uniqueId
-              resourceType
-            }
-          }
-        }
-        pageInfo {
-          endCursor
-          hasNextPage
-          hasPreviousPage
-          startCursor
-        }
-        totalCount
-      }
-    }
-  }
-}
-"""
 
 
 def extract_pr_number(s):
@@ -168,10 +109,6 @@ if __name__ == "__main__":
         should_poll=True,
     )
 
-    # Allow for ingestion of metadata
-    logger.info("Waiting for metadata ingestion...")
-    time.sleep(2)
-
     # Data should be a dictionary
     run_data = run.get("data", None)
     if run_data is None:
@@ -226,5 +163,6 @@ if __name__ == "__main__":
 
     # If cancelled, just exit in a failed state
     if run_status == JobRunStatus.CANCELLED:
+        # Can also comment here if you'd like
         logger.error(f"Job cancelled.  See run info:\n{run}")
         sys.exit(1)
