@@ -149,7 +149,7 @@ def comment_on_pr(payload) -> requests.Response:
     url = (
         f"https://api.github.com/repos/{GITHUB_REPO}/issues/{pull_request_id}/comments"
     )
-    response = client.post(url, json=payload)
+    response = session.post(url, json=payload)
     return response
 
 
