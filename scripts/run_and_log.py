@@ -207,7 +207,7 @@ if __name__ == "__main__":
             "first": 500,
         }
         nodes = client.metadata.query(QUERY, variables, paginated_request_to_list=True)
-        error_nodes = get_nodes_with_errors(nodes)
+        error_nodes = get_nodes_with_errors(nodes, run_id)
         comment = create_comment(error_nodes)
         payload = {"body": comment}
         response = comment_on_pr(payload)
