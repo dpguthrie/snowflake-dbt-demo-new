@@ -173,7 +173,10 @@ if __name__ == "__main__":
 
     # Trigger Job, will poll for completion automatically
     run = client.cloud.trigger_autoscaling_ci_job(
-        DBT_CLOUD_ACCOUNT_ID, DBT_CLOUD_JOB_ID, payload
+        DBT_CLOUD_ACCOUNT_ID,
+        DBT_CLOUD_JOB_ID,
+        payload,
+        should_poll=True,
     )
 
     # Data should be a dictionary
