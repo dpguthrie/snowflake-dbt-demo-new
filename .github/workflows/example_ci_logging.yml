@@ -1,0 +1,38 @@
+name: Trigger DBT Cloud Job
+
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+
+jobs:
+  trigger-dbt-ci-job:
+    if: github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    env:
+      DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
+      DBT_CLOUD_ACCOUNT_ID: 43786
+      DBT_CLOUD_ENVIRONMENT_ID: 308752
+      DBT_CLOUD_JOB_ID: 567183
+      DBT_CLOUD_HOST: cloud.getdbt.com
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.11"
+    - uses: yezz123/setup-uv@v4
+    - name: Install dbtc
+      run: |
+        uv pip install dbtc
+      env:
+        UV_SYSTEM_PYTHON: 1
+
+    - name: Trigger DBT Cloud Job
+      run: uv run scripts/run_and_log.py
