@@ -48,7 +48,7 @@ with latest_data as (
 
         -- Expire record's indicator
         0 as current_record_ind,
-        latest_data.effective_start_ts,
+        current_data.effective_start_ts,
 
         -- Expire record's timestamp
         current_timestamp() as effective_end_ts,
