@@ -4,3 +4,5 @@ sources:
     tables:
       - name: iceberg_v_body_of_work_funding__c
       - name: iceberg_v_strategy__c
+      - name: iceberg_v_investment__c
+      - name: iceberg_v_payment__c
