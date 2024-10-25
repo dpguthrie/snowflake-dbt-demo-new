@@ -13,7 +13,7 @@ with order_item as (
 ),
 
 part_supplier as (
-    
+
 
     select * from {{ ref('part_suppliers') }}
 
@@ -47,7 +47,7 @@ final as (
         order_item.item_discount_amount,
         order_item.item_tax_amount,
         order_item.net_item_sales_amount,
-        order_item.gross_item_sales_amount as gross_item_sales_amount
+        order_item.gross_item_sales_amount*2 as gross_item_sales_amount
 
     from
         order_item
