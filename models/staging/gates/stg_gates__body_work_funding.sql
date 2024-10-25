@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ ref('gates_body_of_work_funding_snapshot') }}
+    select * from {{ source('gates', 'iceberg_v_body_of_work_funding__c') }}
 ),
 
 renamed as (
@@ -26,10 +26,6 @@ renamed as (
         lastmodifieddate as last_modified_date,
         lastmodifiedbyid as last_modified_by_id,
         systemmodstamp as system_mod_stamp,
-        effective_start_ts,
-        effective_end_ts,
-        dbt_scd_id,
-        dbt_updated_at
 
     from source
 

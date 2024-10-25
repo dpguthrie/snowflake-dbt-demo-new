@@ -1,5 +1,5 @@
 with source as (
-    select * from {{ ref('gates_strategy_snapshot') }}
+    select * from {{ source('gates', 'iceberg_v_strategy__c') }}
 ),
 
 renamed as (
@@ -43,10 +43,6 @@ renamed as (
         key_element_source_id__c as key_element_source_id,
         lastmodifiedbyid as last_modified_by_id,
         lastmodifieddate as last_modified_date,
-        effective_start_ts,
-        effective_end_ts,
-        dbt_scd_id,
-        dbt_updated_at
 
     from source
 
