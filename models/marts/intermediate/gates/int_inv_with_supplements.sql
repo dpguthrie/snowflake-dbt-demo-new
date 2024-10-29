@@ -1,3 +1,9 @@
+{{
+    config(
+        materialized='table'
+    )
+}}
+
 with investment as (
 
     select * 
@@ -24,9 +30,9 @@ amendment as (
 
 select 
     inv.investment_number,
-    inv.id as investment_id
+    inv.investment_id
 from investment inv
 join amendment amd
-    on inv.id = amd.parent_investment
-group by inv.investment_number, inv.id
+    on inv.investment_id = amd.parent_investment
+group by 1, 2
 having count(*) > 1
