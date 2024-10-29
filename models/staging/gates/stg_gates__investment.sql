@@ -108,6 +108,7 @@ renamed as (
         lastmodifiedbyid as last_modified_by_id
 
     from source
+    where is_deleted = 0
 
 )
 

@@ -50,6 +50,7 @@ renamed as (
         debt_to_equity_conversion__c as debt_to_equity_conversion
 
     from source
+    where is_deleted = 0
 
 )
 
