@@ -19,7 +19,7 @@ renamed as (
         date__c as date,
         hold_payment__c as hold_payment,
         id,
-        investment__c as investment,
+        investment__c as investment_id,
         investment_record_type__c as investment_record_type,
         isdeleted as is_deleted,
         lastactivitydate as last_activity_date,

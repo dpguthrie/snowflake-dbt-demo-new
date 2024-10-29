@@ -1,31 +1,38 @@
-with investments_with_amendments as (
-    select * from {{ ref('int_investments_with_supplements') }}
+with investments as (
+
+    select * from {{ ref('stg_gates__investment') }}
+
 ),
+
 payments as (
+
+    select * from {{ ref('stg_gates__payment') }}
+
+),
+
+joined as (
+
     select
-        temp.investment_number,
-        temp.investment_id,
+        inv.investment_number,
+        inv.id,
         pmt.name as payment_id,
         year(pmt.date) as payment_year,
-        pmt.date as payment_date,
-        pmt.amount as payment_amt,
+        pmt.amount as payment_amount,
         row_number() over (
-            partition by temp.investment_number
+            partition by inv.investment_number
             order by pmt.date
         ) as row_nr,
-        pmt.amount as remaining_amt
-    from investments_with_amendments temp
-    join {{ ref('stg_gates__payment') }} pmt
-        on pmt.investment = temp.investment_id
-    where
-        pmt.status <> 'Cancelled'
-        and pmt.is_deleted = 0
+        sum(pmt.amount) over (
+            partition by investment_number
+            order by pmt.date
+        ) as cumulative_payment_amount,
+        sum(pmt.amount) over (
+            partition by investment_number
+        ) as total_payment_amount
+    from investments as inv
+    join payments as pmt on
+        inv.id = pmt.investment_id
+
 )
 
-select
-    *,
-    sum(payment_amt) over (
-        partition by investment_id
-        order by payment_date
-    ) as cumulative_payment_amount
-from payments
+select * from joined

@@ -1,22 +1,23 @@
-with investments_with_amendments as (
-    select * from {{ ref('int_investments_with_supplements') }}
+with investments as (
+    select * from {{ ref('stg_gates__investment') }}
 ),
-amendments as (
+
+parent_child as (
+
     select
-        temp.investment_number,
-        temp.investment_id,
+        inv.investment_number,
+        inv.id,
         amd.amendment_id,
         amd.amendment_increment,
         amd.amendment_amount_approved,
-        year(amd.committed_date) as commitment_year,
-        amd.amendment_amount_approved as remaining_amt,
-        amd.committed_date
-    from investments_with_amendments temp
-    join {{ ref('stg_gates__investment') }} amd
-        on temp.investment_id = amd.parent_investment
+        year(amd.committed_date) as commitment_year
+    from investments as inv
+    join investments as amd on
+        inv.id = amd.parent_investment
     where
-        amd.is_deleted = 0
-        and amd.status = 'Completed'
+        inv.status in ('Active', 'Closed')
+        and inv.no_maximum_budget = 0
+        and inv.record_type = 'Investment'
         and (
             amd.amendment_type is null
             or amd.amendment_type in (
@@ -27,12 +28,16 @@ amendments as (
                 'Renewal'
             )
         )
+
 )
 
 select
     *,
     sum(amendment_amount_approved) over (
-        partition by investment_id
+        partition by investment_number
         order by amendment_increment
-    ) as cumulative_amendment_amount
-from amendments
+    ) as cumulative_amendment_amount,
+    sum(amendment_amount_approved) over (
+        partition by investment_number
+    ) as total_amendment_amount
+from parent_child
