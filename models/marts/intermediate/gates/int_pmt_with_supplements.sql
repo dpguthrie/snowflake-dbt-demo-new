@@ -1,10 +1,10 @@
-with valid_investments as (
+{{
+    config(
+        materialized='table'
+    )
+}}
 
-    select * from {{ ref('int_inv_with_supplements') }}
-
-),
-
-investments as (
+with investments as (
 
     select * from {{ ref('stg_gates__investment') }}
 
@@ -28,12 +28,15 @@ joined as (
         row_number() over (
             partition by inv.investment_number
             order by pmt.date
-        ) as row_nr
-    from valid_investments as v
-    join investments as inv on
-        v.investment_id = inv.investment_id
+        ) as row_nr,
+        SUM(pmt.amount) OVER (
+            PARTITION BY inv.investment_id 
+            ORDER BY pmt.date
+            ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+        ) as cumulative_payment_amount,
+    from investments as inv
     join payments as pmt on
-        v.investment_id = pmt.investment_id
+        inv.investment_id = pmt.investment_id
     where pmt.status <> 'Cancelled'
 
 )

@@ -5,29 +5,20 @@ WITH payment_allocation AS (
         p.payment_id,
         p.payment_year,
         p.payment_date,
-        p.payment_amt,
-        p.payment_order,
+        p.payment_amount,
+        p.row_nr,
         a.amendment_id,
         a.amendment_increment,
         a.amendment_amount,
         a.commitment_year,
-        -- Calculate running totals
-        SUM(a.amendment_amount) OVER (
-            PARTITION BY p.investment_id 
-            ORDER BY a.amendment_increment
-            ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-        ) as cumulative_amendment_amt,
-        SUM(p.payment_amt) OVER (
-            PARTITION BY p.investment_id 
-            ORDER BY p.payment_order
-            ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-        ) as cumulative_payment_amt,
+        a.cumulative_amendment_amount,
+        p.cumulative_payment_amount,
+
         -- Calculate previous running totals
-        LAG(SUM(a.amendment_amount)) OVER (
+        LAG(a.cumulative_amendment_amount) OVER (
             PARTITION BY p.investment_id 
             ORDER BY a.amendment_increment
-            ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
-        ) as prev_cumulative_amendment_amt
+        ) as prev_cumulative_amendment_amount
     FROM {{ ref('int_pmt_with_supplements') }} p
     CROSS JOIN {{ ref('int_amd_with_supplements') }} a
     WHERE p.investment_id = a.investment_id
@@ -45,16 +36,16 @@ payment_chunks AS (
         commitment_year,
         CASE
             -- First payment against first amendment
-            WHEN payment_order = 1 AND amendment_increment = 0 THEN
-                LEAST(payment_amt, amendment_amount)
+            WHEN row_nr = 1 AND amendment_increment = 0 THEN
+                LEAST(payment_amount, amendment_amount)
             -- Payment amount fits within current amendment
-            WHEN cumulative_payment_amt <= cumulative_amendment_amt THEN
+            WHEN cumulative_payment_amount <= cumulative_amendment_amount THEN
                 LEAST(
-                    payment_amt,
+                    payment_amount,
                     amendment_amount - (
                         CASE 
-                            WHEN prev_cumulative_amendment_amt IS NULL THEN 0 
-                            ELSE prev_cumulative_amendment_amt 
+                            WHEN prev_cumulative_amendment_amount IS NULL THEN 0 
+                            ELSE prev_cumulative_amendment_amount 
                         END
                     )
                 )
@@ -64,16 +55,18 @@ payment_chunks AS (
                     0,
                     amendment_amount - (
                         CASE 
-                            WHEN prev_cumulative_amendment_amt IS NULL THEN 0 
-                            ELSE prev_cumulative_amendment_amt 
+                            WHEN prev_cumulative_amendment_amount IS NULL THEN 0 
+                            ELSE prev_cumulative_amendment_amount 
                         END
                     )
                 )
         END as allocated_amount
     FROM payment_allocation
-    WHERE cumulative_payment_amt <= cumulative_amendment_amt
+    WHERE cumulative_payment_amount <= cumulative_amendment_amount
       AND allocated_amount > 0
-),
+)
+
+select * from payment_chunks
 
 final_allocations AS (
     SELECT 
@@ -82,7 +75,7 @@ final_allocations AS (
         pc.payment_id,
         pc.payment_year,
         pc.commitment_year,
-        pc.allocated_amount as payment_amt,
+        pc.allocated_amount as payment_amount,
         dim_inv.investment_skey,
         dim_inv.investment_durable_skey
     FROM payment_chunks pc
@@ -98,7 +91,7 @@ non_amended_investments AS (
         p.payment_id,
         p.payment_year,
         YEAR(i.committed_date) as commitment_year,
-        p.payment_amt
+        p.payment_amount
     FROM {{ ref('int_inv_with_supplements') }} i
     LEFT JOIN {{ ref('dim_investment') }} dim_inv 
         ON i.investment_id = dim_inv.source_system_row_id
@@ -114,7 +107,7 @@ SELECT
     payment_id,
     commitment_year,
     payment_year,
-    payment_amt
+    payment_amount
 FROM final_allocations
 
 UNION ALL
@@ -125,5 +118,5 @@ SELECT
     payment_id,
     commitment_year,
     payment_year,
-    payment_amt
+    payment_amount
 FROM non_amended_investments

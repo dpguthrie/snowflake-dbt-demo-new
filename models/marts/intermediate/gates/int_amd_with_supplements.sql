@@ -1,9 +1,11 @@
+{{
+    config(
+        materialized='table'
+    )
+}}
+
 with investments as (
     select * from {{ ref('stg_gates__investment') }}
-),
-
-valid_investments as (
-    select * from {{ ref('int_inv_with_supplements') }}
 ),
 
 joined as (
@@ -12,13 +14,16 @@ joined as (
         inv.investment_id,
         amd.amendment_id,
         amd.amendment_increment,
-        amd.amendment_amount_approved,
+        amd.amendment_amount_approved as amendment_amount,
         year(amd.committed_date) as commitment_year,
-    from valid_investments as v
-    join investments as inv on
-        v.investment_id = inv.investment_id
+        SUM(amd.amendment_amount_approved) OVER (
+            PARTITION BY inv.investment_id 
+            ORDER BY amd.amendment_increment
+            ROWS BETWEEN UNBOUNDED PRECEDING AND CURRENT ROW
+        ) as cumulative_amendment_amount,
+    from investments as inv
     join investments as amd on
-        v.investment_id = amd.parent_investment_id
+        inv.investment_id = amd.parent_investment_id
     where amd.is_deleted = 0
         and amd.status = 'Completed'
         and (
