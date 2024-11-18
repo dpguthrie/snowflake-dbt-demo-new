@@ -24,7 +24,6 @@ final as (
         order_item.order_item_key,
         order_item.order_key,
         order_item.order_date,
-        order_item.order_date + interval '3 months' as order_date_plus_3_months,
         order_item.customer_key,
         order_item.part_key,
         order_item.supplier_key,
@@ -48,7 +47,7 @@ final as (
         order_item.item_discount_amount,
         order_item.item_tax_amount,
         order_item.net_item_sales_amount,
-        order_item.gross_item_sales_amount*2 as gross_item_sales_amount
+        order_item.gross_item_sales_amount as gross_item_sales_amount
 
     from
         order_item
