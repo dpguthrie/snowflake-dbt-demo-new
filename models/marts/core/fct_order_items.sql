@@ -49,6 +49,7 @@ final as (
         order_item.item_tax_amount,
         order_item.net_item_sales_amount,
         order_item.gross_item_sales_amount as gross_item_sales_amount,
+        'hello world' as col
 
     from
         order_item
