@@ -17,12 +17,8 @@ jobs:
         with:
           python-version: "3.11"
 
-      - uses: yezz123/setup-uv@v4
-
-      - name: Install Dependencies
-        run: uv pip install dbt pre-commit
-        env:
-          UV_SYSTEM_PYTHON: 1
+      - name: Install pre-commit
+        run: pip install dbt pre-commit
 
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.4
