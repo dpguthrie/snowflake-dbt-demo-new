@@ -21,6 +21,8 @@ jobs:
 
       - name: Install Dependencies
         run: uv pip install dbt pre-commit
+        env:
+          UV_SYSTEM_PYTHON: 1
 
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.4
