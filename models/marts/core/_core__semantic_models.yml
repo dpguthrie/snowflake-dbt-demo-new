@@ -42,10 +42,16 @@ semantic_models:
     measures:
       - name: total_revenue
         agg: sum
+        label: Total Revenue
+        description: The total revenue for the business.
         expr: gross_item_sales_amount
+        create_metric: True
       - name: total_customers
+        label: Total Customers
+        description: The total customers for the business.
         agg: count_distinct
         expr: customer_key
+        create_metric: True
 
   - name: customers
     description: |
@@ -89,6 +95,9 @@ semantic_models:
         description: The region the customer belongs to
         type: categorical
         expr: region
+      - name: user_id
+        description: The user mapped to the customer
+        type: categorical
   
   - name: order_items
     description: |
@@ -121,7 +130,10 @@ semantic_models:
     measures:
       - name: total_expense
         agg: sum
+        label: Total Expense
+        description: The total expenses for the business.
         expr: supplier_cost
+        create_metric: True
 
   - name: suppliers
     description: Relevant information about a customer's suppliers

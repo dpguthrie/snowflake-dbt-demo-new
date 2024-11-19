@@ -17,7 +17,8 @@ if __name__ == "__main__":
                 "account-name": os.environ["DBT_CLOUD_ACCOUNT_NAME"],
                 "account-id": os.environ["DBT_CLOUD_ACCOUNT_ID"],
                 "account-host": os.environ["DBT_CLOUD_HOST"],
-                "api-key": os.environ["DBT_CLOUD_API_KEY"],
+                "token-name": "gh-action-pre-commit",
+                "token-value": os.environ["DBT_CLOUD_API_KEY"],
             }
         ],
     }

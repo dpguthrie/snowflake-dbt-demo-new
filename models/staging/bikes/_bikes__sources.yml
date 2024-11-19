@@ -9,11 +9,11 @@ sources:
       - name: station_info_flatten
         columns:
           - name: station_id
-            tests:
+            data_tests:
               - not_null
               - unique
           - name: lat
-        tests:
+        data_tests:
           - dbt_utils.expression_is_true:
               expression: "lat between -90 and 90"
           - dbt_utils.expression_is_true:

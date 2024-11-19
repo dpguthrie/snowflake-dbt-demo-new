@@ -13,17 +13,17 @@ jobs:
       - name: checkout
         uses: actions/checkout@v3
 
-      - uses: actions/setup-python@v3
+      - uses: actions/setup-python@v4
         with:
-          python-version: "3.9.x"
-  
+          python-version: "3.11"
+
+      - name: Install pre-commit
+        run: pip install dbt pre-commit
+
       - id: file_changes
         uses: trilom/file-changes-action@v1.2.4
         with:
           output: ' '
-
-      - name: Install pre-commit
-        run: python -m pip install dbt pre-commit
 
       - name: Run pre-commit model checks
         env:
@@ -36,4 +36,5 @@ jobs:
         run: |
           mkdir ~/.dbt/
           ./scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
+          dbt docs generate
           pre-commit run --files ${{ steps.file_changes.outputs.files}}

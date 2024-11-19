@@ -7,10 +7,10 @@
 with days as (
 
     {{
-        dbt_utils.date_spine(
+        dbt.date_spine(
             'day',
             "to_date('01/01/2000','mm/dd/yyyy')",
-            "to_date('01/01/2027','mm/dd/yyyy')"
+            "to_date('01/01/2025','mm/dd/yyyy')"
         )
     }}
 
@@ -22,3 +22,4 @@ final as (
 )
 
 select * from final
+where date_day > dateadd(year, -5, current_timestamp()) 

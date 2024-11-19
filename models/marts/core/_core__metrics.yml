@@ -2,35 +2,24 @@ version: 2
 
 
 metrics:
-  - name: total_revenue
-    description: The total revenue for the business
-    type: simple
-    label: Total Revenue
-    type_params:
-      measure: total_revenue
-
   - name: cumulative_revenue_total
     description: The cumulative revenue for the business
     type: cumulative
     label: Cumulative Revenue (All-Time)
     type_params:
-      measure: total_revenue
+      measure:
+        name: total_revenue
     
   - name: cumulative_revenue_ttm
     description: Cumulative revenue for the trailing twelve months
     type: cumulative
     label: Cumulative Revenue (TTM)
     type_params:
-      measure: total_revenue
-      window: 12 months
+      cumulative_type_params:
+        window: 12 months
+      measure:
+        name: total_revenue
   
-  - name: total_expense
-    description: The total expense for the business
-    type: simple
-    label: Total Expenses
-    type_params:
-      measure: total_expense
-
   - name: total_profit
     description: The total profit for the business
     type: derived
@@ -42,29 +31,26 @@ metrics:
           alias: revenue
         - name: total_expense
           alias: expense
-      
-  - name: total_customers
-    description: The total customers for the business
-    type: simple
-    label: Total Customers
-    type_params:
-      measure: total_customers
-
+    
   - name: weekly_customers
     description: Number of active weekly customers
     type: cumulative
     label: Weekly Active Customers
     type_params:
-      measure: total_customers
-      window: 7 days
+      cumulative_type_params:
+        window: 7 days
+      measure:
+        name: total_customers
 
   - name: monthly_customers
     description: Number of active monthly customers
     type: cumulative
     label: Monthly Active Customers
     type_params:
-      measure: total_customers
-      window: 1 month
+      cumulative_type_params:
+        window: 1 month
+      measure:
+        name: total_customers
   
   - name: average_revenue_per_customer
     description: The average revenue per customer
