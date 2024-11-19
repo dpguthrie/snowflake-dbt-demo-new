@@ -36,4 +36,5 @@ jobs:
         run: |
           mkdir ~/.dbt/
           ./scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
+          dbt docs generate
           pre-commit run --files ${{ steps.file_changes.outputs.files}}
