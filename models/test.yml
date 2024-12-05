@@ -1,0 +1,7 @@
+models:
+  - name: test_dynamic_tbl
+    columns:
+      # Single column inline constraints
+      - name: order_key
+        tests:
+          - dbt_constraints.primary_key
