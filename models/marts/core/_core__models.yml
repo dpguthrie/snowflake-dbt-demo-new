@@ -140,8 +140,7 @@ models:
       - name: order_key
         description: primary key of the model
         data_tests:
-          - unique
-          - not_null
+          - dbt_constraints.primary_key
       - name: customer_key
         description: foreign key for customers
         data_tests:

@@ -4,3 +4,5 @@ projects:
 packages:
   - package: dbt-labs/codegen
     version: ["<1.0.0"]
+  - package: Snowflake-Labs/dbt_constraints
+    version: [">=1.0.0", "<1.1.0"]
