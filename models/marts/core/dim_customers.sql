@@ -34,7 +34,7 @@ final as (
         customer.phone_number,
         customer.account_balance,
         customer.market_segment,
-        customer.user_id,,
+        customer.user_id
     from
         customer
     inner join nation
