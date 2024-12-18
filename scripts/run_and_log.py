@@ -72,7 +72,7 @@ def get_results_with_errors(run_results: list[dict]) -> dict:
                 }
             )
 
-    return all_errors
+    return {k: v for k, v in all_errors.items() if v}
 
 
 def create_comment(all_errors: dict[str, list], run_url: str):
@@ -89,7 +89,8 @@ def create_comment(all_errors: dict[str, list], run_url: str):
             comment += "**Error Message:**\n```\n"
             comment += error["message"]
             comment += "\n```\n\n"
-        return comment
+    
+    return comment
 
 
 def comment_on_pr(payload) -> requests.Response:
@@ -160,8 +161,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     error_nodes = get_results_with_errors(run_results)
-    logger.info(error_nodes)
-    if any(errors for errors in error_nodes.values()):
+    if error_nodes:
         comment = create_comment(error_nodes, url)
         payload = {"body": comment}
         response = comment_on_pr(payload)
