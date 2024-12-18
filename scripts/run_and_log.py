@@ -38,7 +38,7 @@ class JobRunStatus(enum.IntEnum):
 ERROR_STATUSES = {
     "error": {
         "resource": "model",
-        "plural": "model",
+        "plural": "error",
         "icon": ":x:",
     },
     "fail": {
@@ -160,6 +160,7 @@ if __name__ == "__main__":
         sys.exit(1)
 
     error_nodes = get_results_with_errors(run_results)
+    logger.info(error_nodes)
     if any(errors for errors in error_nodes.values()):
         comment = create_comment(error_nodes, url)
         payload = {"body": comment}
