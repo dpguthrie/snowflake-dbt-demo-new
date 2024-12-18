@@ -35,7 +35,23 @@ class JobRunStatus(enum.IntEnum):
     CANCELLED = 30
 
 
-ERROR_STATUSES = ["error", "fail", "warn"]
+ERROR_STATUSES = {
+    "error": {
+        "resource": "model",
+        "plural": "error",
+        "icon": ":x:",
+    },
+    "fail": {
+        "resource": "test",
+        "plural": "failure",
+        "icon": ":x:",
+    },
+    "warn": {
+        "resource": "test",
+        "plural": "warning",
+        "icon": ":warning: ",
+    },
+}
 
 
 def extract_pr_number(s):
@@ -44,10 +60,10 @@ def extract_pr_number(s):
 
 
 def get_results_with_errors(run_results: list[dict]) -> dict:
-    all_errors = []
+    all_errors = {status: [] for status in ERROR_STATUSES.keys()}
     for result in run_results:
-        if result.get("status", None) in ERROR_STATUSES:
-            all_errors.append(
+        if result.get("status", None) in ERROR_STATUSES.keys():
+            all_errors[result["status"]].append(
                 {
                     "resource_type": result["unique_id"].split(".")[0],
                     "message": result["message"],
@@ -56,19 +72,24 @@ def get_results_with_errors(run_results: list[dict]) -> dict:
                 }
             )
 
-    return all_errors
+    return {k: v for k, v in all_errors.items() if v}
 
 
-def create_comment(errors: list[dict], run_url: str):
+def create_comment(all_errors: dict[str, list], run_url: str):
     comment = "## dbt Cloud Job Run Results\n\n"
     comment += f"[View full job run details]({run_url})\n\n"
-    comment += f"❌ {len(errors)} resource(s) encountered errors:\n\n"
-    for error in errors:
-        comment += f"### {error['resource_type']}: `{error['uniqueId']}`\n"
-        comment += f"**Status:** `{error['status']}`\n"
-        comment += "**Error Message:**\n```\n"
-        comment += error["message"]
-        comment += "\n```\n\n"
+    for error_type, error_list in all_errors.items():
+        icon = ERROR_STATUSES[error_type]['icon']
+        resource = ERROR_STATUSES[error_type]['resource']
+        plural = ERROR_STATUSES[error_type]['plural']
+        comment += f"{icon} {len(error_list)} {resource}(s) encountered {plural}s:\n\n"
+        for error in error_list:
+            comment += f"### {error['resource_type']}: `{error['uniqueId']}`\n"
+            comment += f"**Status:** `{error['status']}`\n"
+            comment += "**Error Message:**\n```\n"
+            comment += error["message"]
+            comment += "\n```\n\n"
+    
     return comment
 
 
