@@ -35,7 +35,7 @@ class JobRunStatus(enum.IntEnum):
     CANCELLED = 30
 
 
-ERROR_STATUSES = ["error", "fail"]  # Maybe include warn?
+ERROR_STATUSES = ["error", "fail", "warn"]
 
 
 def extract_pr_number(s):
@@ -93,7 +93,8 @@ if __name__ == "__main__":
     # Create schema
     schema_override = f"dbt_cloud_pr_{DBT_CLOUD_JOB_ID}_{pull_request_id}"
 
-    # Create payload to pass to job (modify how you see fit, 'cause' is required)
+    # Create payload to pass to job
+    # https://docs.getdbt.com/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api
     payload = {
         "cause": "CI Triggered via Github Action",
         "schema_override": schema_override,
@@ -101,7 +102,7 @@ if __name__ == "__main__":
         "github_pull_request_id": pull_request_id,
     }
 
-    # Trigger Job, will poll for completion automatically
+    # Trigger Job, poll until completion
     run = client.cloud.trigger_job(
         DBT_CLOUD_ACCOUNT_ID,
         DBT_CLOUD_JOB_ID,
@@ -115,7 +116,7 @@ if __name__ == "__main__":
         logging.error(f"An error occurred, see response:\n{run}")
         sys.exit(1)
 
-    # should contain a status key
+    # run_data should contain a status key
     try:
         run_status = run_data["status"]
     except KeyError:
@@ -125,44 +126,29 @@ if __name__ == "__main__":
     # Extract url
     url = run_data["href"]
 
-    # If success, just exit
-    if run_status == JobRunStatus.SUCCESS:
-        logging.info(f"CI Job completed successfully.  View here: {url}")
-        sys.exit(0)
-
-    # If error, retrieve errors
-    if run_status == JobRunStatus.ERROR:
-        # Get run results
-        run_id = run_data["id"]
-        run_results_response = client.cloud.get_run_artifact(
-            DBT_CLOUD_ACCOUNT_ID, run_id, "run_results.json"
+    # Get run results
+    run_id = run_data["id"]
+    run_results_response = client.cloud.get_run_artifact(
+        DBT_CLOUD_ACCOUNT_ID, run_id, "run_results.json"
+    )
+    try:
+        run_results = run_results_response["results"]
+    except KeyError:
+        logger.error(
+            f"Problem retrieving logs after run.  Please view the run on dbt Cloud: {url}"
         )
-        try:
-            run_results = run_results_response["results"]
-        except KeyError:
-            logger.error(
-                f"Problem retrieving logs after run.  Please view the run on dbt Cloud: {url}"
-            )
-            sys.exit(1)
+        sys.exit(1)
 
-        error_nodes = get_results_with_errors(run_results)
-        if not error_nodes:
-            comment = (
-                "The run failed but we were unable to retrieve any errors from the "
-                f"logs.  Please view the run on dbt Cloud: {url}."
-            )
-        else:
-            comment = create_comment(error_nodes, url)
+    error_nodes = get_results_with_errors(run_results)
+    if error_nodes:
+        comment = create_comment(error_nodes, url)
         payload = {"body": comment}
         response = comment_on_pr(payload)
-        if response.ok:
-            logger.info("Comment posted to PR")
-        else:
+        if not response.ok:
             logger.error(f"Error posting comment to PR: {response.text}")
+            logger.error(f"See errors below:\n {comment}")
+            
+    if run_status in (JobRunStatus.ERROR, JobRunStatus.CANCELLED):
         sys.exit(1)
-
-    # If cancelled, just exit in a failed state
-    if run_status == JobRunStatus.CANCELLED:
-        # Can also comment here if you'd like
-        logger.error(f"Job cancelled.  See run info:\n{run}")
-        sys.exit(1)
+        
+    sys.exit(0)
