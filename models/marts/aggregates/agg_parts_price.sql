@@ -7,7 +7,7 @@ with cte as (
         sum(retail_price) as total_retail_price
     from {{ ref('dim_parts') }}
     group by 1
-)2
+)
 
 select
     manufacturer,
