@@ -1,4 +1,4 @@
-name: Column Aware dbt Cloud CI
+name: Column Aware CI
 
 on:
   workflow_dispatch:
@@ -21,6 +21,7 @@ jobs:
       DBT_CLOUD_ACCOUNT_ID: ${{ secrets.DBT_CLOUD_ACCOUNT_ID }}
       DBT_CLOUD_PROJECT_ID: ${{ secrets.DBT_CLOUD_PROJECT_ID }}
       DBT_CLOUD_PROJECT_NAME: "Main"
+      DBT_CLOUD_ACCOUNT_NAME: "Doug Sandbox"
       DBT_CLOUD_JOB_ID: 567183
       DBT_CLOUD_HOST: cloud.getdbt.com
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
