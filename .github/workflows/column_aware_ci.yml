@@ -41,5 +41,5 @@ jobs:
     - name: Trigger DBT Cloud Job
       run: |
         mkdir ~/.dbt/
-        ./scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
-        ./scripts/column_aware_ci.py
+        scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
+        scripts/column_aware_ci.py
