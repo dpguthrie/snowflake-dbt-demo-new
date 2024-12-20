@@ -58,3 +58,7 @@ seeds:
       +column_types:
         effective_date: DATE
         rate: NUMBER
+
+dbt-cloud:
+  defer-env-id: '218762'
+  project-id: '270542'
