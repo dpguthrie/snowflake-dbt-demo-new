@@ -42,6 +42,4 @@ jobs:
       run: |
         mkdir ~/.dbt/
         uv run scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
-        which uv
-        which dbt
         uv run scripts/column_aware_ci.py
