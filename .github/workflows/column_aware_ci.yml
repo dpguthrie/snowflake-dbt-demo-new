@@ -17,7 +17,10 @@ jobs:
     runs-on: ubuntu-latest
     env:
       DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
-      DBT_CLOUD_ACCOUNT_ID: 43786
+      DBT_CLOUD_API_KEY: ${{ secrets.DBT_CLOUD_API_KEY }}
+      DBT_CLOUD_ACCOUNT_ID: ${{ secrets.DBT_CLOUD_ACCOUNT_ID }}
+      DBT_CLOUD_PROJECT_ID: ${{ secrets.DBT_CLOUD_PROJECT_ID }}
+      DBT_CLOUD_PROJECT_NAME: "Main"
       DBT_CLOUD_JOB_ID: 567183
       DBT_CLOUD_HOST: cloud.getdbt.com
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -35,4 +38,7 @@ jobs:
         UV_SYSTEM_PYTHON: 1
 
     - name: Trigger DBT Cloud Job
-      run: uv run scripts/column_aware_ci.py
+      run: |
+        mkdir ~/.dbt/
+        uv run scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
+        uv run scripts/column_aware_ci.py
