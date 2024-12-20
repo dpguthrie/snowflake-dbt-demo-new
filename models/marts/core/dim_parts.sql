@@ -16,9 +16,9 @@ final as (
         name,
         brand,
         type,
-        size,
+        size*2 as size,
         container,
-        retail_price
+        retail_price*2 as retail_price
     from
         part
 )
