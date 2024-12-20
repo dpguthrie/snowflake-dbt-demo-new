@@ -217,12 +217,10 @@ class NodeDiff:
 
 if __name__ == "__main__":
     
-    current_env = os.environ.copy()
-    
     logger.info("Compiling modified models...")
 
     cmd = ["dbt", "compile", "--select", "state:modified"]
-    result = subprocess.run(cmd, capture_output=True, text=True, env=current_env)
+    result = subprocess.run(cmd, capture_output=True, text=True)
 
     logger.info("Retrieving compiled code...")
 
@@ -232,7 +230,7 @@ if __name__ == "__main__":
 
     # Understand all modified and anything downstream by using `dbt ls`
     cmd = ["dbt", "ls", "--resource-type", "model", "--select", "state:modified+", "--output", "json"]
-    result = subprocess.run(cmd, capture_output=True, text=True, env=current_env)
+    result = subprocess.run(cmd, capture_output=True, text=True)
     lines = result.stdout.split("\n")
     all_unique_ids = set()
     for line in lines:
