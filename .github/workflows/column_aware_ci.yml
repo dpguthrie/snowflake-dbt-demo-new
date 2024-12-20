@@ -30,7 +30,7 @@ jobs:
     - uses: yezz123/setup-uv@v4
     - name: Install packages
       run: |
-        uv pip install dbtc sqlglot
+        uv pip install dbt dbtc sqlglot
       env:
         UV_SYSTEM_PYTHON: 1
 
