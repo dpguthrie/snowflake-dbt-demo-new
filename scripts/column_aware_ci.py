@@ -132,7 +132,7 @@ def trigger_job(steps_override: list[str] = None) -> None:
     schema_override = f"dbt_cloud_pr_{DBT_CLOUD_JOB_ID}_{pull_request_id}"
 
     # Create payload to pass to job
-    # https://docs.getdbt.com/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api
+    # https://docs.getdbt.com/docs/deploy/ci-jobs#trigger-a-ci-job-with-the-api 
     payload = {
         "cause": "Column-aware CI",
         "schema_override": schema_override,
