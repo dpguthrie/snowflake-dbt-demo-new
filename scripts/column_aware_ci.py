@@ -53,7 +53,8 @@ dbtc_client = dbtCloudClient(host=DBT_CLOUD_HOST)
 def get_dev_nodes() -> dict[str, Node]:
     with open("target/run_results.json") as rr:
         run_results_json = json.load(rr)
-        
+    
+    logger.info(f"Compiled code:\n{run_results_json}")
     run_results = {}
     for result in run_results_json["results"]:
         unique_id = result["unique_id"]
