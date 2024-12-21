@@ -32,8 +32,6 @@ jobs:
       with:
         python-version: "3.11"
     - uses: yezz123/setup-uv@v4
-      with:
-        uv-venv: ".venv"
     - name: Install packages
       run: |
         uv pip install --system dbt dbtc pyyaml sqlglot
