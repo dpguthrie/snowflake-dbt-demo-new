@@ -32,14 +32,11 @@ jobs:
       with:
         python-version: "3.11"
     - uses: yezz123/setup-uv@v4
+      with:
+        uv-venv: ".venv"
     - name: Install packages
       run: |
-        pip install dbt dbtc pyyaml sqlglot
-      env:
-        UV_SYSTEM_PYTHON: 1
-
-    - name: Trigger DBT Cloud Job
-      run: |
+        uv pip install dbt dbtc pyyaml sqlglot
         mkdir ~/.dbt/
         uv run scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
         uv run scripts/column_aware_ci.py
