@@ -36,7 +36,7 @@ jobs:
         uv-venv: ".venv"
     - name: Install packages
       run: |
-        uv pip install dbt dbtc pyyaml sqlglot
+        uv pip install --system dbt dbtc pyyaml sqlglot
         mkdir ~/.dbt/
         uv run scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
         uv run scripts/column_aware_ci.py
