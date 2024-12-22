@@ -222,7 +222,7 @@ class NodeDiff:
 if __name__ == "__main__":
     logger.info("Compiling modified models...")
 
-    cmd = ["dbt", "compile", "--select", "state:modified"]
+    cmd = ["uv", "tool", "run", "dbt", "compile", "--select", "state:modified"]
     result = subprocess.run(cmd, capture_output=True, text=True)
 
     logger.info("Retrieving compiled code...")
@@ -233,6 +233,9 @@ if __name__ == "__main__":
 
     # Understand all modified and anything downstream by using `dbt ls`
     cmd = [
+        "uv",
+        "tool",
+        "run",
         "dbt",
         "ls",
         "--resource-type",
