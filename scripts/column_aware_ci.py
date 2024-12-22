@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # stdlib
 import enum
 import json
@@ -220,7 +222,7 @@ class NodeDiff:
 if __name__ == "__main__":
     logger.info("Compiling modified models...")
 
-    cmd = ["uv", "run", "dbt", "compile", "--select", "state:modified"]
+    cmd = ["dbt", "compile", "--select", "state:modified"]
     result = subprocess.run(cmd, capture_output=True, text=True)
 
     logger.info("Retrieving compiled code...")
@@ -231,8 +233,6 @@ if __name__ == "__main__":
 
     # Understand all modified and anything downstream by using `dbt ls`
     cmd = [
-        "uv",
-        "run",
         "dbt",
         "ls",
         "--resource-type",

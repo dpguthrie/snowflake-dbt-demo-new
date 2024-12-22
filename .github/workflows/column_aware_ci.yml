@@ -28,16 +28,16 @@ jobs:
       
     steps:
     - uses: "actions/checkout@v4"
-
-    - uses: "actions/setup-python@v5"
+    - name: Set up Python 3.12
+      uses: actions/setup-python@v4
       with:
         python-version: "3.12"
-
-    - name: Install uv
-      run: python3 -m pip install uv
-
+    - uses: astral-sh/setup-uv@v1
+      with:
+        version: "latest"
     - name: Install deps
-      run: uv pip install dbt dbtc pyyaml sqlglot --system
+      run:  |
+        uv pip install dbt dbtc pyyaml sqlglot --system
 
     - name: Run scripts
       run: |
