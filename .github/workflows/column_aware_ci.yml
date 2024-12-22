@@ -34,7 +34,11 @@ jobs:
     - uses: yezz123/setup-uv@v4
     - name: Install packages
       run: |
+        echo "UV_SYSTEM_PYTHON=1" >> $GITHUB_ENV
         uv pip install --system dbt dbtc pyyaml sqlglot
+
+    - name: Run scripts
+      run: |
         mkdir ~/.dbt/
         scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
         scripts/column_aware_ci.py
