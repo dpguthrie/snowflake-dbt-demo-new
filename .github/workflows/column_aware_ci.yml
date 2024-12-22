@@ -27,15 +27,17 @@ jobs:
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       
     steps:
-    - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
+    - uses: "actions/checkout@v4"
+
+    - uses: "actions/setup-python@v5"
       with:
-        python-version: "3.11"
-    - uses: yezz123/setup-uv@v4
-    - name: Install packages
-      run: |
-        echo "UV_SYSTEM_PYTHON=1" >> $GITHUB_ENV
-        uv pip install --system dbt dbtc pyyaml sqlglot
+        python-version: "3.12"
+
+    - name: Install uv
+      run: python3 -m pip install uv
+
+    - name: Install deps
+      run: uv pip install dbt dbtc pyyaml sqlglot --system
 
     - name: Run scripts
       run: |
