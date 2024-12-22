@@ -40,5 +40,5 @@ jobs:
     - name: Run scripts
       run: |
         mkdir ~/.dbt/
-        scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
-        scripts/column_aware_ci.py
+        uv run scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
+        uv run scripts/column_aware_ci.py
