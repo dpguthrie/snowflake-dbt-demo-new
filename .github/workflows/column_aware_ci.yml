@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run Column-Aware dbt Cloud CI
-      uses: dpguthrie/dbt-cloud-column-aware-ci@main
+      uses: dpguthrie/dbt-cloud-column-aware-ci@updates
       with:
         dbt_cloud_service_token: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
         dbt_cloud_token_value: ${{ secrets.DBT_CLOUD_API_KEY }}
