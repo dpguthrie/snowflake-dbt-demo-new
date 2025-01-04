@@ -9,8 +9,7 @@ renamed as (
     select
         r_regionkey as region_key,
         r_name as name,
-        r_comment as comment,
-        'hello world' as col
+        r_comment as comment
 
     from source
 
