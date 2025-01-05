@@ -26,7 +26,7 @@ final as (
     select
         customer.customer_key,
         customer.name,
-        customer.address,
+        customer.address as customer_address,
         nation.nation_key,
         nation.name as nation,
         region.region_key,
