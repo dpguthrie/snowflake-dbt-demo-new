@@ -20,6 +20,7 @@ renamed as (
         'hello world' as col
 
     from source
+    where brand not like 'hello world'
 
 )
 
