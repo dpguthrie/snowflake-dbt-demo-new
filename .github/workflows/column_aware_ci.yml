@@ -12,34 +12,18 @@ on:
       - ready_for_review
 
 jobs:
-  trigger-dbt-ci-job:
-    if: github.event.pull_request.draft == false
+  dbt-cloud-ci:
     runs-on: ubuntu-latest
-    env:
-      DBT_CLOUD_SERVICE_TOKEN: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
-      DBT_CLOUD_API_KEY: ${{ secrets.DBT_CLOUD_API_KEY }}
-      DBT_CLOUD_ACCOUNT_ID: ${{ secrets.DBT_CLOUD_ACCOUNT_ID }}
-      DBT_CLOUD_PROJECT_ID: ${{ secrets.DBT_CLOUD_PROJECT_ID }}
-      DBT_CLOUD_PROJECT_NAME: "Main"
-      DBT_CLOUD_ACCOUNT_NAME: "Doug Sandbox"
-      DBT_CLOUD_JOB_ID: 567183
-      DBT_CLOUD_HOST: cloud.getdbt.com
-      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      
     steps:
     - uses: actions/checkout@v3
-    - uses: actions/setup-python@v4
+    - name: Run Column-Aware dbt Cloud CI
+      uses: dpguthrie/dbt-cloud-column-aware-ci@updates
       with:
-        python-version: "3.11"
-    - uses: yezz123/setup-uv@v4
-    - name: Install packages
-      run: |
-        pip install dbt dbtc pyyaml sqlglot
-      env:
-        UV_SYSTEM_PYTHON: 1
-
-    - name: Trigger DBT Cloud Job
-      run: |
-        mkdir ~/.dbt/
-        uv run scripts/create_profile.py > ~/.dbt/dbt_cloud.yml
-        uv run scripts/column_aware_ci.py
+        dbt_cloud_service_token: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
+        dbt_cloud_token_value: ${{ secrets.DBT_CLOUD_API_KEY }}
+        dbt_cloud_token_name: 'gh-action-pre-commit'
+        dbt_cloud_account_id: ${{ secrets.DBT_CLOUD_ACCOUNT_ID }}
+        dbt_cloud_project_id: ${{ secrets.DBT_CLOUD_PROJECT_ID }}
+        dbt_cloud_project_name: 'Main'
+        dbt_cloud_job_id: 567183
+        dbt_cloud_environment_id: 218762
