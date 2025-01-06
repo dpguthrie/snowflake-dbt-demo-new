@@ -21,6 +21,7 @@ renamed as (
         'another world' as col_2
 
     from source
+    where manufacturer not like 'this'
 
 )
 
