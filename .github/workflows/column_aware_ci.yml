@@ -17,16 +17,13 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Run Column-Aware dbt Cloud CI
-      uses: dpguthrie/dbt-cloud-column-aware-ci@feat/dry-run-message
+      uses: dpguthrie/dbt-cloud-column-aware-ci@0.5.0
       with:
         dbt_cloud_service_token: ${{ secrets.DBT_CLOUD_SERVICE_TOKEN }}
         dbt_cloud_token_value: ${{ secrets.DBT_CLOUD_API_KEY }}
         dbt_cloud_token_name: 'gh-action-pre-commit'
         dbt_cloud_account_id: ${{ secrets.DBT_CLOUD_ACCOUNT_ID }}
-        dbt_cloud_project_id: ${{ secrets.DBT_CLOUD_PROJECT_ID }}
-        dbt_cloud_project_name: 'Main'
         dbt_cloud_job_id: 567183
-        dbt_cloud_environment_id: 218762
         dialect: 'snowflake'
         log_level: 'DEBUG'
-        dry_run: true
+        
