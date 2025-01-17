@@ -1,0 +1,31 @@
+WITH fct_orders AS (
+  SELECT
+    ORDER_KEY,
+    ORDER_DATE,
+    CUSTOMER_KEY,
+    STATUS_CODE,
+    PRIORITY_CODE,
+    SHIP_PRIORITY,
+    CLERK_NAME,
+    ORDER_COUNT,
+    GROSS_ITEM_SALES_AMOUNT,
+    ITEM_DISCOUNT_AMOUNT,
+    ITEM_TAX_AMOUNT,
+    NET_ITEM_SALES_AMOUNT
+  FROM {{ ref('fct_orders') }}
+), formula_1 AS (
+  SELECT
+    *,
+    DATE_PART(MONTH, ORDER_DATE) AS ORDER_MONTH
+  FROM fct_orders
+), aggregation_1 AS (
+  SELECT
+    ORDER_MONTH,
+    SUM(GROSS_ITEM_SALES_AMOUNT) AS sum_GROSS_ITEM_SALES_AMOUNT
+  FROM formula_1
+  GROUP BY
+    ORDER_MONTH
+)
+SELECT
+  *
+FROM aggregation_1
