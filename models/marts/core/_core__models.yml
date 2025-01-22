@@ -16,7 +16,7 @@ models:
         description: region name
         data_tests:
           - accepted_values:
-              values: ['AFRICA','MIDDLE EAST','ASIA','EUROPE','AMERICA']
+              values: ['AFRICA', 'MIDDLE EAST', 'ASIA', 'EUROPE', 'AMERICA']
               severity: warn
       - name: name
         description: customer id
@@ -74,9 +74,8 @@ models:
         description: '{{ doc("phone_number") }}'
       - name: account_balance
         description: '{{ doc("account_balance") }}'
- 
   - name: fct_order_items
-    description: order items fact table
+    description: order items fact table hello
     access: public
     columns:
       - name: order_item_key
@@ -132,7 +131,6 @@ models:
         description: '{{ doc("item_tax_amount") }}'
       - name: net_item_sales_amount
         description: '{{ doc("net_item_sales_amount") }}'
-  
   - name: fct_orders
     description: orders fact table
     access: public
