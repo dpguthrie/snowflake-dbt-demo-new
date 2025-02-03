@@ -1,6 +1,9 @@
-with source as (
 
-    select * from {{ source('tpch', 'orders') }}
+
+use DOUG_DEMO_V2.DBT_DGUTHRIE;
+create or replace view DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS as (with source as (
+
+    select * from DOUG_DEMO_V2.TPCH.ORDERS
 
 ),
 
@@ -11,7 +14,7 @@ renamed as (
         o_orderkey as order_key,
         o_custkey as customer_key,
         o_orderstatus as status_code,
-        o_totalprice*2 as total_price,
+        o_totalprice as total_price,
         o_orderdate as order_date,
         o_clerk as clerk_name,
         o_orderpriority as priority_code,
@@ -22,4 +25,6 @@ renamed as (
 
 )
 
-select * from renamed
+select * from renamed);
+
+comment if exists on view DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS IS 'staging layer for orders data';

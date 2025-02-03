@@ -1,0 +1,63 @@
+{
+  "contents": {
+    "cli_vars": "99914b932bd37a50b983c5e7c90ae93b",
+    "credentials": "ab1eba8a7adde7b4fc3b57beaa69e850",
+    "env_vars": "d751713988987e9331980363e24189ce"
+  },
+  "prelude": [
+    {
+      "file": "workspace.sdf.yml",
+      "mtime": "2025-01-24T18:31:36.282750405Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_test/workspace.sdf.yml",
+      "mtime": "2025-01-24T13:10:19.028195714Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/workspace.sdf.yml",
+      "mtime": "2025-01-24T13:10:19.028894956Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_mat/workspace.sdf.yml",
+      "mtime": "2025-01-24T13:10:19.027809593Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_test/macros/test.jinja",
+      "mtime": "2025-01-24T13:10:19.028113131Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/macros/date_spine.jinja",
+      "mtime": "2025-01-24T13:10:19.028441420Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/macros/generate_date_values.jinja",
+      "mtime": "2025-01-24T13:10:19.028515794Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/macros/group_by.jinja",
+      "mtime": "2025-01-24T13:10:19.028798874Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/macros/generate_integer_values.jinja",
+      "mtime": "2025-01-24T13:10:19.028603751Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/macros/generate_surrogate_key.jinja",
+      "mtime": "2025-01-24T13:10:19.028690584Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_mat/macros/dialect/snowflake/materialize.jinja",
+      "mtime": "2025-01-24T13:10:19.027726761Z"
+    }
+  ],
+  "deps": [],
+  "source_files": {
+    "values": {}
+  },
+  "incomplete_source_files": {
+    "values": []
+  },
+  "target_status": {
+    "values": {}
+  }
+}

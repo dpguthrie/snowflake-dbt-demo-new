@@ -1,0 +1,61 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS
+  description: staging layer for suppliers data
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: view
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.TPCH.PARTSUPP
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS
+  columns:
+  - name: PART_SUPPLIER_KEY
+    description: surrogate key for the model -- combo of ps_partkey + ps_suppkey
+    datatype: varchar
+    lineage:
+      modify:
+      - DOUG_DEMO_V2.TPCH.PARTSUPP.PS_PARTKEY
+      - DOUG_DEMO_V2.TPCH.PARTSUPP.PS_SUPPKEY
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS.PART_SUPPLIER_KEY
+  - name: PART_KEY
+    description: foreign key to stg_tpch_parts
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.PARTSUPP.PS_PARTKEY
+  - name: SUPPLIER_KEY
+    description: foreign key to stg_tpch_suppliers
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.PARTSUPP.PS_SUPPKEY
+  - name: AVAILABLE_QUANTITY
+    description: raw available quantity
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.PARTSUPP.PS_AVAILQTY
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS.AVAILABLE_QUANTITY
+  - name: COST
+    description: raw cost
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.PARTSUPP.PS_SUPPLYCOST
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS.COST
+  - name: COMMENT
+    description: additional commentary
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.PARTSUPP.PS_COMMENT
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_part_suppliers.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_part_suppliers.sql

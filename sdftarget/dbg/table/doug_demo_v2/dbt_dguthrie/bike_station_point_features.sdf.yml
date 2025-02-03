@@ -1,0 +1,18 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.BIKE_STATION_POINT_FEATURES
+  description: ''
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_BIKES_STATION_INFO
+  columns:
+  - name: POINT_FEATURES
+    datatype: geography
+    lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_BIKES_STATION_INFO.POINT
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/dbt_dguthrie/bike_station_point_features.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/dbt_dguthrie/bike_station_point_features.sql

@@ -1,0 +1,34 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS
+  description: ''
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  dependencies:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__HISTORY
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.MONTHLY_VOLATILITY
+  columns:
+  - name: SYMBOL
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.MONTHLY_VOLATILITY.SYMBOL
+  - name: DATE
+    datatype: date
+    forward-lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.MONTHLY_VOLATILITY.MONTH
+  - name: DAILY_RETURN
+    datatype: double
+    forward-lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.MONTHLY_VOLATILITY.ANNUALIZED_VOLATILITY
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.MONTHLY_VOLATILITY.MONTHLY_VOLATILITY
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/daily_returns.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/daily_returns.sql
+  - path: workspace.sdf.yml

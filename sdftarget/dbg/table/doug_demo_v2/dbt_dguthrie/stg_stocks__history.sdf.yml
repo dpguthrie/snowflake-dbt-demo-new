@@ -1,0 +1,67 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__HISTORY
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: view
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.STOCKS.HISTORY
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS
+  columns:
+  - name: SYMBOL
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.HISTORY.SYMBOL
+  - name: DATE
+    datatype: date
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.HISTORY.DATE
+  - name: CLOSE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.HISTORY.CLOSE
+    forward-lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS.PE_RATIO
+  - name: VOLUME
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.HISTORY.VOLUME
+  - name: OPEN
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.HISTORY.OPEN
+  - name: HIGH
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.HISTORY.HIGH
+  - name: LOW
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.HISTORY.LOW
+  - name: ADJUSTED_CLOSED
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.HISTORY.ADJCLOSE
+  - name: DIVIDENDS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.HISTORY.DIVIDENDS
+  - name: SPLITS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.HISTORY.SPLITS
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__history.sql

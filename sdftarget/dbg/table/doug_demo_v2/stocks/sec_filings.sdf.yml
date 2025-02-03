@@ -1,0 +1,43 @@
+table:
+  name: DOUG_DEMO_V2.STOCKS.SEC_FILINGS
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SEC_FILINGS
+  columns:
+  - name: SYMBOL
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SEC_FILINGS.SYMBOL
+  - name: DATE
+    datatype: date
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SEC_FILINGS.REPORT_DATE
+  - name: EPOCH_DATE
+    datatype: timestamp
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SEC_FILINGS.EPOCH_DATE
+  - name: TYPE
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SEC_FILINGS.TYPE
+  - name: TITLE
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SEC_FILINGS.TITLE
+  - name: EDGAR_URL
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SEC_FILINGS.EDGAR_URL
+  source-locations:
+  - path: workspace.sdf.yml

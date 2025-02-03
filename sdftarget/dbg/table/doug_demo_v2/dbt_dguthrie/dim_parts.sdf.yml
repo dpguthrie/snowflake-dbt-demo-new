@@ -1,0 +1,72 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_PARTS
+  description: Parts dimensions table
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_PARTS_PRICE
+  columns:
+  - name: PART_KEY
+    description: primary key of the model
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS.PART_KEY
+  - name: MANUFACTURER
+    description: manufacturer of the part
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS.MANUFACTURER
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_PARTS_PRICE.MANUFACTURER
+  - name: NAME
+    description: name of the part
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS.NAME
+  - name: BRAND
+    description: brand of the part
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS.BRAND
+  - name: TYPE
+    description: type of part including material
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS.TYPE
+  - name: SIZE
+    description: size of the part
+    datatype: decimal(38, 0)
+    lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS.SIZE
+  - name: CONTAINER
+    description: container of the part
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS.CONTAINER
+  - name: RETAIL_PRICE
+    description: raw retail price
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS.RETAIL_PRICE
+    forward-lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_PARTS_PRICE.TOTAL_RETAIL_PRICE
+  lineage:
+    scan:
+    - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS.PART_KEY
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_parts.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_parts.sql

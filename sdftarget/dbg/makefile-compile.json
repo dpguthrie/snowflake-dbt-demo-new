@@ -1,0 +1,1359 @@
+{
+  "contents": {
+    "cli_vars": "99914b932bd37a50b983c5e7c90ae93b",
+    "credentials": "ab1eba8a7adde7b4fc3b57beaa69e850",
+    "env_vars": "d751713988987e9331980363e24189ce"
+  },
+  "prelude": [
+    {
+      "file": "workspace.sdf.yml",
+      "mtime": "2025-01-29T19:34:43.481029716Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_part_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.416566336Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_orders.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.413321251Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/use_variables.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.416012968Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_regions.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.412680301Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/fct_order_items.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.410773825Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_nations.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.411263860Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/financial_ratios.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.415136354Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/daily_returns.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.421652565Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.420874949Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/part_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.422316848Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_parts.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.418136442Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_ship_modes_hardcoded_pivot.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.411657689Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_ship_modes_dynamic_pivot.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.414410821Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/fct_orders.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.417629823Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_customers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.417082538Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_total_parts_price.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.415554349Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_parts.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.420148Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_line_items.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.419651839Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_customers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.410151999Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_parts_price.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.418942307Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/order_items.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.409704047Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/monthly_volatility.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.418539603Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.409081096Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_part_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.416566336Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_orders.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.413321251Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/use_variables.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.416012968Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_regions.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.412680301Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/fct_order_items.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.410773825Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_nations.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.411263860Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/financial_ratios.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.415136354Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/daily_returns.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.421652565Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.420874949Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/part_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.422316848Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_parts.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.418136442Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_ship_modes_hardcoded_pivot.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.411657689Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_ship_modes_dynamic_pivot.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.414410821Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/fct_orders.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.417629823Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_customers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.417082538Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_total_parts_price.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.415554349Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_parts.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.420148Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_line_items.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.419651839Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_customers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.410151999Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_parts_price.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.418942307Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/order_items.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.409704047Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/monthly_volatility.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.418539603Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.409081096Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_test/workspace.sdf.yml",
+      "mtime": "2025-01-24T13:10:19.028195714Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/workspace.sdf.yml",
+      "mtime": "2025-01-24T13:10:19.028894956Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_mat/workspace.sdf.yml",
+      "mtime": "2025-01-24T13:10:19.027809593Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_part_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.416566336Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_orders.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.413321251Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/use_variables.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.416012968Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_regions.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.412680301Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/fct_order_items.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.410773825Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_nations.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.411263860Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/financial_ratios.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.415136354Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/daily_returns.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.421652565Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.420874949Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/part_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.422316848Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_parts.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.418136442Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_ship_modes_hardcoded_pivot.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.411657689Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_ship_modes_dynamic_pivot.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.414410821Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/fct_orders.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.417629823Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_customers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.417082538Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_total_parts_price.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.415554349Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_parts.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.420148Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_line_items.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.419651839Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_customers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.410151999Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_parts_price.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.418942307Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/order_items.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.409704047Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/monthly_volatility.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.418539603Z"
+    },
+    {
+      "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_suppliers.sdf.yml",
+      "mtime": "2025-01-31T18:13:18.409081096Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_test/macros/test.jinja",
+      "mtime": "2025-01-24T13:10:19.028113131Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/macros/date_spine.jinja",
+      "mtime": "2025-01-24T13:10:19.028441420Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/macros/generate_date_values.jinja",
+      "mtime": "2025-01-24T13:10:19.028515794Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/macros/group_by.jinja",
+      "mtime": "2025-01-24T13:10:19.028798874Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/macros/generate_integer_values.jinja",
+      "mtime": "2025-01-24T13:10:19.028603751Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_utils/macros/generate_surrogate_key.jinja",
+      "mtime": "2025-01-24T13:10:19.028690584Z"
+    },
+    {
+      "file": "sdftarget/dbg/.lib/sdf_mat/macros/dialect/snowflake/materialize.jinja",
+      "mtime": "2025-01-24T13:10:19.027726761Z"
+    }
+  ],
+  "deps": [
+    {
+      "target": "DOUG_DEMO_V2.TPCH.PART",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS",
+      "deps": [
+        "DOUG_DEMO_V2.TPCH.PART"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_PARTS",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_PARTS_PRICE",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_PARTS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.TPCH.LINEITEM",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_LINE_ITEMS",
+      "deps": [
+        "DOUG_DEMO_V2.TPCH.LINEITEM"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.TPCH.ORDERS",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS",
+      "deps": [
+        "DOUG_DEMO_V2.TPCH.ORDERS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.ORDER_ITEMS",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_LINE_ITEMS",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.TPCH.PARTSUPP",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS",
+      "deps": [
+        "DOUG_DEMO_V2.TPCH.PARTSUPP"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.TPCH.SUPPLIER",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_SUPPLIERS",
+      "deps": [
+        "DOUG_DEMO_V2.TPCH.SUPPLIER"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_SUPPLIERS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDER_ITEMS",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.ORDER_ITEMS",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_SHIP_MODES_DYNAMIC_PIVOT",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDER_ITEMS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_SHIP_MODES_HARDCODED_PIVOT",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDER_ITEMS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_TOTAL_PARTS_PRICE",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_PARTS_PRICE"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.STOCKS.HISTORY",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__HISTORY",
+      "deps": [
+        "DOUG_DEMO_V2.STOCKS.HISTORY"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__HISTORY"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.TPCH.CUSTOMER",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS",
+      "deps": [
+        "DOUG_DEMO_V2.TPCH.CUSTOMER"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.TPCH.NATION",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_NATIONS",
+      "deps": [
+        "DOUG_DEMO_V2.TPCH.NATION"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.TPCH.REGION",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_REGIONS",
+      "deps": [
+        "DOUG_DEMO_V2.TPCH.REGION"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_NATIONS",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_REGIONS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_NATIONS",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_REGIONS",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_SUPPLIERS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDERS",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.ORDER_ITEMS",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.STOCKS.BALANCE_SHEET",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__BALANCE_SHEET",
+      "deps": [
+        "DOUG_DEMO_V2.STOCKS.BALANCE_SHEET"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INCOME_STATEMENT",
+      "deps": [
+        "DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__BALANCE_SHEET",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__HISTORY",
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INCOME_STATEMENT"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.MONTHLY_VOLATILITY",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.STOCKS.FUND_OWNERSHIP",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP",
+      "deps": [
+        "DOUG_DEMO_V2.STOCKS.FUND_OWNERSHIP"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.STOCKS.GRADE_HISTORY",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY",
+      "deps": [
+        "DOUG_DEMO_V2.STOCKS.GRADE_HISTORY"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.STOCKS.INSIDER_TRANSACTIONS",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS",
+      "deps": [
+        "DOUG_DEMO_V2.STOCKS.INSIDER_TRANSACTIONS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.STOCKS.RECOMMENDATION_TRENDS",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__RECOMMENDATION_TRENDS",
+      "deps": [
+        "DOUG_DEMO_V2.STOCKS.RECOMMENDATION_TRENDS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.STOCKS.SEC_FILINGS",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SEC_FILINGS",
+      "deps": [
+        "DOUG_DEMO_V2.STOCKS.SEC_FILINGS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.STOCKS.SUMMARY_PROFILE",
+      "deps": []
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE",
+      "deps": [
+        "DOUG_DEMO_V2.STOCKS.SUMMARY_PROFILE"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.TOTAL_REVENUE",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDERS"
+      ]
+    },
+    {
+      "target": "DOUG_DEMO_V2.DBT_DGUTHRIE.USE_VARIABLES",
+      "deps": [
+        "DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDER_ITEMS"
+      ]
+    }
+  ],
+  "source_files": {
+    "values": {
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_PARTS_PRICE": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_parts_price.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.418942307Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_parts_price.sql",
+          "mtime": "2025-01-31T18:13:17.126877710Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_SHIP_MODES_DYNAMIC_PIVOT": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_ship_modes_dynamic_pivot.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.414410821Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_ship_modes_dynamic_pivot.sql",
+          "mtime": "2025-01-31T18:13:17.613095683Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_SHIP_MODES_HARDCODED_PIVOT": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_ship_modes_hardcoded_pivot.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.411657689Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_ship_modes_hardcoded_pivot.sql",
+          "mtime": "2025-01-31T18:13:17.163604710Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_TOTAL_PARTS_PRICE": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_total_parts_price.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.415554349Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/agg_total_parts_price.sql",
+          "mtime": "2025-01-31T18:13:17.155073275Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/dbt_dguthrie/daily_returns.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.536282459Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/daily_returns.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.421652565Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/daily_returns.sql",
+          "mtime": "2025-01-31T18:13:17.067699865Z"
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_customers.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.417082538Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_customers.sql",
+          "mtime": "2025-01-31T18:13:17.109104182Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_PARTS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_parts.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.418136442Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_parts.sql",
+          "mtime": "2025-01-31T18:13:17.091167239Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_suppliers.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.420874949Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_suppliers.sql",
+          "mtime": "2025-01-31T18:13:17.112009937Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDER_ITEMS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/fct_order_items.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.410773825Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/fct_order_items.sql",
+          "mtime": "2025-01-31T18:13:17.146723670Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDERS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/fct_orders.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.417629823Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/fct_orders.sql",
+          "mtime": "2025-01-31T18:13:17.114333408Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/financial_ratios.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.415136354Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/financial_ratios.sql",
+          "mtime": "2025-01-31T18:13:17.113239130Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.MONTHLY_VOLATILITY": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/monthly_volatility.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.418539603Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/monthly_volatility.sql",
+          "mtime": "2025-01-31T18:13:17.114328658Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.ORDER_ITEMS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/order_items.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.409704047Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/order_items.sql",
+          "mtime": "2025-01-31T18:13:17.076495964Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/part_suppliers.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.422316848Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/part_suppliers.sql",
+          "mtime": "2025-01-31T18:13:17.112045062Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__BALANCE_SHEET": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__balance_sheet.sql",
+          "mtime": "2025-01-31T18:13:16.925474059Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__fund_ownership.sql",
+          "mtime": "2025-01-31T18:13:16.930763117Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__grade_history.sql",
+          "mtime": "2025-01-31T18:13:16.938636560Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__HISTORY": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__history.sql",
+          "mtime": "2025-01-31T18:13:16.949405634Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INCOME_STATEMENT": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__income_statement.sql",
+          "mtime": "2025-01-31T18:13:16.952789425Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__insider_transactions.sql",
+          "mtime": "2025-01-31T18:13:16.954078242Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__RECOMMENDATION_TRENDS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__recommendation_trends.sql",
+          "mtime": "2025-01-31T18:13:16.954110658Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SEC_FILINGS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__sec_filings.sql",
+          "mtime": "2025-01-31T18:13:16.954457237Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__summary_profile.sql",
+          "mtime": "2025-01-31T18:13:16.954858774Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_customers.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.410151999Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_customers.sql",
+          "mtime": "2025-01-31T18:13:16.955486391Z"
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_LINE_ITEMS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_line_items.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.419651839Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_line_items.sql",
+          "mtime": "2025-01-31T18:13:16.955497558Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_NATIONS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_nations.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.411263860Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_nations.sql",
+          "mtime": "2025-01-31T18:13:16.955852553Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_orders.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.413321251Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_orders.sql",
+          "mtime": "2025-01-31T18:13:16.956145883Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_part_suppliers.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.416566336Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_part_suppliers.sql",
+          "mtime": "2025-01-31T18:13:16.956315797Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_parts.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.420148Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_parts.sql",
+          "mtime": "2025-01-31T18:13:16.956654502Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_REGIONS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_regions.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.412680301Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_regions.sql",
+          "mtime": "2025-01-31T18:13:16.957223286Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_SUPPLIERS": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_suppliers.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.409081096Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_suppliers.sql",
+          "mtime": "2025-01-31T18:13:16.968225815Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.TOTAL_REVENUE": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/total_revenue.sql",
+          "mtime": "2025-01-31T18:13:17.148021613Z"
+        }
+      ],
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.USE_VARIABLES": [
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/use_variables.sdf.yml",
+          "mtime": "2025-01-31T18:13:18.416012968Z"
+        },
+        {
+          "file": "target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/use_variables.sql",
+          "mtime": "2025-01-31T18:13:17.163640917Z"
+        }
+      ],
+      "DOUG_DEMO_V2.STOCKS.BALANCE_SHEET": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/stocks/balance_sheet.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.536071003Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.STOCKS.FUND_OWNERSHIP": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/stocks/fund_ownership.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.536060545Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.STOCKS.GRADE_HISTORY": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/stocks/grade_history.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.534466315Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.STOCKS.HISTORY": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/stocks/history.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.533856447Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/stocks/income_statement.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.536370166Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.STOCKS.INSIDER_TRANSACTIONS": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/stocks/insider_transactions.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.535258638Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.STOCKS.RECOMMENDATION_TRENDS": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/stocks/recommendation_trends.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.535109557Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.STOCKS.SEC_FILINGS": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/stocks/sec_filings.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.535767423Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.STOCKS.SUMMARY_PROFILE": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/stocks/summary_profile.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.536052212Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.TPCH.CUSTOMER": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/tpch/customer.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.534602521Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.TPCH.LINEITEM": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/tpch/lineitem.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.534333483Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.TPCH.NATION": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/tpch/nation.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.534905351Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.TPCH.ORDERS": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/tpch/orders.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.535159598Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.TPCH.PART": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/tpch/part.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.534320650Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.TPCH.PARTSUPP": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/tpch/partsupp.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.534620771Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.TPCH.REGION": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/tpch/region.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.534888101Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ],
+      "DOUG_DEMO_V2.TPCH.SUPPLIER": [
+        {
+          "file": "sdftarget/dbg/table/doug_demo_v2/tpch/supplier.sdf.yml",
+          "mtime": "2025-01-31T18:13:19.535048724Z",
+          "is_remote_origin": true
+        },
+        {
+          "file": "workspace.sdf.yml",
+          "mtime": "2025-01-29T19:34:43.481029716Z"
+        }
+      ]
+    }
+  },
+  "incomplete_source_files": {
+    "values": []
+  },
+  "target_status": {
+    "values": {
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_PARTS_PRICE": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_SHIP_MODES_DYNAMIC_PIVOT": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_SHIP_MODES_HARDCODED_PIVOT": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.AGG_TOTAL_PARTS_PRICE": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_PARTS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDER_ITEMS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDERS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.MONTHLY_VOLATILITY": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.ORDER_ITEMS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__BALANCE_SHEET": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__HISTORY": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INCOME_STATEMENT": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__RECOMMENDATION_TRENDS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SEC_FILINGS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_LINE_ITEMS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_NATIONS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PARTS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_REGIONS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_SUPPLIERS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.TOTAL_REVENUE": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.DBT_DGUTHRIE.USE_VARIABLES": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.STOCKS.BALANCE_SHEET": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.STOCKS.FUND_OWNERSHIP": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.STOCKS.GRADE_HISTORY": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.STOCKS.HISTORY": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.STOCKS.INSIDER_TRANSACTIONS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.STOCKS.RECOMMENDATION_TRENDS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.STOCKS.SEC_FILINGS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.STOCKS.SUMMARY_PROFILE": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.TPCH.CUSTOMER": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.TPCH.LINEITEM": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.TPCH.NATION": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.TPCH.ORDERS": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.TPCH.PART": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.TPCH.PARTSUPP": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.TPCH.REGION": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      },
+      "DOUG_DEMO_V2.TPCH.SUPPLIER": {
+        "purpose": "model",
+        "status": "succeeded",
+        "draft": false
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.TOTAL_REVENUE
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: view
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDERS
+  columns:
+  - name: DATE_MONTH
+    datatype: date
+    lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDERS.ORDER_DATE
+  - name: TOTAL_REVENUE
+    datatype: decimal(38, 0)
+    lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDERS.GROSS_ITEM_SALES_AMOUNT
+  lineage:
+    scan:
+    - DOUG_DEMO_V2.DBT_DGUTHRIE.FCT_ORDERS.ORDER_DATE
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/total_revenue.sql

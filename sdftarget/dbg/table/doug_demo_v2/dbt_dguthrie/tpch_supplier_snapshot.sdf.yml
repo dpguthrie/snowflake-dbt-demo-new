@@ -1,0 +1,59 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.TPCH_SUPPLIER_SNAPSHOT
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.TPCH.SUPPLIER
+  columns:
+  - name: S_SUPPKEY
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_SUPPKEY
+  - name: S_NAME
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_NAME
+  - name: S_ADDRESS
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_ADDRESS
+  - name: S_NATIONKEY
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_NATIONKEY
+  - name: S_PHONE
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_PHONE
+  - name: S_ACCTBAL
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_ACCTBAL
+  - name: S_COMMENT
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_COMMENT
+  - name: _ETL_UPDATED_TIMESTAMP
+    datatype: timestamp
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER._ETL_UPDATED_TIMESTAMP
+  - name: DBT_SCD_ID
+    datatype: varchar not null
+  - name: DBT_UPDATED_AT
+    datatype: timestamp
+  - name: DBT_VALID_FROM
+    datatype: timestamp
+  - name: DBT_VALID_TO
+    datatype: timestamp
+  source-locations:
+  - path: target/compiled/sdf/snapshots/DOUG_DEMO_V2/DBT_DGUTHRIE/tpch_supplier_snapshot.sql

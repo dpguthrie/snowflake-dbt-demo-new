@@ -1,0 +1,96 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS
+  description: staging layer for customers data
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: view
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.TPCH.CUSTOMER
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS
+  columns:
+  - name: CUSTOMER_KEY
+    description: primary key of the model
+    datatype: decimal(38, 0) not null
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.CUSTOMER.C_CUSTKEY
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS.CUSTOMER_KEY
+  - name: NAME
+    description: customer id
+    datatype: varchar
+    classifiers:
+    - PII.Name
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.CUSTOMER.C_NAME
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS.NAME
+  - name: ADDRESS
+    description: address of the customer
+    datatype: varchar
+    classifiers:
+    - PII.Address
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.CUSTOMER.C_ADDRESS
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS.ADDRESS
+  - name: NATION_KEY
+    description: foreign key to stg_tpch_nations
+    datatype: decimal(38, 0) not null
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.CUSTOMER.C_NATIONKEY
+  - name: PHONE_NUMBER
+    description: phone number of the customer
+    datatype: varchar
+    classifiers:
+    - PII.Phone
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.CUSTOMER.C_PHONE
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS.PHONE_NUMBER
+  - name: ACCOUNT_BALANCE
+    description: total account balance from the customer
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.CUSTOMER.C_ACCTBAL
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS.ACCOUNT_BALANCE
+  - name: MARKET_SEGMENT
+    description: market segment of the customer
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.CUSTOMER.C_MKTSEGMENT
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS.MARKET_SEGMENT
+  - name: COMMENT
+    description: additional commentary
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.CUSTOMER.C_COMMENT
+  - name: USER_ID
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.CUSTOMER.USER_ID
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS.USER_ID
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_customers.sdf.yml
+  - path: workspace.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_customers.sql

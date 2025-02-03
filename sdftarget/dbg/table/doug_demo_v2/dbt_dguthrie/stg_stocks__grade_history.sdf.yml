@@ -1,0 +1,41 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: view
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.STOCKS.GRADE_HISTORY
+  columns:
+  - name: SYMBOL
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.GRADE_HISTORY.SYMBOL
+  - name: EPOCH_GRADE_DATE
+    datatype: timestamp
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.GRADE_HISTORY.EPOCH_GRADE_DATE
+  - name: FIRM
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.GRADE_HISTORY.FIRM
+  - name: TO_GRADE
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.GRADE_HISTORY.TO_GRADE
+  - name: FROM_GRADE
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.GRADE_HISTORY.FROM_GRADE
+  - name: PROPOSED_ACTION
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.GRADE_HISTORY.ACTION
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__grade_history.sql

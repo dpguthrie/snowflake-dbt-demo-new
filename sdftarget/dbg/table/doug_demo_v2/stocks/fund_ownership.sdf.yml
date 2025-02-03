@@ -1,0 +1,48 @@
+table:
+  name: DOUG_DEMO_V2.STOCKS.FUND_OWNERSHIP
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP
+  columns:
+  - name: SYMBOL
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP.SYMBOL
+  - name: REPORT_DATE
+    datatype: date
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP.REPORT_DATE
+  - name: ORGANIZATION
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP.ORGANIZATION
+  - name: PCT_HELD
+    datatype: double
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP.PERCENT_HELD
+  - name: POSITION
+    datatype: double
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP.TOTAL_SHARES
+  - name: VALUE
+    datatype: double
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP.TOTAL_VALUE
+  - name: PCT_CHANGE
+    datatype: double
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__FUND_OWNERSHIP.PERCENT_CHANGE
+  source-locations:
+  - path: workspace.sdf.yml

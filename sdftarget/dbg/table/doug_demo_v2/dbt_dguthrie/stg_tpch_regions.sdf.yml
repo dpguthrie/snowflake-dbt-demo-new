@@ -1,0 +1,41 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_REGIONS
+  description: staging layer for regions data
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: view
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.TPCH.REGION
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS
+  columns:
+  - name: REGION_KEY
+    description: primary key of the model
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.REGION.R_REGIONKEY
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS.REGION_KEY
+  - name: NAME
+    description: region name
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.REGION.R_NAME
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS.REGION
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS.REGION
+  - name: COMMENT
+    description: additional commentary
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.REGION.R_COMMENT
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_regions.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_regions.sql

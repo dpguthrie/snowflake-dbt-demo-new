@@ -1,0 +1,60 @@
+table:
+  name: DOUG_DEMO_V2.TPCH.ORDERS
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS
+  columns:
+  - name: O_ORDERKEY
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS.ORDER_KEY
+  - name: O_CUSTKEY
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS.CUSTOMER_KEY
+  - name: O_ORDERSTATUS
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS.STATUS_CODE
+  - name: O_TOTALPRICE
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS.TOTAL_PRICE
+  - name: O_ORDERDATE
+    datatype: date
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS.ORDER_DATE
+  - name: O_ORDERPRIORITY
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS.PRIORITY_CODE
+  - name: O_CLERK
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS.CLERK_NAME
+  - name: O_SHIPPRIORITY
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS.SHIP_PRIORITY
+  - name: O_COMMENT
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_ORDERS.COMMENT
+  - name: _ETL_UPDATED_TIMESTAMP
+    datatype: timestamp
+  source-locations:
+  - path: workspace.sdf.yml
