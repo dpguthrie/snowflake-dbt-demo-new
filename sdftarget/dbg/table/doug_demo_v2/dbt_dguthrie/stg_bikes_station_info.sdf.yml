@@ -1,0 +1,51 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.STG_BIKES_STATION_INFO
+  description: ''
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.BIKE_STATION_POINT_FEATURES
+  columns:
+  - name: SHORT_NAME
+    datatype: varchar
+  - name: STATION_TYPE
+    datatype: varchar
+  - name: NAME
+    datatype: varchar
+  - name: ELECTRIC_BIKE_SURCHARGE_WAIVER
+    datatype: variant
+  - name: EXTERNAL_ID
+    datatype: varchar
+  - name: LEGACY_ID
+    datatype: decimal(38, 0)
+  - name: CAPACITY
+    datatype: variant
+  - name: HAS_KIOSK
+    datatype: variant
+  - name: STATION_ID
+    datatype: varchar
+  - name: REGION_ID
+    datatype: decimal(38, 0)
+  - name: EIGHTD_STATION_SERVICES
+    datatype: variant
+  - name: LATITUDE
+    datatype: variant
+  - name: LONGITUDE
+    datatype: variant
+  - name: POINT
+    datatype: geography
+    forward-lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.BIKE_STATION_POINT_FEATURES.POINT_FEATURES
+  - name: H3_INDEX_12
+    datatype: decimal(18, 0)
+  - name: H3_INDEX_10
+    datatype: decimal(18, 0)
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/dbt_dguthrie/stg_bikes_station_info.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/dbt_dguthrie/stg_bikes_station_info.sql
+  - path: workspace.sdf.yml

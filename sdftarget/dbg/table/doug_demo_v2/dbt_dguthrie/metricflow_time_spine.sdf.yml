@@ -1,0 +1,13 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.METRICFLOW_TIME_SPINE
+  description: ''
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  columns:
+  - name: DATE_DAY
+    datatype: date
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/metricflow_time_spine.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/metricflow_time_spine.sql

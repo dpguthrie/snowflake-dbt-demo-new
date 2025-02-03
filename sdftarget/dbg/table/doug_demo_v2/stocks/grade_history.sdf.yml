@@ -1,0 +1,43 @@
+table:
+  name: DOUG_DEMO_V2.STOCKS.GRADE_HISTORY
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY
+  columns:
+  - name: SYMBOL
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY.SYMBOL
+  - name: EPOCH_GRADE_DATE
+    datatype: timestamp
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY.EPOCH_GRADE_DATE
+  - name: FIRM
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY.FIRM
+  - name: TO_GRADE
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY.TO_GRADE
+  - name: FROM_GRADE
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY.FROM_GRADE
+  - name: ACTION
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__GRADE_HISTORY.PROPOSED_ACTION
+  source-locations:
+  - path: workspace.sdf.yml

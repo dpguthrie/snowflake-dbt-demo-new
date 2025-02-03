@@ -1,0 +1,19 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_DATE
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: view
+  purpose: model
+  columns:
+  - name: DATE
+    datatype: date
+  - name: WEEK
+    datatype: date
+  - name: MONTH
+    datatype: date
+  - name: QUARTER
+    datatype: date
+  - name: YEAR
+    datatype: date
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_date.sql

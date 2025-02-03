@@ -1,0 +1,46 @@
+table:
+  name: DOUG_DEMO_V2.TPCH.PARTSUPP
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS
+  columns:
+  - name: PS_PARTKEY
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS.PART_KEY
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS.PART_SUPPLIER_KEY
+  - name: PS_SUPPKEY
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS.SUPPLIER_KEY
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS.PART_SUPPLIER_KEY
+  - name: PS_AVAILQTY
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS.AVAILABLE_QUANTITY
+  - name: PS_SUPPLYCOST
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS.COST
+  - name: PS_COMMENT
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_PART_SUPPLIERS.COMMENT
+  - name: _ETL_UPDATED_TIMESTAMP
+    datatype: timestamp
+  - name: PS_PARTSUPPKEY
+    datatype: decimal(38, 0)
+  source-locations:
+  - path: workspace.sdf.yml

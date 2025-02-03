@@ -1,0 +1,81 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_SUPPLIERS
+  description: staging layer for suppliers data
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: view
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.TPCH.SUPPLIER
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS
+  columns:
+  - name: SUPPLIER_KEY
+    description: primary key of the model
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_SUPPKEY
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS.SUPPLIER_KEY
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS.SUPPLIER_KEY
+  - name: SUPPLIER_NAME
+    description: id of the supplier
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_NAME
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS.SUPPLIER_NAME
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS.SUPPLIER_NAME
+  - name: SUPPLIER_ADDRESS
+    description: address of the supplier
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_ADDRESS
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS.SUPPLIER_ADDRESS
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS.SUPPLIER_ADDRESS
+  - name: NATION_KEY
+    description: foreign key to stg_tpch_nations
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_NATIONKEY
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS.NATION_KEY
+  - name: PHONE_NUMBER
+    description: phone number of the supplier
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_PHONE
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS.PHONE_NUMBER
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS.PHONE_NUMBER
+  - name: ACCOUNT_BALANCE
+    description: raw account balance
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_ACCTBAL
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_SUPPLIERS.ACCOUNT_BALANCE
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.PART_SUPPLIERS.ACCOUNT_BALANCE
+  - name: COMMENT
+    description: additional commentary
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.TPCH.SUPPLIER.S_COMMENT
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_suppliers.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_tpch_suppliers.sql

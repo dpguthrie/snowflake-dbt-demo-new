@@ -1,0 +1,37 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.MONTHLY_VOLATILITY
+  description: ''
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS
+  columns:
+  - name: SYMBOL
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS.SYMBOL
+  - name: MONTH
+    datatype: date
+    lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS.DATE
+  - name: MONTHLY_VOLATILITY
+    datatype: double
+    lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS.DAILY_RETURN
+  - name: ANNUALIZED_VOLATILITY
+    datatype: double
+    lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS.DAILY_RETURN
+  lineage:
+    scan:
+    - DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS.DATE
+    - DOUG_DEMO_V2.DBT_DGUTHRIE.DAILY_RETURNS.SYMBOL
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/monthly_volatility.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/monthly_volatility.sql

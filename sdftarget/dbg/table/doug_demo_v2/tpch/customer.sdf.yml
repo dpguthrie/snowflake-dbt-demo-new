@@ -1,0 +1,61 @@
+table:
+  name: DOUG_DEMO_V2.TPCH.CUSTOMER
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS
+  columns:
+  - name: C_CUSTKEY
+    description: The customer primary key
+    datatype: decimal(38, 0) not null
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.CUSTOMER_KEY
+  - name: C_NAME
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.NAME
+  - name: C_ADDRESS
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.ADDRESS
+  - name: C_NATIONKEY
+    datatype: decimal(38, 0) not null
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.NATION_KEY
+  - name: C_PHONE
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.PHONE_NUMBER
+  - name: C_ACCTBAL
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.ACCOUNT_BALANCE
+  - name: C_MKTSEGMENT
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.MARKET_SEGMENT
+  - name: C_COMMENT
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.COMMENT
+  - name: _ETL_UPDATED_TIMESTAMP
+    datatype: timestamp
+  - name: USER_ID
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.USER_ID
+  source-locations:
+  - path: workspace.sdf.yml

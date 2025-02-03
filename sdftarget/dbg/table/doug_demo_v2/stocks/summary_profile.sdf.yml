@@ -1,0 +1,78 @@
+table:
+  name: DOUG_DEMO_V2.STOCKS.SUMMARY_PROFILE
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE
+  columns:
+  - name: ADDRESS1
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.ADDRESS_1
+  - name: CITY
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.CITY
+  - name: STATE
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.STATE
+  - name: ZIP
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.ZIP_CODE
+  - name: COUNTRY
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.COUNTRY
+  - name: PHONE
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.PHONE
+  - name: WEBSITE
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.WEBSITE
+  - name: INDUSTRY
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.INDUSTRY
+  - name: SECTOR
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.SECTOR
+  - name: LONG_BUSINESS_SUMMARY
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.LONG_BUSINESS_SUMMARY
+  - name: FULL_TIME_EMPLOYEES
+    datatype: decimal(38, 0)
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.FULL_TIME_EMPLOYEES
+  - name: SYMBOL
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.SYMBOL
+  - name: ADDRESS2
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__SUMMARY_PROFILE.ADDRESS_2
+  source-locations:
+  - path: workspace.sdf.yml

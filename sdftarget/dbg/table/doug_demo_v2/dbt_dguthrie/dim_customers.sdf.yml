@@ -1,0 +1,93 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.DIM_CUSTOMERS
+  description: Customer dimensions table
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_NATIONS
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_REGIONS
+  columns:
+  - name: CUSTOMER_KEY
+    description: Primary key on the customers table
+    datatype: decimal(38, 0) not null
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.CUSTOMER_KEY
+  - name: NAME
+    description: customer id
+    datatype: varchar
+    classifiers:
+    - PII.Name
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.NAME
+  - name: ADDRESS
+    description: address of the customer
+    datatype: varchar
+    classifiers:
+    - PII.Address
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.ADDRESS
+  - name: NATION_KEY
+    description: primary key of the model
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_NATIONS.NATION_KEY
+  - name: NATION
+    description: nation name
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_NATIONS.NAME
+  - name: REGION_KEY
+    description: primary key of the model
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_REGIONS.REGION_KEY
+  - name: REGION
+    description: region name
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_REGIONS.NAME
+  - name: PHONE_NUMBER
+    description: phone number of the customer
+    datatype: varchar
+    classifiers:
+    - PII.Phone
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.PHONE_NUMBER
+  - name: ACCOUNT_BALANCE
+    description: raw account balance
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.ACCOUNT_BALANCE
+  - name: MARKET_SEGMENT
+    description: market segment of the customer
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.MARKET_SEGMENT
+  - name: USER_ID
+    datatype: decimal(38, 0)
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.USER_ID
+  lineage:
+    scan:
+    - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.CUSTOMER_KEY
+    - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_CUSTOMERS.NATION_KEY
+    - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_NATIONS.NATION_KEY
+    - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_NATIONS.REGION_KEY
+    - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_TPCH_REGIONS.REGION_KEY
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_customers.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/dim_customers.sql

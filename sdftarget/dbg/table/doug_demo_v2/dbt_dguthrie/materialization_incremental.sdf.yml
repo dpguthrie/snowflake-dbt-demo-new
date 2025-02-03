@@ -1,0 +1,32 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.MATERIALIZATION_INCREMENTAL
+  description: demo to show incremental model
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  dependencies:
+  - DOUG_DEMO_V2.TPCH.CUSTOMER
+  columns:
+  - name: CUSTOMER_KEY
+    datatype: decimal(38, 0) not null
+  - name: NAME
+    datatype: varchar
+  - name: ADDRESS
+    datatype: varchar
+  - name: NATION_KEY
+    datatype: decimal(38, 0)
+  - name: PHONE_NUMBER
+    datatype: varchar
+  - name: ACCOUNT_BALANCE
+    datatype: decimal(38, 0)
+  - name: MARKET_SEGMENT
+    datatype: varchar
+  - name: COMMENT
+    datatype: varchar
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/dbt_dguthrie/materialization_incremental.sdf.yml
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/dbt_dguthrie/materialization_incremental.sql
+  - path: workspace.sdf.yml

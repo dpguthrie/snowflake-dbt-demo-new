@@ -1,0 +1,433 @@
+table:
+  name: DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INCOME_STATEMENT
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: view
+  purpose: model
+  dependencies:
+  - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS
+  columns:
+  - name: SYMBOL
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.SYMBOL
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS.SYMBOL
+  - name: DATE
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.ASOFDATE
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS.DATE
+  - name: PERIOD_TYPE
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.PERIODTYPE
+  - name: CURRENCY_CODE
+    datatype: varchar
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.CURRENCYCODE
+  - name: AMORTIZATION
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.AMORTIZATION
+  - name: AMORTIZATION_OF_INTANGIBLES_INCOME_STATEMENT
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.AMORTIZATIONOFINTANGIBLESINCOMESTATEMENT
+  - name: AVERAGE_DILUTION_EARNINGS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.AVERAGEDILUTIONEARNINGS
+  - name: BASIC_AVERAGE_SHARES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.BASICAVERAGESHARES
+  - name: BASIC_EPS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.BASICEPS
+  - name: COST_OF_REVENUE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.COSTOFREVENUE
+  - name: DEPLETION_INCOME_STATEMENT
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.DEPLETIONINCOMESTATEMENT
+  - name: DEPRECIATION_AMORTIZATION_DEPLETION_INCOME_STATEMENT
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.DEPRECIATIONAMORTIZATIONDEPLETIONINCOMESTATEMENT
+  - name: DEPRECIATION_AND_AMORTIZATION_IN_INCOME_STATEMENT
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.DEPRECIATIONANDAMORTIZATIONININCOMESTATEMENT
+  - name: DEPRECIATION_INCOME_STATEMENT
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.DEPRECIATIONINCOMESTATEMENT
+  - name: DILUTED_AVERAGE_SHARES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.DILUTEDAVERAGESHARES
+  - name: DILUTED_EPS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.DILUTEDEPS
+  - name: DILUTED_NI_AVAIL_TO_COM_STOCKHOLDERS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.DILUTEDNIAVAILTOCOMSTOCKHOLDERS
+  - name: EBIT
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.EBIT
+  - name: EBITDA
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.EBITDA
+  - name: EARNINGS_FROM_EQUITY_INTEREST
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.EARNINGSFROMEQUITYINTEREST
+  - name: EARNINGS_FROM_EQUITY_INTEREST_NET_OF_TAX
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.EARNINGSFROMEQUITYINTERESTNETOFTAX
+  - name: EXCISE_TAXES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.EXCISETAXES
+  - name: GAIN_ON_SALE_OF_BUSINESS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.GAINONSALEOFBUSINESS
+  - name: GAIN_ON_SALE_OF_PPE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.GAINONSALEOFPPE
+  - name: GAIN_ON_SALE_OF_SECURITY
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.GAINONSALEOFSECURITY
+  - name: GENERAL_AND_ADMINISTRATIVE_EXPENSE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.GENERALANDADMINISTRATIVEEXPENSE
+  - name: GROSS_PROFIT
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.GROSSPROFIT
+  - name: IMPAIRMENT_OF_CAPITAL_ASSETS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.IMPAIRMENTOFCAPITALASSETS
+  - name: INSURANCE_AND_CLAIMS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.INSURANCEANDCLAIMS
+  - name: INTEREST_EXPENSE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.INTERESTEXPENSE
+  - name: INTEREST_EXPENSE_NON_OPERATING
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.INTERESTEXPENSENONOPERATING
+  - name: INTEREST_INCOME
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.INTERESTINCOME
+  - name: INTEREST_INCOME_NON_OPERATING
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.INTERESTINCOMENONOPERATING
+  - name: MINORITY_INTERESTS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.MINORITYINTERESTS
+  - name: NET_INCOME
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETINCOME
+    forward-lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS.NET_PROFIT_MARGIN
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS.PE_RATIO
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS.ROA
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS.ROE
+  - name: NET_INCOME_COMMON_STOCKHOLDERS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETINCOMECOMMONSTOCKHOLDERS
+  - name: NET_INCOME_CONTINUOUS_OPERATIONS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETINCOMECONTINUOUSOPERATIONS
+  - name: NET_INCOME_DISCONTINUOUS_OPERATIONS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETINCOMEDISCONTINUOUSOPERATIONS
+  - name: NET_INCOME_EXTRAORDINARY
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETINCOMEEXTRAORDINARY
+  - name: NET_INCOME_FROM_CONTINUING_AND_DISCONTINUED_OPERATION
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETINCOMEFROMCONTINUINGANDDISCONTINUEDOPERATION
+  - name: NET_INCOME_FROM_CONTINUING_OPERATION_NET_MINORITY_INTEREST
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETINCOMEFROMCONTINUINGOPERATIONNETMINORITYINTEREST
+  - name: NET_INCOME_FROM_TAX_LOSS_CARRY_FORWARD
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETINCOMEFROMTAXLOSSCARRYFORWARD
+  - name: NET_INCOME_INCLUDING_NON_CONTROLLING_INTERESTS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETINCOMEINCLUDINGNONCONTROLLINGINTERESTS
+  - name: NET_INTEREST_INCOME
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETINTERESTINCOME
+  - name: NET_NON_OPERATING_INTEREST_INCOME_EXPENSE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NETNONOPERATINGINTERESTINCOMEEXPENSE
+  - name: NORMALIZED_EBITDA
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NORMALIZEDEBITDA
+  - name: NORMALIZED_INCOME
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.NORMALIZEDINCOME
+  - name: OPERATING_EXPENSE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.OPERATINGEXPENSE
+  - name: OPERATING_INCOME
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.OPERATINGINCOME
+  - name: OPERATING_REVENUE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.OPERATINGREVENUE
+  - name: OTHER_G_AND_A
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.OTHERGANDA
+  - name: OTHER_INCOME_EXPENSE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.OTHERINCOMEEXPENSE
+  - name: OTHER_NON_OPERATING_INCOME_EXPENSES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.OTHERNONOPERATINGINCOMEEXPENSES
+  - name: OTHER_OPERATING_EXPENSES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.OTHEROPERATINGEXPENSES
+  - name: OTHER_SPECIAL_CHARGES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.OTHERSPECIALCHARGES
+  - name: OTHER_TAXES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.OTHERTAXES
+  - name: OTHER_UNDER_PREFERRED_STOCK_DIVIDEND
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.OTHERUNDERPREFERREDSTOCKDIVIDEND
+  - name: PREFERRED_STOCK_DIVIDENDS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.PREFERREDSTOCKDIVIDENDS
+  - name: PRETAX_INCOME
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.PRETAXINCOME
+  - name: PROVISION_FOR_DOUBTFUL_ACCOUNTS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.PROVISIONFORDOUBTFULACCOUNTS
+  - name: RECONCILED_COST_OF_REVENUE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.RECONCILEDCOSTOFREVENUE
+  - name: RECONCILED_DEPRECIATION
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.RECONCILEDDEPRECIATION
+  - name: RENT_AND_LANDING_FEES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.RENTANDLANDINGFEES
+  - name: RENT_EXPENSE_SUPPLEMENTAL
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.RENTEXPENSESUPPLEMENTAL
+  - name: RESEARCH_AND_DEVELOPMENT
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.RESEARCHANDDEVELOPMENT
+  - name: RESTRUCTURING_AND_MERGER_ACQUISITION
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.RESTRUCTURINGANDMERGERNACQUISITION
+  - name: SALARIES_AND_WAGES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.SALARIESANDWAGES
+  - name: SECURITIES_AMORTIZATION
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.SECURITIESAMORTIZATION
+  - name: SELLING_AND_MARKETING_EXPENSE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.SELLINGANDMARKETINGEXPENSE
+  - name: SELLING_GENERAL_AND_ADMINISTRATION
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.SELLINGGENERALANDADMINISTRATION
+  - name: SPECIAL_INCOME_CHARGES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.SPECIALINCOMECHARGES
+  - name: TAX_EFFECT_OF_UNUSUAL_ITEMS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.TAXEFFECTOFUNUSUALITEMS
+  - name: TAX_PROVISION
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.TAXPROVISION
+  - name: TAX_RATE_FOR_CALCS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.TAXRATEFORCALCS
+  - name: TOTAL_EXPENSES
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.TOTALEXPENSES
+  - name: TOTAL_OPERATING_INCOME_AS_REPORTED
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.TOTALOPERATINGINCOMEASREPORTED
+  - name: TOTAL_OTHER_FINANCE_COST
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.TOTALOTHERFINANCECOST
+  - name: TOTAL_REVENUE
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.TOTALREVENUE
+    forward-lineage:
+      modify:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.FINANCIAL_RATIOS.NET_PROFIT_MARGIN
+  - name: TOTAL_UNUSUAL_ITEMS
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.TOTALUNUSUALITEMS
+  - name: TOTAL_UNUSUAL_ITEMS_EXCLUDING_GOODWILL
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.TOTALUNUSUALITEMSEXCLUDINGGOODWILL
+  - name: WRITE_OFF
+    datatype: double
+    lineage:
+      copy:
+      - DOUG_DEMO_V2.STOCKS.INCOME_STATEMENT.WRITEOFF
+  source-locations:
+  - path: target/compiled/sdf/models/DOUG_DEMO_V2/DBT_DGUTHRIE/stg_stocks__income_statement.sql

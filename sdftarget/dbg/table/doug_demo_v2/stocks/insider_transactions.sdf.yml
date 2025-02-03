@@ -1,0 +1,63 @@
+table:
+  name: DOUG_DEMO_V2.STOCKS.INSIDER_TRANSACTIONS
+  dialect: snowflake
+  casing-policy: preserve
+  materialization: table
+  purpose: model
+  origin: remote
+  exists-remotely: true
+  depended-on-by:
+  - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS
+  columns:
+  - name: SYMBOL
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS.SYMBOL
+  - name: SHARES
+    datatype: double
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS.SHARES
+  - name: FILER_URL
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS.FILER_URL
+  - name: TRANSACTION_TEXT
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS.TRANSACTION_TEXT
+  - name: FILER_NAME
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS.FILER_NAME
+  - name: FILER_RELATION
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS.FILER_RELATION
+  - name: MONEY_TEXT
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS.MONEY_TEXT
+  - name: START_DATE
+    datatype: date
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS.START_DATE
+  - name: OWNERSHIP
+    datatype: varchar
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS.OWNERSHIP
+  - name: VALUE
+    datatype: double
+    forward-lineage:
+      copy:
+      - DOUG_DEMO_V2.DBT_DGUTHRIE.STG_STOCKS__INSIDER_TRANSACTIONS.TOTAL_VALUE
+  source-locations:
+  - path: workspace.sdf.yml
