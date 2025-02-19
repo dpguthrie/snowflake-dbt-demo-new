@@ -5,6 +5,7 @@
     )
 }}
 
+
 with customer as (
 
     select * from {{ ref('stg_tpch_customers') }}
@@ -33,7 +34,7 @@ final as (
         region.name as region,
         customer.phone_number,
         customer.account_balance,
-        customer.market_segment,
+        customer.market_segment*2 as market_segment,
         customer.user_id
     from
         customer
