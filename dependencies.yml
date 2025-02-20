@@ -4,3 +4,5 @@ projects:
 packages:
   - package: dbt-labs/codegen
     version: ["<1.0.0"]
+  - package: dbt-labs/dbt_external_tables
+    version: 0.11.1

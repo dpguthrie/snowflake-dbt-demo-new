@@ -16,13 +16,3 @@ models:
         data_tests:
           - unique
           - not_null 
-        
-sources:
-  - name: test_eqrx_s3
-    schema: dbt_dguthrie
-    tables:
-      - name: dummy_data
-        description: Testing EQRx setup
-        external:
-          location: '@eqrx_test'
-          file_format: "( type = csv )"
