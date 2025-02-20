@@ -4,9 +4,11 @@
 #
 #  GUIDE
 #
-#  (1) Create a Snowflake external stage, e.g.,:
+#  (1) Create Snowflake external stages, e.g.,:
 #
-#        create or replace stage boerse url='s3://deutsche-boerse-eurex-pds/' file_format = (type=csv)
+#       use database analytics;
+#       use schema <your dev or prod schema>;
+#       create or replace stage s3_dbt_tutorial_public url='s3://dbt-tutorial-public/' file_format = (type=csv);
 # 
 #  (2) Add the dbt-external-tables package in packages.yml
 # 
@@ -15,7 +17,7 @@
 #
 #  (4) Access the source data from dbt, e.g.,
 #
-#        select * from {{ source('deutsche_boerse', 'trading_data') }}
+#        select * from {{ source('jaffle_shop', 'customers') }}
 # 
 #  OTHER EXTERNAL TABLES
 #
@@ -25,29 +27,30 @@
 #
 #  - dbt package: https://github.com/dbt-labs/dbt-external-tables/
 #  - external tables: https://docs.snowflake.com/en/user-guide/tables-external-intro.html
-#  - sample data: https://registry.opendata.aws/deutsche-boerse-pds/
 #
 
 version: 2
 
 sources:
-  - name: deutsche_boerse
+  - name: jaffle_shop
     description: This is an example of using external sources
     database: analytics
-    schema: boerse
+    freshness:
+      warn_after:
+        count: 50
+        period: day
+
 
     tables:
-      - name: trading_data
-        description: >
-          The Deutsche Börse Public Data Set consists of trade data aggregated to one minute
-          intervals from the Eurex and Xetra trading systems. It provides the initial price,
-          lowest price, highest price, final price and volume for every minute of the trading
-          day, and for every tradeable security.
+      - name: customers
+        description: This table contains customer data from the 'jaffle_shop' source.
 
         external:
-          location: "@boerse"
+          location: "@s3_dbt_tutorial_public"
           file_format: "(type=csv field_delimiter=',' skip_header=1)"
           auto_refresh: false
+          # This is a static pattern, but it could be a star pattern
+          pattern: 'jaffle_shop_customers.csv'
 
           partitions:
             - name: source_file_name
@@ -55,64 +58,84 @@ sources:
               expression: metadata$filename
 
         columns:
-          - name: ISIN
-            data_type: TEXT
-            description: "ISIN of the security"
-          - name: MarketSegment
-            data_type: TEXT
-            description: "The product market segment, following the convention on http://www.eurexchange.com"
-          - name: UnderlyingSymbol
-            data_type: TEXT
-            description: "The underlying security"
-          - name: UnderlyingISIN
-            data_type: TEXT
-            description: "ISIN of any underlying security	"
-          - name: Currency
-            data_type: TEXT
-            description: "Currency in which the product is traded	(ISO 4127)"
-          - name: SecurityType
-            data_type: TEXT
-            description: "Type of instrument"
-          - name: MaturityDate
-            data_type: TEXT
-            description: "Maturity date of the security"
-          - name: StrikePrice
+          - name: ID
             data_type: NUMBER
-            description: "Strike price"
-          - name: PutOrCall
-            data_type: TEXT
-            description: "Type of option (string: PUT or CALL)"
-          - name: MLEG
-            data_type: TEXT
-            description: "Identifies multi-leg options"
-          - name: ContractGenerationNumber
-            data_type: TEXT
-            description: "The generation number for options contracts"
-          - name: SecurityID
-            data_type: TEXT
-            description: "Unique identifier for each contract"
-          - name: Date
-            data_type: DATE
-            description: "Date of trading period"
-          - name: Time
-            data_type: TEXT
-            description: "Minute of trading to which this entry relates"
-          - name: StartPrice
-            data_type: NUMBER
-            description: "Trading price at the start of period"
-          - name: MaxPrice
-            data_type: NUMBER
-            description: "Maximum price over the period"
-          - name: MinPrice
-            data_type: NUMBER
-            description: "Minimum price over the period"
-          - name: EndPrice
-            data_type: NUMBER
-            description: "Trading price at the end of the period"
-          - name: NumberOfContracts
-            data_type: INT
-            description: "Number of contracts traded during the period"
-          - name: NumberOfTrades
-            data_type: INT
-            description: "Number of distinct trades during the period"
+            description: A unique identifier for each customer.
+          - name: FIRST_NAME
+            data_type: VARCHAR
+            description: The first name of the customer.
+          - name: LAST_NAME
+            data_type: VARCHAR
+            description: The last name of the customer.
 
+      - name: orders
+        description: This is orders data from the Jaffle Shop source
+
+        external:
+          location: "@s3_dbt_tutorial_public"
+          file_format: "(type=csv field_delimiter=',' skip_header=1)"
+          auto_refresh: false
+          pattern: 'jaffle_shop_orders.csv'
+
+          partitions:
+            - name: source_file_name
+              data_type: varchar
+              expression: metadata$filename
+
+        columns:
+          - name: ID
+            data_type: NUMBER
+            description: A unique identifier for each order.
+          - name: USER_ID
+            data_type: NUMBER
+            description: The identifier of the user who placed the order.
+          - name: ORDER_DATE
+            data_type: DATE
+            description: The date when the order was placed.
+          - name: STATUS
+            data_type: VARCHAR
+            description: The current status of the order, such as pending or completed.
+
+  - name: stripe
+    description: This is an example of using external sources
+    database: analytics
+    schema: stripe_external_source
+    freshness:
+      warn_after:
+        count: 90
+        period: day
+
+    tables:
+      - name: payments
+        description: This table includes details about each payment transaction, such as the payment method, status, and amount.
+
+        external:
+          location: "@s3_dbt_tutorial_public"
+          file_format: "(type=csv field_delimiter=',' skip_header=1)"
+          auto_refresh: false
+          pattern: 'stripe_payments.csv'
+
+          partitions:
+            - name: source_file_name
+              data_type: varchar
+              expression: metadata$filename
+
+        columns:
+          - name: ID
+            data_type: NUMBER
+            description: A unique identifier for each payment transaction.
+          - name: ORDERID
+            data_type: NUMBER
+            description: The identifier for the order associated with the payment.
+          - name: PAYMENTMETHOD
+            data_type: VARCHAR
+            description: The method used to make the payment, such as credit card or bank transfer.
+          - name: STATUS
+            data_type: VARCHAR
+            description: The current status of the payment, indicating whether it is completed, pending, or failed.
+          - name: AMOUNT
+            data_type: NUMBER
+            description: The total amount of the payment transaction.
+          - name: CREATED
+            data_type: DATE
+            description: The timestamp indicating when the payment was created.
