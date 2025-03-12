@@ -124,6 +124,8 @@ models:
         description: total units
       - name: gross_item_sales_amount
         description: '{{ doc("gross_item_sales_amount") }}'
+        tests:
+          - not_null
       - name: discounted_item_sales_amount
         description: '{{ doc("discounted_item_sales_amount") }}'
       - name: item_discount_amount
