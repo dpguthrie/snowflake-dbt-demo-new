@@ -23,7 +23,7 @@ final as (
     select
         order_item.order_item_key,
         order_item.order_key,
-        order_item.order_date as my_order_date,
+        order_item.order_date,
         order_item.order_date + interval '3 months' as order_date_plus_3_months,
         order_item.customer_key,
         order_item.part_key,
