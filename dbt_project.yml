@@ -30,12 +30,12 @@ clean-targets:         # directories to be removed by `dbt clean`
 vars:
   start_date: '1999-01-01'
   dbt_cloud_account_id: 43786
-  coalesce_defaults: {
-    "VARCHAR": "---",
+  defaults: {
+    "VARCHAR": "'---'",
     "NUMBER": 0,
     "DATE": "current_date()",
-    "TIMESTAMP_NTZ": "current_datetime()",
-    "TIMESTAMP_LTZ": "current_datetime()",
+    "TIMESTAMP_NTZ": "current_timestamp()",
+    "TIMESTAMP_LTZ": "current_timestamp()",
   }
 
 # Configuring models
