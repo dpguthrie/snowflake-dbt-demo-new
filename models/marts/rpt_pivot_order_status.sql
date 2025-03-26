@@ -1,0 +1,1 @@
+{{ rpt_template_pivot('stg_tpch_orders_2', ['o_orderpriority'], 'o_orderstatus', column_to_agg='o_totalprice') }}
