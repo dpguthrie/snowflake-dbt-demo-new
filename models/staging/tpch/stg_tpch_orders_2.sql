@@ -1,0 +1,1 @@
+{{ staging_model_template('tpch', 'orders') }}
