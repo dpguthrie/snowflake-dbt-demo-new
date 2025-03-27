@@ -3,7 +3,7 @@
 with merged as (
     select
         ship_mode,
-        gross_item_sales_amount,
+        gross_item_sales_amount_2,
         date_part('year', order_date) as order_year
     from {{ ref('fct_order_items') }}
 )
