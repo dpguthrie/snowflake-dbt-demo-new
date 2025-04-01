@@ -17,6 +17,7 @@ part_supplier as (
 
     select * from {{ ref('part_suppliers') }}
 
+
 ),
 
 final as (
