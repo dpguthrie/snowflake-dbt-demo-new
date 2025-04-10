@@ -32,8 +32,6 @@ final as (
         region.region_key,
         region.name as region,
         customer.phone_number,
-        customer.account_balance,
-        customer.market_segment,
         customer.user_id
     from
         customer
