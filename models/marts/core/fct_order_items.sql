@@ -1,64 +1,82 @@
-{{
-    config(
-        materialized = 'table',
-        tags = ['finance']
-    )
-}}
-
-with order_item as (
-
-
-    select * from {{ ref('order_items') }}
-
-),
-
-part_supplier as (
-
-
-    select * from {{ ref('part_suppliers') }}
-
-),
-
-final as (
-    select
-        order_item.order_item_key,
-        order_item.order_key,
-        order_item.order_date,
-        order_item.order_date + interval '3 months' as order_date_plus_3_months,
-        order_item.customer_key,
-        order_item.part_key,
-        order_item.supplier_key,
-        order_item.order_item_status_code,
-        order_item.return_flag,
-        order_item.line_number,
-        order_item.ship_date,
-        order_item.commit_date,
-        order_item.receipt_date,
-        order_item.ship_mode,
-        part_supplier.cost as supplier_cost,
-        {# ps.retail_price, #}
-        order_item.base_price,
-        order_item.discount_percentage,
-        order_item.discounted_price,
-        order_item.tax_rate,
-
-        1 as order_item_count,
-        order_item.quantity,
-        order_item.discounted_item_sales_amount,
-        order_item.item_discount_amount,
-        order_item.item_tax_amount,
-        order_item.net_item_sales_amount,
-        order_item.gross_item_sales_amount*2 as gross_item_sales_amount
-
-    from
-        order_item
-    inner join part_supplier
-        on order_item.part_key = part_supplier.part_key
-            and order_item.supplier_key = part_supplier.supplier_key
+WITH order_items AS (
+  SELECT
+    *
+  FROM {{ ref('order_items') }}
+), part_suppliers AS (
+  SELECT
+    *
+  FROM {{ ref('part_suppliers') }}
+), join_1 AS (
+  SELECT
+    part_suppliers.COST AS SUPPLIER_COST,
+    order_items.ORDER_ITEM_KEY,
+    order_items.ORDER_KEY,
+    order_items.ORDER_DATE,
+    order_items.CUSTOMER_KEY,
+    order_items.PART_KEY,
+    order_items.SUPPLIER_KEY,
+    order_items.ORDER_ITEM_STATUS_CODE,
+    order_items.RETURN_FLAG,
+    order_items.LINE_NUMBER,
+    order_items.SHIP_DATE,
+    order_items.COMMIT_DATE,
+    order_items.RECEIPT_DATE,
+    order_items.SHIP_MODE,
+    order_items.BASE_PRICE,
+    order_items.DISCOUNT_PERCENTAGE,
+    order_items.DISCOUNTED_PRICE,
+    order_items.TAX_RATE,
+    order_items.QUANTITY,
+    order_items.DISCOUNTED_ITEM_SALES_AMOUNT,
+    order_items.ITEM_DISCOUNT_AMOUNT,
+    order_items.ITEM_TAX_AMOUNT,
+    order_items.NET_ITEM_SALES_AMOUNT,
+    order_items.GROSS_ITEM_SALES_AMOUNT
+  FROM order_items
+  JOIN part_suppliers
+    ON order_items.PART_KEY = part_suppliers.PART_KEY
+    AND order_items.SUPPLIER_KEY = part_suppliers.SUPPLIER_KEY
+), formula_1 AS (
+  SELECT
+    ORDER_ITEM_KEY,
+    ORDER_KEY,
+    ORDER_DATE,
+    CUSTOMER_KEY,
+    PART_KEY,
+    SUPPLIER_KEY,
+    ORDER_ITEM_STATUS_CODE,
+    RETURN_FLAG,
+    LINE_NUMBER,
+    SHIP_DATE,
+    COMMIT_DATE,
+    RECEIPT_DATE,
+    SHIP_MODE,
+    SUPPLIER_COST,
+    BASE_PRICE,
+    DISCOUNT_PERCENTAGE,
+    DISCOUNTED_PRICE,
+    TAX_RATE,
+    QUANTITY,
+    DISCOUNTED_ITEM_SALES_AMOUNT,
+    ITEM_DISCOUNT_AMOUNT,
+    ITEM_TAX_AMOUNT,
+    NET_ITEM_SALES_AMOUNT,
+    ORDER_DATE + INTERVAL '3 MONTHS' AS ORDER_DATE_PLUS_3_MONTHS,
+    1 AS ORDER_ITEM_COUNT,
+    GROSS_ITEM_SALES_AMOUNT * 2 AS GROSS_ITEM_SALES_AMOUNT,
+    GROSS_ITEM_SALES_AMOUNT / 2 AS half_of_sales
+  FROM join_1
+), order_1 AS (
+  SELECT
+    *
+  FROM formula_1
+  ORDER BY
+    ORDER_DATE ASC
+), fct_order_items AS (
+  SELECT
+    *
+  FROM order_1
 )
-
-select *
-from
-    final
-order by
-    order_date
+SELECT
+  *
+FROM fct_order_items
